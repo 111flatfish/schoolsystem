@@ -68,8 +68,15 @@
     margin: 0 auto;
 }
 .banner{
-    width:1600px;
+    width:100%;
     height: 600px;
     margin: 0 auto;
+
+}
+.banner img{
+    width: 100%;
+}
+.column{
+    padding: 0;
 }
 </style>

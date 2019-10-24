@@ -33,9 +33,9 @@
                                         专业介绍
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#">表演</a></li>
-                                        <li><a href="#">播音</a></li>
-                                        <li><a href="#">编导</a></li>
+                                        <li><router-link tag="a" to="/major">表演</router-link></li>
+                                        <li><router-link tag="a" to="/major">播音</router-link></li>
+                                        <li><router-link tag="a" to="/major">编导</router-link></li>
                                     </ul>
                                 </div>
                             </li>

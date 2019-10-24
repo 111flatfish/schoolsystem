@@ -258,7 +258,7 @@
                     <div class="form-group select">
                         <label for="selectMajor" class="col-sm-2 control-label">专业</label>
                         <div class="col-sm-10">
-                            <select name="major" id="selectMajor">
+                            <select name="major" id="selectMajor" v-model="major">
                                 <option value="4">未知</option>
                                 <option value="1">未知</option>
                                 <option value="2">未知</option>
@@ -270,7 +270,7 @@
                     <div class="form-group select">
                         <label for="selectFrom" class="col-sm-2 control-label">您是从哪里知道我们的/来源</label>
                         <div class="col-sm-10">
-                            <select name="from" id="selectFrom" v-model="select">
+                            <select name="from" id="selectFrom" v-model="from">
                                 <option value="3">未知</option>
                                 <option value="1">未知</option>
                                 <option value="2">未知</option>
@@ -309,7 +309,8 @@
         name: "index",
         data(){
           return{
-                select:null
+                from:null,
+                major:null
           }
         },
         methods:{

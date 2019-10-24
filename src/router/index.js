@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import indexRouter from "../router/index/index"
+import majorRouter from "../router/major"
 
 Vue.use(VueRouter)
 
 const routes = [
-    indexRouter
+    indexRouter,
+    majorRouter
 ]
 
 const router = new VueRouter({

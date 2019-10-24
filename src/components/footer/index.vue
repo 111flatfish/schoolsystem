@@ -63,7 +63,7 @@
 .footer{
     background: url("../../assets/footerbackground.jpg") no-repeat;
     padding: 30px;
-    position: relative;
+    position:relative;
     bottom: 0;
     left: 0;
     color: #c4e3f3;

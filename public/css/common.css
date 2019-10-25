@@ -61,7 +61,7 @@ img{
     border:none;
 }
 ul,ol,li{
-    list-style-type:none;
+    list-style:none;
 }
 
 /*公共方法*/
@@ -83,6 +83,51 @@ ul,ol,li{
 .cursor{
     cursor: pointer;
 }
+.common_showcontent ul{
+    border: 1px solid #ccc;
+    padding-top: 10px;
+    position: relative;
+}
+.common_showcontent ul .img img{
+    width: 200px;
+    height: 200px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
+.common_showcontent ul .content{
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
+.common_showcontent ul .free{
+    height: 50px;
+    padding: 5px;
+}
+.freecontent{
+position: absolute;
+font-size: 18px;
+display: none;
+padding: 100px 0 100px 0;
+left: 0;
+top:0;
+background-color: black;
+width: 100%;
+opacity: 0;
+line-height: 25px;
+height: 100%;
+color: #fff;
+}
+.common_showcontent ul .free span{
+    font-size: 18px;
+    z-index: 1003;
+    display: inline-block;
+    width: 160px;
+    line-height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #ffd717;
+}
+
+
 
 /*背景及色值表*/
 .bg000{

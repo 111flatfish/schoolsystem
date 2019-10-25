@@ -124,6 +124,7 @@
     }
     .header .navbar li{
         width: 120px;
+
     }
     .header .navbar-brand{
         margin-left: 30px;
@@ -131,6 +132,7 @@
     .header .navbar a{
         height: 60px;
         line-height: 30px;
+        color: #333333;
     }
     .header .collapse{
         font-size: 16px;

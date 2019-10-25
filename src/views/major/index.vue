@@ -30,6 +30,7 @@
                                                 <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
                                             </div>
                                         </div>
+                                        <div class="background"></div>
                                     </div>
                                 </div>
                             </div>
@@ -134,6 +135,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="background"></div>
                                 </div>
                             </div>
                         </div>
@@ -141,9 +143,117 @@
                 </div>
             </div>
 
-            <div class="slide"></div>
-            <div class="showcontent2">
-
+            <div class="slide">
+                <ul class="row clearfix">
+                    <li class="media">
+                            <div class="media-left">
+                                <a href="#">
+                                    <img class="media-object" src="../../../public/image/teacherheader/1.jpeg" alt="图片">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h3 class="media-heading">标题</h3>
+                                <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                            </div>
+                        </li>
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="../../../public/image/teacherheader/2.jpeg" alt="图片">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">标题</h3>
+                            <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="../../../public/image/teacherheader/3.jpg" alt="图片">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">标题</h3>
+                            <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                        </div>
+                    </li>
+                    <li class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="../../../public/image/teacherheader/4.jpeg" alt="图片">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">标题</h3>
+                            <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="showcontent2 ">
+                <div class="row clearfix">
+                    <div class="col-md-3 common_showcontent">
+                        <ul>
+                            <li class="img"><img src="../../../public/image/teacherheader/4.jpeg" alt="课包"></li>
+                            <li class="content">
+                                <h4>课包名字</h4>
+                                <p>课时：{{}}周</p>
+                                <p>时长：{{}}h</p>
+                                <p>容纳量：{{}}人</p>
+                            </li>
+                            <li class="free">
+                                <span>展示</span>
+                                <div class="freebackground freecontent"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 common_showcontent">
+                        <ul>
+                            <li class="img"><img src="../../../public/image/teacherheader/4.jpeg" alt="课包"></li>
+                            <li class="content">
+                                <h4>课包名字</h4>
+                                <p>课时：{{}}周</p>
+                                <p>时长：{{}}h</p>
+                                <p>容纳量：{{}}人</p>
+                            </li>
+                            <li class="free">
+                                <span>展示</span>
+                                <div class="freebackground freecontent"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 common_showcontent">
+                        <ul>
+                            <li class="img"><img src="../../../public/image/teacherheader/4.jpeg" alt="课包"></li>
+                            <li class="content">
+                                <h4>课包名字</h4>
+                                <p>课时：{{}}周</p>
+                                <p>时长：{{}}h</p>
+                                <p>容纳量：{{}}人</p>
+                            </li>
+                            <li class="free">
+                                <span>展示</span>
+                                <div class="freebackground freecontent"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 common_showcontent ">
+                        <ul>
+                            <li class="img"><img src="../../../public/image/teacherheader/4.jpeg" alt="课包"></li>
+                            <li class="content">
+                                <h4>课包名字</h4>
+                                <p>课时：{{}}周</p>
+                                <p>时长：{{}}h</p>
+                                <p>容纳量：{{}}人</p>
+                            </li>
+                            <li class="free">
+                                <span>展示</span>
+                                <div class="freebackground freecontent"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -164,6 +274,7 @@
             Banner
         }
     }
+    //上方内容展示区
     $(function () {
         $(".show2 .nav-tabs li").first().addClass("active");
         $(".show1 .content .list-group-item").eq(1).hide();
@@ -289,14 +400,40 @@
                 group.eq(3).children().eq(q).fadeTo(200,1).show();
             },3000);
         });
-
-
-
     });
+    //滑播区
+    $(function () {
+        // 初始化
+        let group = $(".slide ul li");
+        let len = group.first().outerWidth();
+        for(let i = 0 ; i < group.length;i++){
+            group.eq(i).css("left",`${len*i}px`);
+        }
+
+        // 向左缓缓滑动
+        setInterval(function () {
+            group = $(".slide ul li");
+            group.animate({
+               left:`-=${len}`
+           },7000,"linear",function () {
+                group.first().appendTo(".slide ul").css("left",`${len*(group.length-1)}px`);
+           })
+        },1000);
+    });
+    // 下方内容展示区
+    $(function () {
+        $(".showcontent2 .common_showcontent .free").mouseenter(function () {
+            $(this).children(".freebackground").text("描述性文字描述性文字描述性文字描述性文字描述性文字描述性文字描述性文字描述性文字").fadeTo(500,0.5);
+        }).mouseleave(function () {
+            $(this).children(".freebackground").text("").fadeOut(500);
+        });
+    });
+
+
+
 </script>
 
 <style scoped>
-
 .showcontent .show1 img{
     width:100%;
 }
@@ -310,7 +447,24 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
     font-size: 18px;
 }
+.showcontent .show1 .content{
+    position: relative;
+}
 
+.showcontent .show2 .tab-content,.nav-tabs a{
+    position: relative;
+    color: #333333;
+}
+
+.background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: black;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+}
 .showcontent .show2 .tab-content .tab-pane img{
     width:100%;
 
@@ -325,6 +479,36 @@
     text-align: center;
     text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
     font-size: 18px;
+}
+.slide {
+    border: 1px solid #ccc;
+    margin: 10px 0 10px 0;
+}
+.slide ul{
+    margin: 20px 0 20px 0;
+    position: relative;
+    height: 340px;
+    overflow: hidden;
+}
+.slide ul li{
+    height: 340px;
+    position: absolute;
+    padding: 10px;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+.slide .media:first-child{
+    margin-top: 15px;
+}
+.slide .media img{
+    width: 300px;
+    height: 300px;
+}
+.slide .media .media-body {
+    text-align: left;
+    margin-top: 10px;
+    padding: 10px;
 }
 
 </style>

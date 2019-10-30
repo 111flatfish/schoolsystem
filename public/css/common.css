@@ -2,10 +2,13 @@
 HTML, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote,
 pre, form, fieldset, table, th, td {
     border:none;
-    font-family:"微软雅黑","黑体","宋体";
     font-size:14px;
-    margin:0px;
-    padding:0px;
+    margin:0;
+    padding:0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    -webkit-font-feature-settings: "tnum","tnum";
+    font-feature-settings: "tnum","tnum";
+
 }
 html,body{
     height: 100%;
@@ -83,6 +86,7 @@ ul,ol,li{
 .cursor{
     cursor: pointer;
 }
+
 .common_showcontent ul{
     border: 1px solid #ccc;
     padding-top: 10px;
@@ -125,6 +129,89 @@ color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #ffd717;
+}
+
+/*留言样式*/
+.message_item{
+    margin: 15px 15px 30px 15px;
+}
+.message_item img{
+    width: 100px;
+    height: 100px;
+}
+.message_item .media .media-body{
+    text-align: left;
+    padding: 0 0 0 15px;
+}
+.message_item .media .teachercontent{
+    border: 2px solid #bbb;
+    background-color: #00aaff;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 10px;
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+}
+.message_item .media .teachercontent :before,.message_item .media .teachercontent :after{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: -16px;
+    border:solid transparent;
+}
+.message_item .media .teachercontent :before{
+    border-width: 10px;
+    border-right-color: #bbb;
+    left:-21px;
+    top: 12px;
+
+}
+.message_item .media .teachercontent :after{
+    border-width: 8px;
+    border-right-color: #00aaff;
+    top: 14px;
+    left:-16px;
+}
+.message_item .media .teachercontent p{
+    text-align: left;
+    padding: 12px;
+    margin-bottom: 0;
+}
+
+
+.message_item .media .studentcontent{
+    border: 2px solid #ccc;
+    background-color:  #ffe284;
+    border-radius: 10px;
+    position: relative;
+    margin-top: 10px;
+    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+}
+.message_item .media .studentcontent :before,.message_item .media .studentcontent :after{
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: -16px;
+    border:solid transparent;
+}
+.message_item .media .studentcontent :before{
+    border-width: 10px;
+    border-right-color: #ccc;
+    left:-21px;
+    top: 12px;
+
+}
+.message_item .media .studentcontent :after{
+    border-width: 8px;
+    border-right-color: #ffe284;
+    top: 14px;
+    left:-16px;
+}
+.message_item .media .studentcontent p{
+    text-align: left;
+    padding: 12px;
+    margin-bottom: 0;
 }
 
 

@@ -1,15 +1,23 @@
 <template>
     <div class="guide">
-        <Header></Header>
-        <Banner></Banner>
+        <!--头部-->
+
+        <!--轮播图-->
+        <Banner v-bind:banner-data="type" v-bind:location-data="loc"></Banner>
+        <!--内容-->
         <main class="container guide">
+            <!--搜索栏-->
             <div class="row clearfix search">
                 <div class="col-md-8 column">
-                    <div class="row clearfix">
-                        <div class="col-md-9"><input type="text" placeholder="搜索文章标题或标签" class="form-control txt"></div>
-                        <div class="col-md-3"> <input type="button" value="搜索" class="btn btn-primary form-control"></div>
+                    <!--搜索框-->
+                    <div class="search">
+                        <form class="searchform">
+                            <input type="text" placeholder="搜索文章标题或标签" class="form-control txt" v-model="searchArg">
+                            <button type="button" value="搜索" class="btn form-control glyphicon glyphicon-search" @click="searchArticle"></button>
+                        </form>
                     </div>
                 </div>
+                <!--筛选栏-->
                 <div class="col-md-4 column">
                     <label for="">筛选：</label>
                     <select name="time" id="">
@@ -17,38 +25,53 @@
                         <option value="30">一个月</option>
                         <option value="6">半年</option>
                         <option value="360">一年</option>
+
                     </select>
                 </div>
             </div>
+            <!--展示内容区-->
             <div class="row clearfix content">
-                <div class="col-md-8 column">
+                <!--文章栏-->
+                <div class="col-md-8 column article_content">
+                    <!--文章显示区-->
+                    <h3 style="text-align: left;margin-bottom: 30px" v-if="isSearch">搜索结果：</h3>
+                    <h3 style="text-align: left;margin-bottom: 30px" v-if="!isSearch">最新文章：</h3>
                     <ul class="row clearfix">
                         <li class="media" v-for="item in currenArticle" >
                             <div class="media-left">
+                                <!--图片-->
                                 <a href="#">
                                     <img class="media-object" src="../../../public/image/teacherheader/1.jpeg" alt="图片">
                                 </a>
                             </div>
+                            <!--内容-->
                             <div class="media-body">
+                                <!--标题-->
                                 <h3 class="media-heading">{{item.title}}</h3>
+                                <!--内容-->
                                 <p>{{item.content}}</p>
+                                <!--简介-->
                                 <div class="dec">
                                     <span>{{item.create_time}}</span><span>预览数 {{item.view_num}}</span><span>标签
-                                    <ul v-for="item2 in item.label">
-                                        <li>{{item2}}</li>
+                                    <ul v-for="item2 in item.lable" style="display: inline-block">
+                                        <li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>
                                     </ul>
                                 </span>
                                 </div>
                             </div>
                         </li>
                     </ul>
+                    <!--页码栏-->
                     <div class="pageContainer">
                         <nav aria-label="Page navigation">
                             <ul class="pagination pagination-lg">
+                                <!--上一页-->
                                 <li @click="pagePreOrNext(-1)">
                                     <span aria-hidden="true">&laquo;</span>
                                 </li>
+                                <!--页码-->
                                 <li v-for="(item,index) in pages" :key="index"  @click="select(item)"><span :class="{actived: item === currentPage}">{{item}}</span></li>
+                                <!--下一页-->
                                 <li @click="pagePreOrNext(1)">
                                     <span aria-hidden="true">&raquo;</span>
                                 </li>
@@ -57,25 +80,38 @@
                     </div>
 
                 </div>
-                <div class="col-md-4 column adv">
-                    <div class="adv_item">广告栏1</div>
-                    <div class="adv_item">广告栏2</div>
-                    <div class="adv_item">广告栏3</div>
+                <!--广告栏-->
+                <div class="col-md-4 column adv" v-for="item in adv">
+                    <div class="adv_item">
+                        <img src="../../../public/image/teacherheader/2.jpeg" alt="adv">
+                        <div class="adv_item_txt">
+                            {{item.introduce}}
+                        </div>
+                    </div>
                 </div>
             </div>
 
         </main>
-        <Footer></Footer>
+        <!--底部-->
+
     </div>
 </template>
 
 <script>
+    // 引入组件
     import Header from "../../components/header"
     import Footer from "../../components/footer"
     import Banner from "../../components/banner"
-    import axios from "axios"
+
+    // 引入axios
+    import axiosReq from "../../util/axiosConfig"
+
+    //引入util函数
+    import util from  "../../util"
+
     export default {
         name: "guide",
+        // 数据
         data(){
           return{
               // 文章数据
@@ -85,9 +121,25 @@
               // 页码栏数据
               currentPage:1,            //当前页，默认为1
               pageNum:5,                //一页最多显示的文章数
-              totalPage:0             //总页数
+              totalPage:1,             //总页数
+
+              // 是否搜索
+              isSearch:false,
+
+              // 搜索参数
+              searchArg:"",
+
+              // 广告栏数据
+              adv:[],
+
+              // banner类型
+              type:"guide",
+              // banner位置
+              loc:"title"
+
           }
         },
+        // 组件
         components:{
             Header,
             Footer,
@@ -95,15 +147,32 @@
         },
         created() {
             // 初始化页面获取文章请求
-            axios.get("https://api.wulixianzhi.cn/index.php/index/index/getArticle").then(data=>{
-                this.totalPage = Math.ceil(data.data.length/this.pageNum);
-                this.articles = data.data;
-                this.articles.forEach((value)=>{
-                    value.label = value.label.split(",");
-                });
-                this.currenArticle = this.articles.slice(0,5);
+            axiosReq.get("getArticle/num/10").then(data=>{
+                if(data.data.length > 0){
+                    this.totalPage = Math.ceil(data.data.length/this.pageNum);
+                    this.articles = data.data;
+                    // 把标签值分割
+                    this.articles.forEach((value)=>{
+                        value.lable = value.lable.split(",");
+                    });
+                    // 默认显示第一页
+                    this.currenArticle = this.articles.slice(0,5);
+
+                }else {
+                    this.$router.push({
+                        path:"/error"
+                    })
+                }
             });
+            // 广告栏初始化
+            util.guideInit();
+            // 初始化获取广告信息
+            axiosReq.get("getSomeAdv").then(data=>{
+                this.adv = data.data;
+            });
+
         },
+        // 方法
         methods:{
             // 点击页码
             select(n){
@@ -111,7 +180,7 @@
                 if(typeof n === "string")return ;
                 this.currentPage = n;
                 this.currenArticle = this.articles.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
-                window.console.log(this.currenArticle);
+
             },
             // 点击上一页或者下一页
             pagePreOrNext(n){
@@ -119,8 +188,29 @@
                 this.currentPage < 1?this.currentPage =1:this.currentPage>this.totalPage?this.currentPage = this.totalPage:null;
                 this.currenArticle = this.articles.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
 
+            },
+            searchArticle(){
+                axiosReq.get(`queryArticle/name/${this.searchArg}`).then(data=>{
+                    if(data.data.length > 0){
+                        this.isSearch = true;
+                        this.totalPage = Math.ceil(data.data.length/this.pageNum);
+                        this.articles = data.data;
+                        // 把标签值分割
+                        this.articles.forEach((value)=>{
+                            value.lable = value.lable.split(",");
+                        });
+                        // 默认显示第一页
+                        this.currenArticle = this.articles.slice(0,5);
+
+                    }else {
+                        this.$router.push({
+                            path:"/error"
+                        })
+                    }
+                });
             }
         },
+        // 组件
         computed:{
             // 页码计算属性
             pages(){
@@ -148,74 +238,157 @@
         }
 
     }
-    //广告栏初始化
-    $(function () {
-        let h = $(".guide .content").innerHeight();
-        $(".guide .content .adv .adv_item").css("height",`${h/3}`);
-        // $(".guide .content .adv .adv_item").eq(2).css("borderBottom","none");
-    });
+
 
 
 </script>
 
 <style scoped>
+.guide{
+    background-color: #f4f5f7;
+}
+/*搜索栏*/
 .guide .search{
-    margin: 15px 0 0 0;
-    padding: 10px 0 10px 0;
-    border: 1px solid #ccc;
+    position: relative;
+    margin-top: 15px;
 }
 .guide .search input{
     font-size: 16px;
-    height: 50px;
+    height: 44px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 2px rgba(0,0,0,.2);
+    /*background-color:hsla(0,100%,100%,0.1);*/
+}
+.guide .search input:focus{
+    color: #00a1d6;
+    box-shadow: 0 0 4px 2px rgba(0,161,214,.8);
+}
+.guide .search button{
+    position: absolute;
+    right: 10px;
+    top:0;
+    width: 48px;
+    height: 44px;
+    border: none;
+    padding: 0;
+    font-size: 28px;
+}
+.guide .search button:hover{
+    color:#00a1d6;
 }
 .guide .search select{
-    height: 50px;
-    font-size: 15px;
+    height: 44px;
+    font-size: 16px;
     width: 150px;
     border-radius: 4px;
+    box-shadow: 0 0 4px 2px rgba(0,0,0,.2);
+    border: none;
+    margin-top: 15px;
 }
 .guide{
     padding: 0;
+
 }
+
+/*内容栏*/
 .content{
-    border: 1px solid #ccc;
-    margin: 10px 0 10px 0;
+    margin: 40px 0 40px 0;
+    border-radius: 4px;
 }
 .content .column{
-    border:1px solid #ccc;
     margin-bottom: 0;
 }
 .content ul .media{
-    padding: 10px;
-    border-bottom: 1px dashed #ccc;
+    padding: 30px 10px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #eee;
+    border-radius: 4px;
+}
+.content ul .media:hover{
+    box-shadow: 0 0 4px 3px rgba(0,0,0,.1);
+}
+.content ul .media:hover .media-heading{
+    color: #00a1d6;
 }
 .content ul .media .media-body{
     position: relative;
 }
 .content ul .media .media-body p{
-    text-indent: 25px;
+    margin-top: 30px;
+    font-size: 16px;
+    color: #99a2aa;
+    letter-spacing: 0;
+    line-height: 22px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+    margin-left: 20px;
+    width: 650px;
 }
-.content ul .media img{
+
+.content ul .media .media-left img{
     width: 200px;
-    height: 200px;
+    height: 188px;
+    margin: 2px;
+    border-radius: 4px;
 }
 .content ul .media h3{
     text-align: left;
+    font-weight: bold;
+    margin-left: 20px;
+    transition: .3s;
+    vertical-align: top;
+    -webkit-box-orient: vertical;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 650px;
 }
 .content ul .media .dec{
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left:20px;
+    bottom: 20px;
+    font-size: 16px;
 }
 .content ul .media .dec span{
-    margin: 10px;
+    margin: 10px 20px;
+    color: #99a2aa;
 }
+/*广告栏*/
 .content .adv_item{
     border-bottom: 1px solid #ccc;
+    width: 100%;
+    height: 466px;
+    cursor: pointer;
+}
+.content .adv_item img{
+    width: 100%;
+    height: 100%;
 }
 .content .adv{
-    padding: 0;
+    padding: 10px 10px 10px 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
+
 }
+.content .adv_item_txt{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20%;
+    color: #00a1b6;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+}
+/*页码栏*/
 .pageContainer li{
     cursor: pointer;
 }

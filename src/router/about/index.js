@@ -1,5 +1,5 @@
+import about from "../../views/about"
 export default {
     path:"/about",
-    name:"about",
-    component:()=>import("../../views/about")
+    component:about
 }

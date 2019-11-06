@@ -1,9 +1,9 @@
 <template>
     <div class="article">
-        <Header></Header>
-        <Banner></Banner>
+
+        <Banner v-bind:banner-data="type" v-bind:location-data="loc"></Banner>
         <main class="container">
-            <div class="row clearfix">
+            <div class="row clearfix col-md-10 col-md-offset-1">
                 <section>
                         <h3>文章标题</h3>
                         <div class="head">
@@ -20,7 +20,7 @@
                 </section>
             </div>
         </main>
-        <Footer></Footer>
+
     </div>
 </template>
 
@@ -34,32 +34,47 @@
             Header,
             Footer,
             Banner
+        },
+        data(){
+            return {
+                // banner类型
+                type:"article",
+                // banner位置
+                loc:"title"
+
+            }
         }
     }
 
 </script>
 
 <style scoped>
-main{
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
+section{
+    background-color: #fff;
     border-radius: 4px;
-    box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    box-shadow: 0 0 5px 3px rgba(0,0,0,.1);
     color: #404040;
     font-weight: 400;
-    margin: 20px auto;
+    margin: 30px auto;
+    padding: 20px 20px;
+}
+.article{
+    background-color: #f9f9f9;
 }
 .article h3{
     font-size: 24px;
+    margin: 15px;
 }
-.article .head span{
-    margin: 10px;
+.article .head span,time{
+    margin: 15px;
+    color: #99a2aa;
 }
 .article .content p{
+    margin: 15px;
     text-align: left;
     font-size: 18px;
     text-indent: 36px;
     padding: 10px 36px 10px 36px ;
-    line-height: 28px;
+    line-height: 32px;
 }
 </style>

@@ -1,5 +1,5 @@
+import guide from "../../views/guide"
 export default {
     path:"/guide",
-    name:"guide",
-    component:()=>import("../../views/guide")
+    component:guide
 }

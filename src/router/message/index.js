@@ -1,5 +1,5 @@
+import message from "../../views/message"
 export default {
     path:"/message",
-    name:"message",
-    component:()=>import("../../views/message")
+    component:message
 }

@@ -1,82 +1,91 @@
 <template>
-        <div class="row clearfix banner">
+        <div class="row clearfix banner container">
             <div class="col-md-12 column">
-                <div class="carousel slide" id="carousel-192428">
+                <div class="carousel slide" v-bind:id="'carousel-'+locationData">
                     <!--指示灯-->
                     <ol class="carousel-indicators">
-                        <li class="active" data-slide-to="0" data-target="#carousel-192428">
-                        </li>
-                        <li data-slide-to="1" data-target="#carousel-192428">
-                        </li>
-                        <li data-slide-to="2" data-target="#carousel-192428">
+                        <!--三个圆点-->
+                        <li style="margin: 10px;width: 15px;height: 15px;" v-bind:data-slide-to="index" v-bind:data-target="'#carousel-'+locationData" v-for="(item,index) in imgs">
                         </li>
                     </ol>
                     <!--中间图片-->
-                    <div class="carousel-inner">
-                        <div class="item active">
+                    <div class="carousel-inner" id="a">
+                        <div class="item"  v-for="data in imgs">
                             <!--图片-->
-                            <img alt="" src="http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/1/default.jpg"/>
+                            <img alt="轮播图" v-bind:src='data.image_url'/>
                             <!--文字描述-->
                             <div class="carousel-caption">
-                                <h4>
+                                <h3>
                                     First Thumbnail label
-                                </h4>
-                                <p>
-                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img alt="" src="http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/2/default.jpg" />
-                            <div class="carousel-caption">
-                                <h4>
-                                    Second Thumbnail label
-                                </h4>
-                                <p>
-                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <img alt="" src="http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/3/default.jpg" />
-                            <div class="carousel-caption">
-                                <h4>
-                                    Third Thumbnail label
-                                </h4>
-                                <p>
-                                    Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                                </h3>
+                                <p style="margin-bottom: 30px;font-size: 16px;">
+                                    {{data.content}}
                                 </p>
                             </div>
                         </div>
                     </div>
                     <!--左右箭头-->
-                    <a class="left carousel-control" href="#carousel-192428" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
-                    <a class="right carousel-control" href="#carousel-192428" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                    <a class="left carousel-control" v-bind:href="'#carousel-'+locationData" data-slide="prev"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+                    <a class="right carousel-control" v-bind:href="'#carousel-'+locationData" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                 </div>
             </div>
         </div>
 </template>
 
 <script>
+    // 引入axios
+    import axiosReq from "../../util/axiosConfig"
+
     export default {
-        name: "banner"
+        name: "Banner",
+        props:["bannerData","locationData"],
+        data(){
+            return{
+                imgs:[]
+            }
+        },
+        created() {
+            axiosReq.get(`getBanner/page/${this.bannerData}/location/${this.locationData}`).then(data=>{
+                this.imgs = data.data;
+                this.$nextTick(()=> {
+                    $(function () {
+                        $(".item").first().addClass("active");
+                        $(".carousel-indicators li").first().addClass("active");
+                    })
+                })
+            });
+
+        },
+        mounted() {
+
+
+
+        }
     }
 </script>
 
 <style scoped>
-.item img{
-    margin: 0 auto;
-}
 .banner{
-    width:100%;
-    height: 600px;
+    margin: 0 auto 30px auto;
+    width: 100%;
+    padding: 0;
+}
+.banner .item img{
     margin: 0 auto;
 
 }
 .banner img{
     width: 100%;
+    height: 600px;
 }
-.column{
+.banner .column{
     padding: 0;
 }
+.banner .carousel-inner{
+    border-radius: 4px;
+}
+.banner .carousel-control{
+    opacity: 0;
+}
+
 </style>

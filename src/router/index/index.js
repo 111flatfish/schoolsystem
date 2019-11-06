@@ -1,5 +1,5 @@
+import index from "../../views/index"
 export default {
     path:"/index",
-    name:"index",
-    component:()=>import("../../views/index/index")
+    component:index
 }

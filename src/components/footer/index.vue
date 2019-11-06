@@ -1,6 +1,8 @@
 <template>
     <footer class="footer">
+        <!--半透明背景-->
         <div class="background"></div>
+        <!--页脚内容-->
         <div class="container">
             <div class="row clearfix">
                 <div class="col-md-4 column">
@@ -13,6 +15,7 @@
                         <h4>xxxxxxxxx@xx.cn</h4>
                     </div>
                 </div>
+
                 <div class="col-md-4 column">
                     <div class="row clearfix">
                         <h4>北京校区：</h4>
@@ -27,6 +30,7 @@
                         <h4>xxxxxxxxxxxxxxxxxxxxxxx</h4>
                     </div>
                 </div>
+
                 <div class="col-md-4 column">
                     <div class="row clearfix">
                         <img src="../../assets/二维码.png" alt="二维码" width="100px">
@@ -50,10 +54,11 @@
 
 <script>
     export default {
-        name: "footer",
+        name: "Footer",
         data(){
             return{
-                year:2019
+                // 至今的版权年份
+                year:new Date().getFullYear()
             }
         }
     }
@@ -66,7 +71,7 @@
     position:relative;
     bottom: 0;
     left: 0;
-    color: #c4e3f3;
+    color: white;
 }
 .copyright{
     text-align: left;

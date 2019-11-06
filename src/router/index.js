@@ -1,17 +1,18 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import indexRouter from "../router/index/index"
-import majorRouter from "../router/major"
-import teacherRouter from "../router/teacher"
-import guideRouter from "../router/guide"
-import newsRouter from "../router/news"
-import articleRouter from "../router/article"
-import achievementRouter from "../router/achievement"
-import messageRouter from "../router/message"
-import aboutRouter from "../router/about"
+import indexRouter from "./../router/index/index"
+import majorRouter from "./../router/major"
+import teacherRouter from "./../router/teacher"
+import guideRouter from "./../router/guide"
+import newsRouter from "./../router/news"
+import articleRouter from "./../router/article"
+import achievementRouter from "./../router/achievement"
+import messageRouter from "./../router/message"
+import aboutRouter from "./../router/about"
+import index from "./../views/index"
 
-Vue.use(VueRouter)
-
+Vue.use(VueRouter);
+// 路由
 const routes = [
     indexRouter,
     majorRouter,
@@ -22,16 +23,18 @@ const routes = [
     achievementRouter,
     messageRouter,
     aboutRouter,
+    // 首页路由
     {
-        path:"/test",
-        component:()=>import("../views/about/test.vue")
+        path:"/",
+        component:index
     }
-]
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes
-})
+});
+
 
 export default router

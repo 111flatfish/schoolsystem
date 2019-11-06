@@ -1,5 +1,6 @@
+import teacher from "../../views/teacherintroduce"
 export default {
-    path:"/teacher",
-    name:"teacher",
-    component:()=>import("../../views/teacherintroduce")
+    path:"/teacher/:id",
+    component:teacher,
+    props:true
 }

@@ -1,5 +1,5 @@
+import achievement from "../../views/achievement"
 export default {
     path:"/achievement",
-    name:"achievement",
-    component:()=>import("../../views/achievement")
+    component:achievement
 }

@@ -1,5 +1,5 @@
+import article from "../../views/article"
 export default {
     path:"/article",
-    name:"article",
-    component:()=>import("../../views/article")
+    component:article
 }

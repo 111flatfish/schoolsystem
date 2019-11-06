@@ -5,18 +5,17 @@ pre, form, fieldset, table, th, td {
     font-size:14px;
     margin:0;
     padding:0;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    -webkit-font-feature-settings: "tnum","tnum";
-    font-feature-settings: "tnum","tnum";
+    font-family: Microsoft YaHei,-apple-system,PingFang SC,Droid Sans Fallback,Droid Sans,HYQiHei,Arial,Helvetica Neue,Hiragino Sans GB,sans-serif;
 
 }
 html,body{
     height: 100%;
     width: 100%;
+    font:12px Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
 }
 address, caption, cite, code, dfn, em, strong, th, var {
     font-style: normal;
-    font-weight: normal;
+
 }
 a{
     text-decoration:none;
@@ -87,24 +86,37 @@ ul,ol,li{
     cursor: pointer;
 }
 
+/*专业介绍的课包*/
 .common_showcontent ul{
-    border: 1px solid #ccc;
     padding-top: 10px;
     position: relative;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+    margin: 30px 0 30px 0;
 }
 .common_showcontent ul .img img{
     width: 200px;
     height: 200px;
-    border-bottom: 1px dashed #ccc;
+    border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
+    border-radius: 4px;
 }
 .common_showcontent ul .content{
-    border-bottom: 1px dashed #ccc;
+    border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
+    font-size: 16px;
+}
+.common_showcontent ul .content p{
+    font-size: 16px;
+}
+.common_showcontent ul h4{
+    font-size: 20px;
+    font-weight: bold;
 }
 .common_showcontent ul .free{
-    height: 50px;
-    padding: 5px;
+    height: 60px;
+    padding: 10px;
 }
 .freecontent{
 position: absolute;
@@ -143,14 +155,24 @@ color: #fff;
     text-align: left;
     padding: 0 0 0 15px;
 }
+.message_item .media .media-body h3{
+    color: #6d757a;
+    margin-bottom: 15px;
+}
+.message_item .media .media-body time{
+    color: #99a2aa;
+}
 .message_item .media .teachercontent{
-    border: 2px solid #bbb;
-    background-color: #00aaff;
+    border: 2px solid #4cae4c;
+    background-color: #f4f5f7;
     border-radius: 10px;
     position: relative;
     margin-top: 10px;
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    font-size: 24px;
+    color: #222;
 }
+
 .message_item .media .teachercontent :before,.message_item .media .teachercontent :after{
     content: "";
     width: 0;
@@ -161,14 +183,14 @@ color: #fff;
 }
 .message_item .media .teachercontent :before{
     border-width: 10px;
-    border-right-color: #bbb;
+    border-right-color: #4cae4c;
     left:-21px;
     top: 12px;
 
 }
 .message_item .media .teachercontent :after{
     border-width: 8px;
-    border-right-color: #00aaff;
+    border-right-color: #f4f5f7;
     top: 14px;
     left:-16px;
 }
@@ -176,16 +198,19 @@ color: #fff;
     text-align: left;
     padding: 12px;
     margin-bottom: 0;
+    font-size: 16px;
+    color: #222;
 }
 
 
 .message_item .media .studentcontent{
-    border: 2px solid #ccc;
-    background-color:  #ffe284;
+    border: 2px solid #00a1b6;
+    background-color:  #fff;
     border-radius: 10px;
     position: relative;
     margin-top: 10px;
     box-shadow: 0 1px 3px rgba(26,26,26,.1);
+    color: #222;
 }
 .message_item .media .studentcontent :before,.message_item .media .studentcontent :after{
     content: "";
@@ -197,14 +222,14 @@ color: #fff;
 }
 .message_item .media .studentcontent :before{
     border-width: 10px;
-    border-right-color: #ccc;
+    border-right-color: #00a1b6;
     left:-21px;
     top: 12px;
 
 }
 .message_item .media .studentcontent :after{
     border-width: 8px;
-    border-right-color: #ffe284;
+    border-right-color: #fff;
     top: 14px;
     left:-16px;
 }
@@ -212,6 +237,8 @@ color: #fff;
     text-align: left;
     padding: 12px;
     margin-bottom: 0;
+    font-size: 16px;
+    color: #222;
 }
 
 

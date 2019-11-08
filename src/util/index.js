@@ -4,15 +4,31 @@ import qs from "qs"
 // index页jQuery初始化
 function indexInit(that) {
     $(document).ready(function () {
+    for(let i = 0 ; i < $(".scrollbox .media").length;i++){
+        $(".scrollbox .media").eq(i).css("top",`${185*i}px`);
+    };
+    for(let j = 0 ; j < $(".scrollbox2 .media").length;j++){
+        $(".scrollbox2 .media").eq(j).css("top",`${185*j}px`);
+    };
+
+
         // 信息向上滑动,slideUp,slideDown,fadeTo均为动画效果
         that.timer = setInterval(function () {
-            $(".media").first().slideUp(500, function () {
-                $(this).appendTo(".scrollbox").stop(true).fadeTo(300, 1);
+            let group = $(".scrollbox .media");
+            $(".scrollbox .media").animate({
+                top:`-=185`
+            });
+            $(".scrollbox .media").first().hide(10,function () {
+                $(this).css("top",`${185*(group.length-1)}px`).appendTo(".scrollbox").stop(true).fadeTo(300,1);
             });
         }, 3000);
         that.timer2 = setInterval(function () {
-            $(".media2").first().slideUp(500, function () {
-                $(this).appendTo(".scrollbox2").stop(true).fadeTo(300, 1);
+            let group2 = $(".scrollbox2 .media");
+            $(".scrollbox2 .media").animate({
+                top:`-=185`
+            });
+            $(".scrollbox2 .media").first().hide(10,function () {
+                $(this).css("top",`${185*(group2.length-1)}px`).appendTo(".scrollbox2").stop(true).fadeTo(300,1);
             });
         }, 2500);
 
@@ -21,8 +37,12 @@ function indexInit(that) {
             window.clearInterval(that.timer);
         }).mouseleave(function () {
             that.timer = setInterval(function () {
-                $(".media").first().slideUp(500, function () {
-                    $(this).appendTo(".scrollbox").stop(true).fadeTo(300, 1);
+                let group = $(".scrollbox .media");
+                $(".scrollbox .media").animate({
+                    top:`-=185`
+                });
+                $(".scrollbox .media").first().hide(10,function () {
+                    $(this).css("top",`${185*(group.length-1)}px`).appendTo(".scrollbox").stop(true).fadeTo(300,1);
                 });
             }, 3000);
         });
@@ -30,12 +50,16 @@ function indexInit(that) {
             window.clearInterval(that.timer2);
         }).mouseleave(function () {
             that.timer2 = setInterval(function () {
-                $(".media2").first().slideUp(500, function () {
-                    $(this).appendTo(".scrollbox2").stop(true).fadeTo(300, 1);
+                let group2 = $(".scrollbox2 .media");
+                $(".scrollbox2 .media").animate({
+                    top:`-=185`
                 });
-            }, 3000);
+                $(".scrollbox2 .media").first().hide(10,function () {
+                    $(this).css("top",`${185*(group2.length-1)}px`).appendTo(".scrollbox2").stop(true).fadeTo(300,1);
+                });
+            }, 2500);
         });
-
+        //
         // 表单缩放
         // 最小化
         $(".form #minimize").click(function () {
@@ -67,29 +91,6 @@ function indexInit(that) {
 // 专业介绍页jQuery初始化
 function majorInit(that) {
     //上方内容展示区
-
-
-    //滑播区
-    $(function () {
-        // 初始化
-        let group = $(".slide ul li");
-        let len = group.first().outerWidth();
-        for(let i = 0 ; i < group.length;i++){
-            group.eq(i).css("left",`${len*i}px`);
-        }
-
-        // 向左缓缓滑动
-        that.timer6 = setInterval(function () {
-            group = $(".slide ul li");
-            group.animate({
-                left:`-=${len}`
-            },7000,"linear",function () {
-                group.first().appendTo(".slide ul").css("left",`${len*(group.length-1)}px`);
-                group.css("margin","10px");
-            })
-        },1000);
-    });
-
     // 下方内容展示区
     $(function () {
         $(".showcontent2 .common_showcontent .free").mouseenter(function () {

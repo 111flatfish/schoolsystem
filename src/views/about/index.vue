@@ -167,7 +167,7 @@ ul{
     width: 370px;
     height: 88px;
     position:absolute;
-    left: 70%;
+    right: 20px;
     bottom: 10px;
     overflow: hidden;
     padding: 5px;
@@ -224,15 +224,14 @@ ul li:hover{
     border-radius: 6px;
 }
 #carousel-example-generic{
-    width: 860px;
-    height: 600px;
     border-radius: 4px;
+    height: 100%;
 }
 
 .about_idea_banner .item img{
     border-radius: 4px;
-    height: 600px;
-    width: 860px;
+    width: 100%;
+    height: 500px;
 }
 .about_idea_banner .item{
     border: none;

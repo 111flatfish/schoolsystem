@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row clearfix header">
             <!--导航条-->
-            <nav class="navbar navbar-fixed-top">
+            <nav class="navbar navbar-fixed-top navbar-default">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <!--导航条头部-->

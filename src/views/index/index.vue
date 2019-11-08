@@ -8,9 +8,9 @@
         <main>
             <div class="container">
                 <div class="row clearfix index_content">
-                    <div class="row clearfix index_content_article">
+                    <div class="row clearfix index_content_article container">
                         <!--左边的介绍栏-->
-                        <div class="col-md-4 column index_content_article_introduce">
+                        <div class="col-md-4  column index_content_article_introduce container">
                             <div class="row">
                                 <!--浮窗-->
                                 <div class="floatingWindow">
@@ -18,23 +18,25 @@
                                 </div>
                                 <!--左介绍栏内容-->
                                 <ul class="scrollbox media-list">
-                                    <router-link tag="li" v-for="item in teacher.slice(0,5)" v-bind:to="'/teacher/'+ item.id" class="media"  :key="item.id">
+                                    <router-link tag="li" v-for="item in teacher.slice(0,5)" v-bind:to="'/teacher/'+ item.id" ref="media" class="media" id="media1" :key="item.id">
                                         <div class="media-left ">
                                             <div >
-                                                <img class="media-object" v-bind:src="item.picture" alt="teacher">
+                                                <a href="#">
+                                                    <img class="media-object" v-bind:src="item.picture" alt="teacher">
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="media-body">
                                             <h3 style="font-weight: bold" class="media-heading">{{item.name}}</h3>
                                             <p style="color:#99a2aa;">{{item.lable}}</p>
-                                            <p style="font-size: 16px;margin-right: 10px;text-overflow: ellipsis;width: 316px;height: 90px;overflow: hidden">{{item.introduce}}</p>
+                                            <p style="font-size: 16px;margin-right: 10px;text-overflow: ellipsis;width: 100%;height: 90px;overflow: hidden;">{{item.introduce}}</p>
                                         </div>
                                     </router-link>
                                 </ul>
                             </div>
                         </div>
                         <!--中间的新闻栏-->
-                        <div class="col-md-4 column index_content_article_news">
+                        <div class="col-md-4 column index_content_article_news container">
                             <div class="list-group news" >
                                 <!--新闻栏-->
                                 <div  class="list-group-item news_title" style="background-color: #eee;margin: 10px 0">新闻</div>
@@ -61,10 +63,10 @@
                             </div>
                         </div>
                         <!--右边的介绍栏-->
-                        <div class="col-md-4 column index_content_article_introduce">
+                        <div class="col-md-4 column index_content_article_introduce container">
                             <div class="row">
                                 <ul class="scrollbox2 media-list">
-                                    <router-link tag="li" class="media media2" v-for="item in teacher.slice(5,10)" v-bind:to="'/teacher/'+ item.id" :key="item.id">
+                                    <router-link tag="li" class="media" id="media2" v-for="item in teacher.slice(5,10)" v-bind:to="'/teacher/'+ item.id" :key="item.id">
                                         <div class="media-left ">
                                             <a href="#">
                                                 <img class="media-object" v-bind:src="item.picture" alt="teacher">
@@ -73,7 +75,7 @@
                                         <div class="media-body">
                                             <h3 style="font-weight: bold" class="media-heading">{{item.name}}</h3>
                                             <p style="color:#99a2aa;">{{item.lable}}</p>
-                                            <p style="font-size: 16px;margin-right: 10px;text-overflow: ellipsis;width: 316px;height: 90px;overflow: hidden">{{item.introduce}}</p>
+                                            <p style="font-size: 16px;margin-right: 10px;text-overflow: ellipsis;width: 100%;height: 90px;overflow: hidden">{{item.introduce}}</p>
                                         </div>
                                     </router-link>
                                 </ul>
@@ -109,15 +111,25 @@
                             <input type="number" class="form-control" v-model="formData.tel" name="phone" id="inputPhone3" placeholder="Phone">
                         </div>
                     </div>
+                    <!--性别-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">性别</label>
+                        <div class="col-sm-10" style="text-align: left;">
+                            <input type="radio" name="optionsRadios" value="男" checked style="width: 15px;height: 15px;margin-right: 6px" v-model="formData.sex">
+                            <label style="font-size: 16px;line-height: 38px">男</label>
+                            <input type="radio" name="optionsRadios" value="女" style="width: 15px;height: 15px;margin-right: 6px;margin-left: 10px" v-model="formData.sex">
+                            <label style="font-size: 16px;line-height: 38px">女</label>
+                        </div>
+                    </div>
                     <!--专业-->
                     <div class="form-group select">
                         <label for="selectMajor" class="col-sm-2 control-label">专业</label>
                         <div class="col-sm-10">
                             <select name="major" id="selectMajor" v-model="formData.major">
-                                <option value="4">未知</option>
-                                <option value="1">未知</option>
-                                <option value="2">未知</option>
-                                <option value="3">未知</option>
+                                <option value="未知">未知</option>
+                                <option value="未知">未知</option>
+                                <option value="未知">未知</option>
+                                <option value="未知">未知</option>
                             </select>
                         </div>
 
@@ -128,20 +140,20 @@
                         <div class="col-sm-10">
                             <!--下拉框-->
                             <select name="from" id="selectFrom" v-model="formData.whereKnew">
-                                <option value="3">未知</option>
-                                <option value="1">未知</option>
-                                <option value="2">未知</option>
+                                <option value="未知1">未知</option>
+                                <option value="未知2">未知</option>
+                                <option value="未知3">未知</option>
                                 <option value="other">其他</option>
                             </select>
                             <!--输入框-->
                             <input type="text" v-model="formData.whereKnew" v-if="isOther" class="form-control" name="fromtxt" id="selectFromTxt" placeholder="请输入其他来源">
                         </div>
                     </div>
-                    <!--微信-->
+                    <!--email-->
                     <div class="form-group">
-                        <label for="inputWechat3" class="col-sm-2 control-label">微信</label>
+                        <label for="inputEmail3" class="col-sm-2 control-label">email</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" name="weixin" id="inputWechat3" placeholder="Wechat">
+                            <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="email" v-model="formData.email">
                         </div>
                     </div>
                     <!--qq-->
@@ -195,7 +207,7 @@
                 formData:{
                     user_name:null,
                     email:null,
-                    sex:null,
+                    sex:"男",
                     tel:null,
                     qq:null,
                     major:null,
@@ -229,15 +241,21 @@
                     this.article = data.data;
                 });
                 // 获取老师数据
+                let that = this;
                 axiosReq.get("getTeachers/num/10").then(data=>{
                     this.teacher = data.data;
+                    this.$nextTick(()=> {
+                        $(function () {
+                            util.indexInit(that);
+                        })
+                    })
+
                 });
         },
         // 组件挂载
         mounted() {
             let that = this;
             // 初始化jQuery动画和特效
-            util.indexInit(that);
             // 表单验证
             this.$nextTick(function () {
                 $("#form").validator({
@@ -255,7 +273,7 @@
                             tip:"请输入电话号码",
                             msg:"请输入正确的电话号码"
                         },
-                        weixin:"integer",
+                        email:"email",
                         qq:"integer(+0)",
                         from:{
                             rule:"required",
@@ -270,6 +288,7 @@
                     },
                     // 提交
                     valid: function() {
+                        window.console.log(that.formData.major);
                         axiosReq.post("appointment",that.formData).then(data=>{
                             window.console.log(that.formData);
                             window.console.log(data);
@@ -283,7 +302,7 @@
         updated(){
             if(this.formData.whereKnew == "other"){
                 this.isOther = true;
-            }else if(this.formData.whereKnew == "1"||this.formData.whereKnew == "2"||this.formData.whereKnew == "3") {
+            }else if(this.formData.whereKnew == "未知1"||this.formData.whereKnew == "未知2"||this.formData.whereKnew == "未知3"||this.formData.whereKnew == null) {
                 this.isOther = false;
             }else {
                 this.isOther = true;
@@ -311,7 +330,7 @@
         position: absolute;
         width: 100px;
         height: 100px;
-        left:-100px;
+        left:-90px;
         top: 200px;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -322,6 +341,10 @@
     .scrollbox {
         padding: 10px;
         height: 930px;
+        position: relative;
+        overflow: hidden;
+        width: 95%;
+        right: -10px;
     }
     .scrollbox .media .media-left img{
         width: 100px;
@@ -333,10 +356,12 @@
         cursor: pointer;
         border-radius: 4px;
         height: 170px;
+        position: absolute;
+        margin: 10px 0;
         background-color: #eee;
     }
     .scrollbox .media-body{
-        padding: 10px 0 10px 0;
+        padding: 10px 10px 10px 0;
         border-radius: 4px;
     }
     .scrollbox .media:hover{
@@ -350,6 +375,9 @@
     .scrollbox2 {
         padding: 10px;
         height: 930px;
+        overflow: hidden;
+        position: relative;
+        width: 95%;
     }
     .scrollbox2 .media .media-left img{
         width: 100px;
@@ -361,10 +389,12 @@
         cursor: pointer;
         border-radius: 4px;
         height: 170px;
+        position: absolute;
+        margin: 10px 0;
         background-color: #eee;
     }
     .scrollbox2 .media-body{
-        padding: 10px 0 10px 0;
+        padding: 10px 10px 10px 0;
         border-radius: 4px;
     }
     .scrollbox2 .media:hover{
@@ -390,7 +420,7 @@
     }
     .news .list-group-item-heading{
         text-overflow: ellipsis;
-        width: 430px;
+        width: 100%;
         overflow: hidden;
         white-space: nowrap;
         font-weight: 600 !important;
@@ -426,7 +456,7 @@
     }
     .article .list-group-item-heading{
         text-overflow: ellipsis;
-        width: 430px;
+        width: 100%;
         overflow: hidden;
         white-space: nowrap;
         font-weight: 600 !important;
@@ -457,6 +487,12 @@
         border-radius: 4px !important;
         box-shadow: 0 2px 15px rgba(0,0,0,.2)!important;
         z-index: 1003;
+    }
+    .form .radio{
+        width: 15px;
+        height: 15px;
+        line-height: 15px;
+        margin: 0;
     }
     .form .header{
         font-size: 24px;

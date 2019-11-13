@@ -3,9 +3,9 @@
         <!--半透明背景-->
         <div class="background"></div>
         <!--页脚内容-->
-        <div class="container">
+        <div class="container content">
             <div class="row clearfix">
-                <div class="col-md-4 column">
+                <div class="col-md-4 column phone">
                     <div class="row clearfix">
                         <h4>客服热线：</h4>
                         <h2>400-8823-823</h2>
@@ -16,7 +16,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 column">
+                <div class="col-md-4 column area">
                     <div class="row clearfix">
                         <h4>北京校区：</h4>
                         <h4>xxxxxxxxxxxxxxxxxxxxxxx</h4>
@@ -31,11 +31,11 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 column">
-                    <div class="row clearfix">
+                <div class="col-md-4 column weixin">
+                    <div class="row clearfix erweima">
                         <img src="../../assets/二维码.png" alt="二维码" width="100px">
                     </div>
-                    <div class="row clearfix">
+                    <div class="row clearfix txt">
                         <h5>扫码关注微信公众号、新浪微博官方账号了解戏传资讯</h5>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
 .copyright{
     text-align: left;
 }
-.background{
+.footer .background{
     position: absolute;
     width: 100%;
     height: 100%;
@@ -85,4 +85,22 @@
     background: black;
     opacity: 0.5;
 }
+
+@media (max-width: 768px) {
+    .footer .content .phone h2,.area h2{
+        font-size: 18px;
+        display: inline-block;
+    }
+    .footer .content .phone h4,.area h4{
+        font-size: 16px;
+        display: inline-block;
+    }
+    .footer{
+        padding: 15px;
+    }
+
+
+}
+
+
 </style>

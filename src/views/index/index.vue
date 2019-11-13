@@ -96,80 +96,103 @@
                     <span id="minimize" class="title-button" data-title="Minimize window"><span class="glyphicon glyphicon-minus"></span></span>
                 </div>
                 <!--表单-->
-                <form class="form-horizontal container" id="form" >
-                    <!--姓名-->
-                    <div class="form-group">
-                        <label for="inputName3" class="col-sm-2 control-label">姓名</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" v-model="formData.user_name" name="name" id="inputName3" placeholder="Name">
-                        </div>
+                <div class="row clearfix form-content">
+                    <div class="col-md-2">
+                        <img src="../../assets/logo.png" alt="logo">
                     </div>
-                    <!--手机号-->
-                    <div class="form-group">
-                        <label for="inputPhone3" class="col-sm-2 control-label">手机号</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" v-model="formData.tel" name="phone" id="inputPhone3" placeholder="Phone">
-                        </div>
-                    </div>
-                    <!--性别-->
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">性别</label>
-                        <div class="col-sm-10" style="text-align: left;">
-                            <input type="radio" name="optionsRadios" value="男" checked style="width: 15px;height: 15px;margin-right: 6px" v-model="formData.sex">
-                            <label style="font-size: 16px;line-height: 38px">男</label>
-                            <input type="radio" name="optionsRadios" value="女" style="width: 15px;height: 15px;margin-right: 6px;margin-left: 10px" v-model="formData.sex">
-                            <label style="font-size: 16px;line-height: 38px">女</label>
-                        </div>
-                    </div>
-                    <!--专业-->
-                    <div class="form-group select">
-                        <label for="selectMajor" class="col-sm-2 control-label">专业</label>
-                        <div class="col-sm-10">
-                            <select name="major" id="selectMajor" v-model="formData.major">
-                                <option value="未知">未知</option>
-                                <option value="未知">未知</option>
-                                <option value="未知">未知</option>
-                                <option value="未知">未知</option>
-                            </select>
-                        </div>
+                    <div class="col-md-10">
+                        <p>预约报名即可享受名师专业测评，更有多重好礼送不停</p>
+                        <form class="form-horizontal container" id="form" >
 
+                            <div class="row clearfix">
+                                <div class="col-md-3 form_item">
+                                    <!--专业-->
+                                    <div class="form-group select">
+                                        <!--<label for="selectMajor" class="col-sm-2 control-label">专业</label>-->
+                                        <div class="col-sm-10 control-input">
+                                            <select name="major" id="selectMajor" v-model="formData.major">
+                                                <option value="" selected="disabled" style="display: none">意向专业</option>
+                                                <option value="未知">未知</option>
+                                                <option value="未知">未知</option>
+                                                <option value="未知">未知</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--姓名-->
+                                    <div class="form-group">
+                                        <!--<label for="inputName3" class="col-sm-2 control-label">姓名</label>-->
+                                        <div class="col-sm-10 control-input">
+                                            <input type="text" class="form-control" v-model="formData.user_name" name="name" id="inputName3" placeholder="学生姓名">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form_item">
+                                    <!--qq-->
+                                    <div class="form-group">
+                                        <!--<label for="inputqq3" class="col-sm-2 control-label">QQ</label>-->
+                                        <div class="col-sm-10 control-input">
+                                            <input type="number" class="form-control" name="qq" id="inputqq3" placeholder="微信/QQ">
+                                        </div>
+                                    </div>
+                                    <!--手机号-->
+                                    <div class="form-group">
+                                        <!--<label for="inputPhone3" class="col-sm-2 control-label">手机号</label>-->
+                                        <div class="col-sm-10 control-input" >
+                                            <input type="number" class="form-control" v-model="formData.tel" name="phone" id="inputPhone3" placeholder="手机号">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form_item">
+                                    <!--来源-->
+                                    <div class="form-group select">
+                                        <!--<label for="selectFrom" class="col-sm-2 control-label">来源</label>-->
+                                        <div class="col-sm-10 control-input">
+                                            <!--下拉框-->
+                                            <select name="from" id="selectFrom" v-model="formData.whereKnew">
+                                                <option value="" selected="disabled" style="display: none">从哪里得知戏传</option>
+                                                <option value="未知2">未知</option>
+                                                <option value="未知3">未知</option>
+                                                <option value="other">其他</option>
+                                            </select>
+                                            <!--输入框-->
+                                            <input type="text" v-model="formData.whereKnew2" v-if="isOther" class="form-control" name="fromtxt" id="selectFromTxt" placeholder="请输入其他来源">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 form_item">
+                                    <!--提交按钮-->
+                                    <div class="form-group submit">
+                                        <div class="col-sm-offset-2 col-sm-10 control-input">
+                                            <input type="submit" class="btn btn-lg btn-success">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!--性别-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-sm-2 control-label">性别</label>-->
+                                <!--<div class="col-sm-10 control-input" style="text-align: left;">-->
+                                    <!--<input type="radio" name="optionsRadios" value="男" checked style="width: 15px;height: 15px;margin-right: 6px" v-model="formData.sex">-->
+                                    <!--<label style="font-size: 16px;line-height: 38px">男</label>-->
+                                    <!--<input type="radio" name="optionsRadios" value="女" style="width: 15px;height: 15px;margin-right: 6px;margin-left: 10px" v-model="formData.sex">-->
+                                    <!--<label style="font-size: 16px;line-height: 38px">女</label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--email-->
+                            <!--<div class="form-group">-->
+                                <!--<label for="inputEmail3" class="col-sm-2 control-label">email</label>-->
+                                <!--<div class="col-sm-10 control-input">-->
+                                    <!--<input type="email" class="form-control" name="email" id="inputEmail3" placeholder="email" v-model="formData.email">-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                        </form>
                     </div>
-                    <!--来源-->
-                    <div class="form-group select">
-                        <label for="selectFrom" class="col-sm-2 control-label">您是从哪里知道我们的/来源</label>
-                        <div class="col-sm-10">
-                            <!--下拉框-->
-                            <select name="from" id="selectFrom" v-model="formData.whereKnew">
-                                <option value="未知1">未知</option>
-                                <option value="未知2">未知</option>
-                                <option value="未知3">未知</option>
-                                <option value="other">其他</option>
-                            </select>
-                            <!--输入框-->
-                            <input type="text" v-model="formData.whereKnew" v-if="isOther" class="form-control" name="fromtxt" id="selectFromTxt" placeholder="请输入其他来源">
-                        </div>
-                    </div>
-                    <!--email-->
-                    <div class="form-group">
-                        <label for="inputEmail3" class="col-sm-2 control-label">email</label>
-                        <div class="col-sm-10">
-                            <input type="email" class="form-control" name="email" id="inputEmail3" placeholder="email" v-model="formData.email">
-                        </div>
-                    </div>
-                    <!--qq-->
-                    <div class="form-group">
-                        <label for="inputqq3" class="col-sm-2 control-label">QQ</label>
-                        <div class="col-sm-10">
-                            <input type="number" class="form-control" name="qq" id="inputqq3" placeholder="QQ">
-                        </div>
-                    </div>
-                    <!--提交按钮-->
-                    <div class="form-group select">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <input type="submit" class="btn btn-primary">
-                        </div>
-                    </div>
-                </form>
+                </div>
             </div>
     </div>
 </template>
@@ -210,8 +233,9 @@
                     sex:"男",
                     tel:null,
                     qq:null,
-                    major:null,
-                    whereKnew:null,
+                    major:"",
+                    whereKnew:"",
+                    whereKnew2:"",
                 },
                 // 控制jquery的定时器
                 timer:null,
@@ -271,7 +295,7 @@
                             rule:"required;integer(+0);mobile",
                             ok:"电话可用",
                             tip:"请输入电话号码",
-                            msg:"请输入正确的电话号码"
+                            msg:"电话号码不正确"
                         },
                         email:"email",
                         qq:"integer(+0)",
@@ -283,16 +307,19 @@
                         major:{
                             rule:"required",
                             ok:"已选择",
-                            msg:"请选择至少一个专业"
+                            msg:"请选择至少一个专业",
                         }
                     },
                     // 提交
                     valid: function() {
-                        window.console.log(that.formData.major);
+                        if(that.isOther == true){
+                            that.formData.whereKnew = that.formData.whereKnew2;
+                        }
                         axiosReq.post("appointment",that.formData).then(data=>{
                             window.console.log(that.formData);
                             window.console.log(data);
                         });
+
                     }
                 });
             });
@@ -300,12 +327,11 @@
 
         },
         updated(){
+            // 如果选择来源为其他，则弹出输入框
             if(this.formData.whereKnew == "other"){
                 this.isOther = true;
-            }else if(this.formData.whereKnew == "未知1"||this.formData.whereKnew == "未知2"||this.formData.whereKnew == "未知3"||this.formData.whereKnew == null) {
-                this.isOther = false;
             }else {
-                this.isOther = true;
+                this.isOther = false;
             }
         },
         // 组件销毁
@@ -321,6 +347,9 @@
 <style scoped>
     .index{
         position: relative;
+        background-color: #555;
+        background: url("../../../public/image/background/background2.jpg") no-repeat;
+        background-size: 100% 100%;
     }
     .index_content_article_introduce{
         position: relative;
@@ -358,7 +387,8 @@
         height: 170px;
         position: absolute;
         margin: 10px 0;
-        background-color: #eee;
+        background-color: #444;
+        color: #fff;
     }
     .scrollbox .media-body{
         padding: 10px 10px 10px 0;
@@ -391,7 +421,8 @@
         height: 170px;
         position: absolute;
         margin: 10px 0;
-        background-color: #eee;
+        background-color: #444;
+        color: #fff;
     }
     .scrollbox2 .media-body{
         padding: 10px 10px 10px 0;
@@ -407,16 +438,18 @@
 
     /*新闻栏*/
     .news{
-
         font-weight: 600 !important;
+    }
+
+    .news .list-group-item{
+        background-color: #444;
+        border: none;
+        color: #fff;
     }
     .news .news_title{
         font-size: 22px;
         color: #222;
         padding: 20px 0;
-    }
-    .news .list-group-item{
-        border: none;
     }
     .news .list-group-item-heading{
         text-overflow: ellipsis;
@@ -443,16 +476,18 @@
 
     /*文章栏*/
     .article{
-
         font-weight: 600 !important;
+    }
+
+    .article .list-group-item{
+        border: none;
+        background-color: #444;
+        color: #fff;
     }
     .article .article_title{
         font-size: 22px;
         color: #222;
         padding: 20px 0;
-    }
-    .article .list-group-item{
-        border: none;
     }
     .article .list-group-item-heading{
         text-overflow: ellipsis;
@@ -478,7 +513,7 @@
 
     /*悬浮表单*/
     .form{
-        background-color:#f8fafa ;
+        background-color: #222222;
         width: 100%;
         position: fixed;
         right: 0;
@@ -514,15 +549,187 @@
         text-align: left;
     }
     .form .select select{
-        height: 30px;
-        line-height: 30px;
-        width: 100px;
+        height: 34px;
+        line-height: 24px;
+        width: 200px;
         border: 1px solid #ccc;
         border-radius: 4px;
-        padding: 5px;
+        padding: 0 15px;
         box-sizing: border-box;
+        color: #aaa;
+
+        /*很关键：将默认的select选择框样式清除*/
+        appearance:none;
+        -moz-appearance:none;
+        -webkit-appearance:none;
+
+        /*在选择框的最右侧中间显示小箭头图片*/
+        background: url("http://ourjs.github.io/static/2015/arrow.png") no-repeat scroll 175px center transparent;
+        background-size: 16px;
+        font-size: 14px;
+        background-color: #fff;
+
     }
     .form .select #selectFromTxt{
         margin-top: 15px;
     }
+    .form .select #selectFrom{
+        padding-left: 5px;
+    }
+    .form .select:after{
+        content: "";
+        color: red;
+        height: 34px;
+        border: 1px solid #2f2f46;
+        position: absolute;
+        left: 175px;
+
+    }
+    .form .form-group{
+        display: inline-block;
+
+    }
+    .form .form_item{
+        text-align: left;
+    }
+    .form .submit input{
+        width: 80px;
+        height: 80px;
+        background-color: #ccff99;
+        color: #000;
+        font-weight: bold;
+    }
+    .form .form-content{
+        padding: 0 0 0 100px;
+        margin-bottom: 20px
+    }
+    .form .form-content div:nth-child(2) p{
+        padding:15px;
+        color: #fff;
+        font-size: 18px;
+    }
+
+
+
+
+    @media (min-width: 768px) {
+        .col-sm-10 {
+            width: 110.333333%;
+        }
+    }
+    @media (max-width: 1200px){
+        .form .form-content{
+            padding: 0 0 0 60px;
+        }
+        .form .form-content img{
+            width: 150px;
+            height: 150px;
+        }
+    }
+    @media (max-width: 990px){
+        .form .form-content div:nth-child(2) p{
+            padding:10px;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+        }
+        .form .form-group{
+            text-align: center;
+            margin: 5px 70px;
+        }
+        .form .form_item{
+            text-align: center;
+        }
+        .form .select>div{
+            padding: 0;
+        }
+        .form .form_item:nth-child(1) .form-group:nth-child(2) div{
+            padding-left: 20px;
+        }
+        .form .select:after{
+            left: 260px;
+        }
+        .form .form_item:nth-child(3) .select:after{
+            left: 438px;
+        }
+        .form .submit div{
+            margin-left: 0;
+        }
+        .form .submit input{
+            width: 200px;
+            height: 50px;
+        }
+    }
+    @media (max-width:768px ) {
+        input{
+            height: 30px;
+        }
+        #form{
+            padding: 10px;
+        }
+        .form .header{
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 14px 0 14px;
+            margin: 0;
+            font-weight: bold;
+        }
+        .form .form-group label,.control-input{
+            display: inline-block;
+        }
+        .form .form-group{
+            text-align: left;
+            margin: 5px 10px 5px -10px;
+        }
+        .form-group:nth-child(2) div,.form-group:nth-child(6) div{
+            padding-left: 0;
+        }
+        .form #minimize{
+            float: right;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .floatingWindow{
+            display: none;
+        }
+        .scrollbox,.scrollbox2{
+            right: -5px;
+        }
+        .form .form-content img{
+            width: 80px;
+            height: 80px;
+        }
+        .form .form-content{
+            text-align: left;
+            padding: 0;
+        }
+        .form .form_item{
+            text-align: left;
+        }
+        .form .form-content div:nth-child(2) p{
+            padding:5px 20px;
+            margin-bottom: 0;
+            color: #fff;
+            font-size: 12px;
+            text-align: left;
+        }
+        .form .form-content div:nth-child(1) img{
+            padding: 10px;
+        }
+        .form .form_item:nth-child(2) div,.form .form_item:nth-child(3) div{
+            padding-left: 10px;
+        }
+        .form .form_item:nth-child(1) div:nth-child(1){
+            padding-left: 10px;
+        }
+        .form .submit input{
+            width: 180px;
+            height: 40px;
+            font-size: 16px;
+            padding-left: 5px;
+            margin-left: 5px;
+        }
+    }
+
 </style>

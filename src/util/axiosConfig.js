@@ -4,7 +4,7 @@ import app from "../main";
 import qs from "qs";
 
 let  axiosReq = axiosProto.create({
-    baseURL:"https://api.wulixianzhi.cn/index.php/index/index/",   //api的base_url
+    baseURL:"https://api.wulixianzhi.cn/index/index/",   //api的base_url
     timeout:5000                    //请求超时时间
 });
 
@@ -18,7 +18,7 @@ axiosReq.interceptors.request.use(config=>{
     config.method === "post"
         ?config.data = qs.stringify({...config.data})
         :config.params = {...config.params};
-    config.headers["Content-Type"] = "application/x-www-form-urlencoded";
+    config.headers["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8";
     return config;
 },error => {
     // 请求错误

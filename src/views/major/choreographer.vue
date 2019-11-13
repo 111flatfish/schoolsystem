@@ -119,14 +119,14 @@
     import axiosReq from "../../util/axiosConfig"
 
     export default {
-        name: "choreographer",
+        name: "perform",
         // 组件传参
         props:["id"],
         // 数据
         data(){
             return{
                 // banner类型
-                type:"major",
+                type:"choreographer",
                 // banner位置
                 loc:"title",
                 // 左内容显示区
@@ -518,4 +518,26 @@
     }
 
 
+    @media (max-width:768px) {
+        .showcontent .show2 .tab-content .tab-pane img{
+            height: 200px;
+        }
+        .slide{
+            margin-right: 0px;
+        }
+        .slide ul{
+            height: 140px;
+        }
+        .slide .media img{
+            width: 100px;
+            height: 100px;
+        }
+        .common_showcontent{
+            padding: 0px;
+        }
+        .common_showcontent ul .img img{
+            width: 150px;
+            height: 150px;
+        }
+    }
 </style>

@@ -5,7 +5,7 @@
                     <!--指示灯-->
                     <ol class="carousel-indicators">
                         <!--三个圆点-->
-                        <li style="margin: 10px;width: 15px;height: 15px;" v-bind:data-slide-to="index" v-bind:data-target="'#carousel-'+locationData" v-for="(item,index) in imgs">
+                        <li v-bind:data-slide-to="index" v-bind:data-target="'#carousel-'+locationData" v-for="(item,index) in imgs">
                         </li>
                     </ol>
                     <!--中间图片-->
@@ -87,5 +87,38 @@
 .banner .carousel-control{
     opacity: 0;
 }
+.banner .carousel-indicators li{
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+}
+@media (max-width:768px ){
+    .banner img{
+        width: 100%;
+        height: 400px;
+    }
+}
+@media (max-width:400px ){
+    .banner{
+        margin-bottom: 15px;
+    }
+    .banner img{
+        width: 100%;
+        height: 200px;
+    }
+    .banner .carousel-caption h3{
+        font-size: 16px;
+    }
+    .banner .carousel-caption p{
+        font-size: 12px;
+    }
+    .banner .carousel-indicators li{
+        width: 10px;
+        height: 10px;
+        margin: 5px;
+    }
+}
+
+
 
 </style>

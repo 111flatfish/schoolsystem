@@ -518,4 +518,26 @@
     }
 
 
+    @media (max-width:768px) {
+        .showcontent .show2 .tab-content .tab-pane img{
+            height: 200px;
+        }
+        .slide{
+            margin-right: 0px;
+        }
+        .slide ul{
+            height: 140px;
+        }
+        .slide .media img{
+            width: 100px;
+            height: 100px;
+        }
+        .common_showcontent{
+            padding: 0px;
+        }
+        .common_showcontent ul .img img{
+            width: 150px;
+            height: 150px;
+        }
+    }
 </style>

@@ -8,7 +8,7 @@
         <main class="container news">
             <!--搜索栏-->
             <div class="row clearfix search">
-                <div class="col-md-8 column">
+                <div class="col-md-8 column searchinput">
                     <!--搜索框-->
                     <div class="search">
                         <form class="searchform">
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <!--筛选栏-->
-                <div class="col-md-4 column">
+                <div class="col-md-4 column searchfilter">
                     <label for="">筛选：</label>
                     <select name="time" id="">
                         <option value="7">最近七天</option>
@@ -358,5 +358,73 @@
     }
     .actived{
         background-color:#ffe284;
+    }
+    @media (max-width: 768px) {
+        .searchinput,.searchfilter{
+            display: inline-block;
+            padding: 5px;
+        }
+        .news .search select{
+            width: 70px;
+            height: 30px;
+        }
+        .news .search input{
+            height: 30px;
+        }
+        .news .search button{
+            height: 30px;
+            font-size: 22px;
+            right: 0px;
+        }
+        .content{
+            margin: 0;
+        }
+        .content h3{
+            font-size: 18px;
+        }
+        .content .article_content h3{
+            margin-bottom: 10px;
+        }
+        .content ul .media .media-left img{
+            width: 120px;
+            height: 100px;
+        }
+        .content ul .media{
+            padding: 10px;
+        }
+        .content ul .media .media-body p{
+            margin: 10px 0 10px 0;
+            width: 210px;
+        }
+        .content ul .media .media-body .dec{
+            left: 0;
+            bottom: 0px;
+            text-align: left;
+            width: 210px;
+        }
+        .content ul .media .media-body span{
+            margin: 5px;
+            font-size: 12px;
+        }
+        .content ul .media .media-body .dec li{
+            font-size: 12px;
+        }
+        .content ul .media .media-body .media-heading{
+            margin-left: 0px;
+        }
+
+        .content .adv{
+            margin-top: 0;
+            padding-left: 10px;
+        }
+        .content .adv_item{
+            height: 300px;
+        }
+        .pageContainer li span{
+            width: 30px;
+            text-align: center;
+            padding: 5px;
+        }
+
     }
 </style>

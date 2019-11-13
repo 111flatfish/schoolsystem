@@ -8,17 +8,17 @@
         <main class="container guide">
             <!--搜索栏-->
             <div class="row clearfix search">
-                <div class="col-md-8 column">
+                <div class="col-md-8 column searchinput">
                     <!--搜索框-->
                     <div class="search">
-                        <form class="searchform">
+                        <form class="searchform" enctype="application/x-www-form-urlencoded">
                             <input type="text" placeholder="搜索文章标题或标签" class="form-control txt" v-model="searchArg">
                             <button type="button" value="搜索" class="btn form-control glyphicon glyphicon-search" @click="searchArticle"></button>
                         </form>
                     </div>
                 </div>
                 <!--筛选栏-->
-                <div class="col-md-4 column">
+                <div class="col-md-4 column searchfilter">
                     <label for="">筛选：</label>
                     <select name="time" id="">
                         <option value="7">最近七天</option>
@@ -34,8 +34,8 @@
                 <!--文章栏-->
                 <div class="col-md-8 column article_content">
                     <!--文章显示区-->
-                    <h3 style="text-align: left;margin-bottom: 30px" v-if="isSearch">搜索结果：</h3>
-                    <h3 style="text-align: left;margin-bottom: 30px" v-if="!isSearch">最新文章：</h3>
+                    <h3 style="text-align: left" v-if="isSearch">搜索结果：</h3>
+                    <h3 style="text-align: left" v-if="!isSearch">最新文章：</h3>
                     <ul class="row clearfix">
                         <li class="media" v-for="item in currenArticle" >
                             <div class="media-left">
@@ -189,6 +189,7 @@
                 this.currenArticle = this.articles.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
 
             },
+            // 搜索文章
             searchArticle(){
                 axiosReq.get(`queryArticle/name/${this.searchArg}`).then(data=>{
                     if(data.data.length > 0){
@@ -336,6 +337,10 @@
     margin: 2px;
     border-radius: 4px;
 }
+
+.content .article_content>h3{
+    margin-bottom: 30px;
+}
 .content ul .media h3{
     text-align: left;
     font-weight: bold;
@@ -398,4 +403,74 @@
 .actived{
     background-color:#ffe284;
 }
+
+@media (max-width: 768px) {
+    .searchinput,.searchfilter{
+        display: inline-block;
+        padding: 5px;
+    }
+    .guide .search select{
+        width: 70px;
+        height: 30px;
+    }
+    .guide .search input{
+        height: 30px;
+    }
+    .guide .search button{
+        height: 30px;
+        font-size: 22px;
+        right: 0px;
+    }
+    .content{
+        margin: 0;
+    }
+    .content h3{
+        font-size: 18px;
+    }
+    .content .article_content h3{
+        margin-bottom: 10px;
+    }
+    .content ul .media .media-left img{
+        width: 120px;
+        height: 100px;
+    }
+    .content ul .media{
+        padding: 10px;
+    }
+    .content ul .media .media-body p{
+        margin: 10px 0 10px 0;
+        width: 210px;
+    }
+    .content ul .media .media-body .dec{
+        left: 0;
+        bottom: 0px;
+        text-align: left;
+        width: 210px;
+    }
+    .content ul .media .media-body span{
+        margin: 5px;
+        font-size: 12px;
+    }
+    .content ul .media .media-body .dec li{
+        font-size: 12px;
+    }
+    .content ul .media .media-body .media-heading{
+        margin-left: 0px;
+    }
+
+    .content .adv{
+        margin-top: 0;
+        padding-left: 10px;
+    }
+    .content .adv_item{
+        height: 300px;
+    }
+    .pageContainer li span{
+        width: 30px;
+        text-align: center;
+        padding: 5px;
+    }
+
+}
+
 </style>

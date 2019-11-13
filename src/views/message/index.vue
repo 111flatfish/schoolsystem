@@ -279,4 +279,63 @@ main{
 .actived{
     background-color:#ffe284;
 }
+
+@media (max-width: 768px) {
+    .message_item{
+        margin: 10px 0 20px 0;
+    }
+    .message_content .media-left img{
+        width: 60px;
+        height: 60px;
+    }
+    .message_content .media-body h3{
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+    .message_content .teachercontent, .message_content .studentcontent{
+        margin-top: 0;
+    }
+    .message_content .teachercontent p, .message_content .studentcontent p{
+        padding: 5px;
+    }
+    .message_content .teachercontent p:before, .message_content .studentcontent p:before{
+        top:6px;
+    }
+    .message_content .teachercontent p:after, .message_content .studentcontent p:after{
+        top:8px;
+    }
+    .message_content{
+        padding: 10px 0;
+    }
+    .pageContainer li span{
+        width: 30px;
+        text-align: center;
+        padding: 5px;
+    }
+    .message_form{
+        margin-top: 0;
+    }
+    .message_form .studentheadimg img{
+        width: 80px;
+    }
+    .message_form .studentheadimg{
+        top:-180px
+    }
+    .message_form>div,.message_form .studentheadimg{
+        display: inline-block;
+    }
+    .message_form .form-group #inputtext {
+        height: 100px;
+    }
+    .message_form .form-group #inputphone{
+        height: 30px;
+    }
+    .message_form .submit button{
+        height: 30px;
+        width: 60px;
+    }
+    .message_form label{
+        font-size: 14px;
+    }
+}
 </style>

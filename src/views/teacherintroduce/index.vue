@@ -63,11 +63,11 @@
 
             <!--导航条-->
             <div class="row clearfix control col-md-offset-1 col-md-9">
-                <div class="col-lg-3">
+                <div class="col-lg-3 teacher_banner">
                      <input type="button" value="上一个老师" class="btn btn-primary form-control">
                 </div>
-                <div class="col-lg-6"></div>
-                <div class="col-lg-3">
+                <div class="col-lg-6 teacher_banner"></div>
+                <div class="col-lg-3 teacher_banner">
                     <input type="button" value="下一个老师" class="btn btn-primary form-control">
                 </div>
             </div>
@@ -185,5 +185,21 @@
 }
 .teacher .search button:hover{
     color:#00a1d6;
+}
+
+@media (max-width: 768px) {
+    .teachercontent .img{
+        width: 320px;
+    }
+    .teachercontent .img img{
+        width: 300px;
+        height: 300px;
+    }
+    .teachercontent .name p,h1{
+        margin: 10px;
+    }
+    .teacher_banner{
+        display: inline-block;
+    }
 }
 </style>

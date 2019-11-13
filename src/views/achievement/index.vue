@@ -7,7 +7,7 @@
         <main class="container">
             <!--成绩展示区-->
             <div class="row clearfix">
-                <div class="col-sm-6 col-md-3" v-for="item in currentGrade">
+                <div class="col-sm-6 col-md-3 content" v-for="item in currentGrade">
                     <div class="thumbnail">
                         <!--图片-->
                         <img src="../../../public/image/teacherheader/2.jpeg" alt="grade">
@@ -167,5 +167,28 @@ main nav{
 }
 .actived{
     background-color:#ffe284;
+}
+
+@media (max-width: 768px) {
+    .achievement .thumbnail img{
+        width: 130px;
+        height: 130px;
+    }
+    .achievement .content{
+        display: inline-block;
+    }
+    .achievement .thumbnail h3{
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 0px;
+    }
+    .achievement .thumbnail p{
+        font-size: 14px;
+    }
+    .pageContainer li span{
+        width: 30px;
+        text-align: center;
+        padding: 5px;
+    }
 }
 </style>

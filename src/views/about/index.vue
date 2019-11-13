@@ -262,5 +262,32 @@ ul li:hover{
     margin-top: 0;
     border-radius: 6px;
 }
-
+@media (max-width: 768px) {
+    .about_evi_content .showaboutimg{
+        height: 250px;
+    }
+    ul{
+        width: 170px;
+        height: 48px;
+        position:absolute;
+        right: 20px;
+        bottom: 10px;
+        overflow: hidden;
+        padding: 5px;
+        border: 4px solid white;
+        background-color: white;
+        border-radius: 4px;
+    }
+    ul li img{
+        width: 50px;
+        height: 40px;
+        margin-right: 5px;
+    }
+    .about_idea_banner .item img{
+        height: 250px;
+    }
+    .about_idea_content div:nth-child(2){
+        padding: 0;
+    }
+}
 </style>

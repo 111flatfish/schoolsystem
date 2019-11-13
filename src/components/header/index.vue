@@ -2,11 +2,18 @@
     <div class="container">
         <div class="row clearfix header">
             <!--导航条-->
-            <nav class="navbar navbar-fixed-top navbar-default">
+            <nav class="navbar navbar-fixed-top navbar-default navbar-inverse">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <!--导航条头部-->
                     <div class="navbar-header">
+                        <!--缩小至920时导航按钮出现-->
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
                         <a class="navbar-brand" href="#">
                             <!--品牌标签-->
                             <img src="./../../assets/logo.png" alt="logo" height="100%">
@@ -135,12 +142,37 @@
         mounted() {
             // 组件初始化
             // 导航项目悬浮时的下拉子菜单
+
             $(function () {
-                $(" .header .dropdown").hover(function () {
-                    // slideDown(time):time弹出时间
-                    $(this).children("ul").stop().slideDown(100);
-                },function () {
-                    $(this).children("ul").stop().slideUp(100);
+                let isfull = true;
+                if($(window).width()>768) {
+                    $(" .header .dropdown").hover(function () {
+                        // slideDown(time):time弹出时间
+                        if (isfull) {
+                            $(this).children("ul").stop().slideDown(100);
+                        }
+                    }, function () {
+                        if (isfull) {
+                            $(this).children("ul").stop().slideUp(100);
+                        }
+                    });
+                }
+                $(window).resize(function () {
+                    if($(window).width()<768){
+                        isfull = false;
+                    }else {
+                        isfull = true;
+                        $(" .header .dropdown").hover(function () {
+                            // slideDown(time):time弹出时间
+                            if (isfull) {
+                                $(this).children("ul").stop().slideDown(100);
+                            }
+                        }, function () {
+                            if (isfull) {
+                                $(this).children("ul").stop().slideUp(100);
+                            }
+                        });
+                    }
                 });
             });
         }
@@ -154,45 +186,74 @@
     }
 
     .header .navbar{
-        background: white;
+        /*background: white;*/
         box-shadow: 0 1px 2px rgba(0,0,0,.1);
     }
     .header .navbar li{
-        width: 120px;
+        width: 110px;
+        text-align: center;
     }
     .header .navbar-brand{
-        margin-left: 30px;
+
     }
     .header .navbar a{
         height: 60px;
         line-height: 30px;
         font-size: 16px;
-        color: #333333;
+        text-align: center;
     }
 
     .header .collapse{
         font-size: 16px;
-        margin-right: 50px;
+        line-height: 60px;
+
     }
     .header .container-fluid{
-        padding: 0 100px 0 100px;
+
     }
 
     .header .dropdown{
-        padding: 15px;
+        text-align: center;
+    }
+    .header .dropdown>a{
+        color: #fff;
+    }
+    .header .dropdown-menu li{
+        width: 90px;
+        text-align: center;
+
     }
     .header .dropdown-toggle:hover{
         color: #00a1b6;
     }
     .header .dropdown-menu{
-        margin: 0;
         text-align: center;
+        padding: 10px;
     }
     .header .dropdown-menu li a{
-        width: 158px;
+        width: 100%;
         line-height: 54px;
+        color: #333333;
+        padding: 5px 15px 5px 15px;
     }
     .header .dropdown-menu li a:hover{
         color: #00a1b6;
     }
+
+    @media (min-width: 768px) {
+        .header .dropdown-menu li{
+            margin: 0 auto;
+        }
+        .container-fluid{
+            padding:0 100px;
+        }
+    }
+    @media (max-width: 908px) {
+        .header .navbar li{
+            width: 80px;
+        }
+    }
+
+
+
 </style>

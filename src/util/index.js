@@ -63,20 +63,40 @@ function indexInit(that) {
         // 表单缩放
         // 最小化
         $(".form #minimize").click(function () {
-            $(".form").animate({
-                width:"150px",
-                height:"50px",
-            });
-            $(".form #maxmize").css("display","inline");
+            if($(window).width() < 768){
+                $(".form").animate({
+                    width:"100px",
+                    height:"30px",
+                });
+                $(".form #maxmize").css("display","inline");
+            }else {
+                $(".form").animate({
+                    width:"150px",
+                    height:"50px",
+                });
+                $(".form #maxmize").css("display","inline");
+            }
+
         });
         // 最大化
         $(".form #maxmize").click(function () {
-            $(".form").animate({
-                width:"100%",
-                height:"400px",
-            });
-            // 隐藏最大化按钮
-            $(".form #maxmize").css("display","none");
+
+            if($(window).width() < 768){
+                $(".form").animate({
+                    width:"100%",
+                    height:"436px",
+                });
+                // 隐藏最大化按钮
+                $(".form #maxmize").css("display","none");
+            }else {
+                $(".form").animate({
+                    width:"100%",
+                    height:"460px",
+                });
+                // 隐藏最大化按钮
+                $(".form #maxmize").css("display","none");
+            }
+
         });
 
         // 当来源为其他时弹出输入框

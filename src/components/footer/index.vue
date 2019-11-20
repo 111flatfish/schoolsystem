@@ -1,49 +1,35 @@
 <template>
     <footer class="footer">
-        <!--半透明背景-->
-        <div class="background"></div>
         <!--页脚内容-->
         <div class="container content">
             <div class="row clearfix">
-                <div class="col-md-4 column phone">
-                    <div class="row clearfix">
-                        <h4>客服热线：</h4>
-                        <h2>400-8823-823</h2>
-                    </div>
-                    <div class="row clearfix">
-                        <h4>官方邮箱：</h4>
-                        <h4>xxxxxxxxx@xx.cn</h4>
-                    </div>
+                <div class="col-md-4 column footer_image">
+                    <img src="../../../public/image/footer/background.png" alt="background">
                 </div>
-
-                <div class="col-md-4 column area">
-                    <div class="row clearfix">
-                        <h4>北京校区：</h4>
-                        <h4>xxxxxxxxxxxxxxxxxxxxxxx</h4>
+                <div class="col-md-8 column footer_content">
+                    <div class="footer_content_txt">
+                        <h3>地址：广东省深圳市南山区南山街道桂庙路22号</h3>
+                        <ul>
+                            <li>咨询热线：400-000-0000</li>
+                            <li>电话：15626580565</li>
+                            <li>邮政编码：518042</li>
+                        </ul>
                     </div>
-                    <div class="row clearfix">
-                         <h4>深圳校区：</h4>
-                        <h4>xxxxxxxxxxxxxxxxxxxxxxx</h4>
+                    <div class="footer_content_erweima">
+                        <h2>关注我们</h2>
+                        <ul>
+                            <li>
+                                <img src="../../../public/image/footer/二维码-官方微信号.png" alt="erweima">
+                            </li>
+                            <li>
+                                <img src="../../../public/image/footer/二维码-官方微信号.png" alt="erweima">
+                            </li>
+                        </ul>
                     </div>
-                    <div class="row clearfix">
-                        <h4>上海校区：</h4>
-                        <h4>xxxxxxxxxxxxxxxxxxxxxxx</h4>
+                    <div class="footer_content_copyright">
+                        <p>Copyright &copy;2019-{{year}}.All rightreserved.|备案号|众行艺教（深圳）教育科技有限公司</p>
+                        <span>站点地图</span>
                     </div>
-                </div>
-
-                <div class="col-md-4 column weixin">
-                    <div class="row clearfix erweima">
-                        <img src="../../assets/二维码.png" alt="二维码" width="100px">
-                    </div>
-                    <div class="row clearfix txt">
-                        <h5>扫码关注微信公众号、新浪微博官方账号了解戏传资讯</h5>
-                    </div>
-                </div>
-            </div>
-            <hr>
-            <div class="row clearfix copyright">
-                <div class="col-md-12">
-                    Copyright © 2019 - {{year}}.All right reserved. | 备案号 | 深圳市XXXX有限公司
                 </div>
             </div>
         </div>
@@ -65,42 +51,99 @@
 </script>
 
 <style scoped>
-.footer{
-    background: url("../../assets/footerbackground.jpg") no-repeat;
-    padding: 30px;
-    position:relative;
-    bottom: 0;
-    left: 0;
-    color: white;
-}
-.copyright{
-    text-align: left;
-}
-.footer .background{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    bottom: 0;
-    background: black;
-    opacity: 0.5;
-}
-
-@media (max-width: 768px) {
-    .footer .content .phone h2,.area h2{
-        font-size: 18px;
-        display: inline-block;
-    }
-    .footer .content .phone h4,.area h4{
-        font-size: 16px;
-        display: inline-block;
-    }
     .footer{
-        padding: 15px;
+        background-color: #393c41;
+        color: #fff;
+    }
+    .footer_image img{
+        height: 500px;
+        margin-top: 20px;
+    }
+    .footer_content_txt{
+        color: #fff;
+        margin-top: 50px;
+    }
+    .footer_content_txt h3{
+        padding-bottom: 15px;
+        font-size: 20px;
+        background: url("../../../public/image/footer/长横线.png") no-repeat bottom center;
+    }
+    .footer_content_txt ul{
+        width: 100%;
+        position: relative;
+        margin-top: 15px;
+    }
+    .footer_content_txt ul li{
+        display: inline-block;
+        position: absolute;
+        font-size: 18px;
+    }
+    .footer_content_txt ul li:nth-of-type(1){
+        left: 0;
+    }
+    .footer_content_txt ul li:nth-of-type(2){
+        left: 50%;
+        margin-left: -72px;
+    }
+    .footer_content_txt ul li:nth-of-type(3){
+        right: 0;
     }
 
+    .footer_content_erweima{
+        margin-top: 100px;
+    }
+    .footer_content_erweima h2{
+        margin-bottom: 30px;
+    }
+    .footer_content_erweima ul li{
+        display: inline-block;
+        position: relative;
+    }
+    .footer_content_erweima ul li:nth-of-type(1){
+        left: -15%;
+    }
+    .footer_content_erweima ul li:nth-of-type(1):after{
+        display: block;
+        content: "微信公众号";
+        text-align: center;
+        margin-top: 15px;
+    }
+    .footer_content_erweima ul li:nth-of-type(2){
+        right: -15%;
+    }
+    .footer_content_erweima ul li:nth-of-type(2):after{
+        content: "官方微博";
+        text-align: center;
+        display: block;
+        margin-top: 15px;
+    }
+    .footer_content_erweima ul li img{
+        width: 180px;
+        height: 180px;
+        padding: 15px;
+        z-index: 1003;
+        background-color: #fff;
+    }
 
-}
+    .footer_content_copyright{
+        border-top: 1px solid #fff;
+        position: relative;
+        text-align: left;
+        padding-top: 15px;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .footer_content_copyright p{
+        display: inline-block;
+    }
+    .footer_content_copyright span{
+        position: absolute;
+        right: 0;
+        top:13px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
 
 
 </style>

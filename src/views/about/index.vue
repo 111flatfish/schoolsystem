@@ -129,6 +129,10 @@ main{
     font-weight: 400;
     margin: 20px auto;
 }
+.about{
+    background: url("../../../public/image/background/background2.jpg") no-repeat;
+    background-size: 100% 100%;
+}
 /*教学环境*/
 .about_evi{
     text-align: center;
@@ -139,18 +143,18 @@ main{
     margin: 15px;
 }
 .about_evi_title{
-    background: url("http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/3/default.jpg") no-repeat;
+    /*background: url("http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/3/default.jpg") no-repeat;*/
     width: 100%;
     height: 80px;
     border-radius: 4px;
 }
 .about_evi_title h3{
-    color: #fff;
     line-height: 80px;
     font-size: 36px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
     margin-top: 0;
     border-radius: 6px;
+    color: #444;
 }
 .about_evi_content img{
     border-radius: 4px;
@@ -210,13 +214,13 @@ ul li:hover{
 
 }
 .about_idea_title{
-    background: url("http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/1/default.jpg") no-repeat;
+    /*background: url("http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/1/default.jpg") no-repeat;*/
     width: 100%;
     height: 80px;
     border-radius: 4px;
 }
 .about_idea_title h3{
-    color: #fff;
+    color: #444;
     line-height: 80px;
     font-size: 36px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
@@ -249,13 +253,13 @@ ul li:hover{
     margin: 15px;
 }
 .about_feature_title{
-    background: url("http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/2/default.jpg") no-repeat;
+    /*background: url("http://cdn.ibootstrap.cn/lorempixel.com/1600/500/sports/2/default.jpg") no-repeat;*/
     width: 100%;
     height: 80px;
     border-radius: 4px;
 }
 .about_feature_title h3{
-    color: #fff;
+    color: #444;
     line-height: 80px;
     font-size: 36px;
     text-shadow: 0 1px 2px rgba(0, 0, 0, .6);

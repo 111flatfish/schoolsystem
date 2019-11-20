@@ -135,6 +135,8 @@
 <style scoped>
 .achievement{
     background-color: #f4f5f7;
+    background: url("../../../public/image/background/background2.jpg") no-repeat;
+    background-size: 100% 100%;
 }
 .achievement .thumbnail:hover{
     box-shadow: 0 0 5px 3px rgba(0,0,0,.2);

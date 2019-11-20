@@ -66,8 +66,7 @@
 
 <style scoped>
 .banner{
-    margin: 0 auto 30px auto;
-    width: 100%;
+    margin: 0 auto;
     padding: 0;
 }
 .banner .item img{
@@ -76,13 +75,10 @@
 }
 .banner img{
     width: 100%;
-    height: 600px;
+    height: 750px;
 }
 .banner .column{
     padding: 0;
-}
-.banner .carousel-inner{
-    border-radius: 4px;
 }
 .banner .carousel-control{
     opacity: 0;

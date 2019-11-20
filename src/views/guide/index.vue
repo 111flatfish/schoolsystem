@@ -20,11 +20,11 @@
                 <!--筛选栏-->
                 <div class="col-md-4 column searchfilter">
                     <label for="">筛选：</label>
-                    <select name="time" id="">
+                    <select name="time" id="" v-model="filterArg" @change="selectFn($event)">
                         <option value="7">最近七天</option>
                         <option value="30">一个月</option>
-                        <option value="6">半年</option>
-                        <option value="360">一年</option>
+                        <option value="182">半年</option>
+                        <option value="365">一年</option>
 
                     </select>
                 </div>
@@ -70,7 +70,7 @@
                                     <span aria-hidden="true">&laquo;</span>
                                 </li>
                                 <!--页码-->
-                                <li v-for="(item,index) in pages" :key="index"  @click="select(item)"><span :class="{actived: item === currentPage}">{{item}}</span></li>
+                                <li v-for="(item,index) in pages" :key="indexback" @click="select(item)"><span :class="{actived: item === currentPage}">{{item}}</span></li>
                                 <!--下一页-->
                                 <li @click="pagePreOrNext(1)">
                                     <span aria-hidden="true">&raquo;</span>
@@ -81,8 +81,8 @@
 
                 </div>
                 <!--广告栏-->
-                <div class="col-md-4 column adv" v-for="item in adv">
-                    <div class="adv_item">
+                <div class="col-md-4 column adv">
+                    <div class="adv_item" v-for="item in adv">
                         <img src="../../../public/image/teacherheader/2.jpeg" alt="adv">
                         <div class="adv_item_txt">
                             {{item.introduce}}
@@ -126,6 +126,8 @@
               // 是否搜索
               isSearch:false,
 
+              // 筛选值
+                filterArg:30,
               // 搜索参数
               searchArg:"",
 
@@ -147,7 +149,7 @@
         },
         created() {
             // 初始化页面获取文章请求
-            axiosReq.get("getArticle/num/10").then(data=>{
+            axiosReq.get(`getArticleInTime/day/${this.filterArg}`).then(data=>{
                 if(data.data.length > 0){
                     this.totalPage = Math.ceil(data.data.length/this.pageNum);
                     this.articles = data.data;
@@ -209,7 +211,29 @@
                         })
                     }
                 });
+            },
+            // 筛选日期处理函数
+            selectFn(e){
+                axiosReq.get(`getArticleInTime/day/${e.target.value}`).then(data=>{
+                    if(data.data.length > 0){
+                        this.totalPage = Math.ceil(data.data.length/this.pageNum);
+                        this.articles = data.data;
+                        // 把标签值分割
+                        this.articles.forEach((value)=>{
+                            value.lable = value.lable.split(",");
+                        });
+                        // 默认显示第一页
+                        this.currenArticle = this.articles.slice(0,5);
+
+                    }else {
+                        this.$router.push({
+                            path:"/error"
+                        })
+                    }
+                });
             }
+
+
         },
         // 组件
         computed:{
@@ -237,7 +261,6 @@
             }
 
         }
-
     }
 
 
@@ -247,6 +270,7 @@
 <style scoped>
 .guide{
     background-color: #f4f5f7;
+
 }
 /*搜索栏*/
 .guide .search{
@@ -370,6 +394,9 @@
     width: 100%;
     height: 466px;
     cursor: pointer;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    position: relative;
 }
 .content .adv_item img{
     width: 100%;
@@ -377,9 +404,6 @@
 }
 .content .adv{
     padding: 10px 10px 10px 20px;
-    margin-top: 20px;
-    margin-bottom: 30px;
-    position: relative;
     text-align: center;
 
 }

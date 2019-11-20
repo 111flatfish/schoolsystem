@@ -381,6 +381,8 @@
 <style scoped>
     main{
         background-color: #f4f5f7;
+        background: url("../../../public/image/background/background2.jpg") no-repeat;
+        background-size: 100% 100%;
     }
 
     /*内容展示区1*/

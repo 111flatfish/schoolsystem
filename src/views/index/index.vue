@@ -5,16 +5,6 @@
         <!--内容-->
         <main>
             <div class="container">
-                <!--分数要求-->
-                <!--<div class="row clearfix index_score">-->
-                    <!--<div class="index_score_header">-->
-                        <!--<img src="../../../public/image/score/标签-分数要求.png" alt="label">-->
-                        <!--<span>分数要求</span>-->
-                    <!--</div>-->
-                    <!--<div class="index_score_content">-->
-                        <!--<img src="../../../public/image/score/分数图.png" alt="score">-->
-                    <!--</div>-->
-                <!--</div>-->
                 <!--就业前景-->
                 <div class="row clearfix index_prospect">
                     <div class="index_prospect_header">
@@ -889,24 +879,6 @@
 <style scoped>
     .index{
         margin-top: 200px;
-    }
-
-    /*分数要求*/
-    .index .index_score{
-        background: url("../../../public/image/score/分数背景.png") no-repeat center center;
-        padding:30px 0 60px 0;
-    }
-    .index .index_score_header img{
-        width: 128px;
-        height: 128px;
-    }
-    .index .index_score_header span{
-        font-size: 75px;
-        position: relative;
-        top:20px;
-    }
-    .index_score_content{
-        margin-top: 30px;
     }
 
     /*就业前景*/

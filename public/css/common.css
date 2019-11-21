@@ -88,27 +88,28 @@ ul,ol,li{
 
 /*专业介绍的课包*/
 .common_showcontent ul{
-    padding-top: 10px;
     position: relative;
     background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 0 10px 2px rgba(0,0,0,.1);
+    box-shadow: -4px 3px 2px 2px rgba(0,0,0,.2);
     margin: 30px 0 30px 0;
 }
+.common_showcontent ul li{
+    text-align: center;
+}
 .common_showcontent ul .img img{
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 330px;
     border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
-    border-radius: 4px;
 }
 .common_showcontent ul .content{
-    border-bottom: 1px solid #ccc;
+    border-bottom: 2px solid #000;
     padding-bottom: 10px;
     font-size: 16px;
 }
 .common_showcontent ul .content p{
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 20px;
 }
 .common_showcontent ul h4{
     font-size: 20px;
@@ -133,14 +134,14 @@ height: 100%;
 color: #fff;
 }
 .common_showcontent ul .free span{
-    font-size: 18px;
+    font-size: 22px;
     z-index: 1003;
     display: inline-block;
     width: 160px;
     line-height: 40px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #ffd717;
+    border: 2px solid #FFA500;
+    border-radius: 14px;
+    color: #ffA500;
 }
 
 /*留言样式*/

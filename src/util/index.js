@@ -97,10 +97,28 @@ function majorInit(that) {
 }
 
 // 艺考指南页初始化
-function guideInit() {
+function guideInit(that) {
     // 广告栏初始化
     $(function () {
-        $(".guide .content .adv .adv_item").css("height","466px");
+        // 初始筛选为全部
+        $(".searchfilter ul li").last().addClass("filterActive");
+        $(".searchfilter ul li").click(function () {
+            switch ($(this).text()) {
+                case "最近七天":
+                    that.filterArg = 7;
+                    break;
+                case "最近一月":
+                    that.filterArg = 30;
+                    break;
+                case "最近半年":
+                    that.filterArg = 183;
+                    break;
+                case "全部":
+                    that.filterArg = 366;
+                    break;
+            }
+            $(this).addClass("filterActive").siblings().removeClass("filterActive");
+        });
     });
 }
 

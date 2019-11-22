@@ -1,32 +1,33 @@
 <template>
     <div class="guide">
-        <!--头部-->
-
         <!--轮播图-->
         <Banner v-bind:banner-data="type" v-bind:location-data="loc"></Banner>
         <!--内容-->
         <main class="container guide">
+            <!--logo-->
+            <div class="guide_logo">
+                <h1>艺考指南</h1>
+            </div>
             <!--搜索栏-->
             <div class="row clearfix search">
-                <div class="col-md-8 column searchinput">
+                <div class="col-md-7 column searchinput">
                     <!--搜索框-->
                     <div class="search">
                         <form class="searchform" enctype="application/x-www-form-urlencoded">
-                            <input type="text" placeholder="搜索文章标题或标签" class="form-control txt" v-model="searchArg">
-                            <button type="button" value="搜索" class="btn form-control glyphicon glyphicon-search" @click="searchArticle"></button>
+                            <input type="text" placeholder="搜索文章标题或标签" class="  txt" v-model="searchArg">
+                            <button type="button" value="搜索" class="btn" @click="searchArticle">点击搜索</button>
                         </form>
                     </div>
                 </div>
                 <!--筛选栏-->
-                <div class="col-md-4 column searchfilter">
-                    <label for="">筛选：</label>
-                    <select name="time" id="" v-model="filterArg" @change="selectFn($event)">
-                        <option value="7">最近七天</option>
-                        <option value="30">一个月</option>
-                        <option value="182">半年</option>
-                        <option value="365">一年</option>
-
-                    </select>
+                <div class="col-md-5 column searchfilter">
+                    <label>按时间筛选：</label>
+                    <ul>
+                        <li>最近七天</li>
+                        <li>最近一月</li>
+                        <li>最近半年</li>
+                        <li>全部</li>
+                    </ul>
                 </div>
             </div>
             <!--展示内容区-->
@@ -52,9 +53,10 @@
                                 <p>{{item.content}}</p>
                                 <!--简介-->
                                 <div class="dec">
-                                    <span>{{item.create_time}}</span><span>预览数 {{item.view_num}}</span><span>标签
+                                    <span><img src="../../../public/image/guide/图标-时钟.png" alt="发布时间">{{item.create_time}}</span><span><img
+                                        src="../../../public/image/guide/图标-眼睛.png" alt="浏览数">{{item.view_num}}</span><span>
                                     <ul v-for="item2 in item.lable" style="display: inline-block">
-                                        <li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>
+                                        <li style=";margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>
                                     </ul>
                                 </span>
                                 </div>
@@ -70,13 +72,17 @@
                                     <span aria-hidden="true">&laquo;</span>
                                 </li>
                                 <!--页码-->
-                                <li v-for="(item,index) in pages" :key="indexback" @click="select(item)"><span :class="{actived: item === currentPage}">{{item}}</span></li>
+                                <li v-for="(item,index) in pages" :key="index" @click="select(item)"><span :class="{actived: item === currentPage}">{{item}}</span></li>
                                 <!--下一页-->
                                 <li @click="pagePreOrNext(1)">
                                     <span aria-hidden="true">&raquo;</span>
                                 </li>
                             </ul>
                         </nav>
+                        <div class="jumppage">
+                            <input type="number" class="btn"><span>/{{totalPage}}</span>
+                            <input type="button" class="btn" value="转到此页">
+                        </div>
                     </div>
 
                 </div>
@@ -149,7 +155,7 @@
         },
         created() {
             // 初始化页面获取文章请求
-            axiosReq.get(`getArticleInTime/day/${this.filterArg}`).then(data=>{
+            axiosReq.get(`getArticle/num/100/day/${this.filterArg}`).then(data=>{
                 if(data.data.length > 0){
                     this.totalPage = Math.ceil(data.data.length/this.pageNum);
                     this.articles = data.data;
@@ -166,8 +172,7 @@
                     })
                 }
             });
-            // 广告栏初始化
-            util.guideInit();
+
             // 初始化获取广告信息
             axiosReq.get("getSomeAdv").then(data=>{
                 this.adv = data.data;
@@ -259,7 +264,9 @@
                     }
                 }
             }
-
+        },
+        mounted() {
+            util.guideInit(this);
         }
     }
 
@@ -268,22 +275,32 @@
 </script>
 
 <style scoped>
-.guide{
-    background-color: #f4f5f7;
-
+/*标题图*/
+.guide .guide_logo h1{
+    background: url("../../../public/image/guide/标题图.png") no-repeat center center;
+    background-size: 150px 150px;
+    font-size: 72px;
+    line-height: 150px;
+    font-weight: bold;
+    text-shadow: 3px 3px 1px #fff;
+    height: 150px;
+    margin-top: 50px;
 }
 /*搜索栏*/
 .guide .search{
     position: relative;
-    margin-top: 15px;
+    margin-top: 16px;
+    text-align: left;
 }
 .guide .search input{
-    font-size: 16px;
-    height: 44px;
-    padding: 0 10px;
+    font-size: 25px;
+    padding: 5px 10px 8px 10px;
+    height: 60px;
     border: none;
     border-radius: 4px;
     box-shadow: 0 0 4px 2px rgba(0,0,0,.2);
+    display: inline-block;
+    width: 50%;
     /*background-color:hsla(0,100%,100%,0.1);*/
 }
 .guide .search input:focus{
@@ -291,14 +308,15 @@
     box-shadow: 0 0 4px 2px rgba(0,161,214,.8);
 }
 .guide .search button{
-    position: absolute;
-    right: 10px;
-    top:0;
-    width: 48px;
-    height: 44px;
-    border: none;
-    padding: 0;
+    width: 20%;
+    padding: 10px;
     font-size: 28px;
+    display: inline-block;
+    background-color: #fff;
+    border: 2px solid #ffA500;
+    border-radius: 10px;
+    color: #ffa500;
+    margin-left: 50px;
 }
 .guide .search button:hover{
     color:#00a1d6;
@@ -314,23 +332,53 @@
 }
 .guide{
     padding: 0;
-
 }
+.guide .searchfilter{
+    margin-top: 10px;
+}
+.guide .searchfilter label,ul{
+    font-size: 18px;
+    height: 61px;
+    line-height: 61px;
+    display: inline-block;
+}
+/*筛选*/
+.filterActive{
+    color: #000!important;
+    font-weight: bolder;
+}
+.guide .searchfilter>ul li{
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 30px;
+    color: #aaa;
+    cursor: pointer;
+}
+
 
 /*内容栏*/
 .content{
     margin: 40px 0 40px 0;
-    border-radius: 4px;
+    padding:0 20px;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
 }
 .content .column{
     margin-bottom: 0;
+}
+.content ul{
+   padding-right: 20px;
+}
+.content .article_content{
+    border-right: 3px solid #aaa;
 }
 .content ul .media{
     padding: 30px 10px;
     overflow: hidden;
     cursor: pointer;
-    background-color: #eee;
-    border-radius: 4px;
+    position: relative;
+    margin: 15px;
+    border-bottom: 2px solid #ccc;
 }
 .content ul .media:hover{
     box-shadow: 0 0 4px 3px rgba(0,0,0,.1);
@@ -342,17 +390,14 @@
     position: relative;
 }
 .content ul .media .media-body p{
-    margin-top: 30px;
-    font-size: 16px;
-    color: #99a2aa;
-    letter-spacing: 0;
+    margin-top: 15px;
+    font-size: 18px;
     line-height: 22px;
-    text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
     text-align: left;
     margin-left: 20px;
-    width: 650px;
+    margin-bottom: 0;
+    height: 100px;
 }
 
 .content ul .media .media-left img{
@@ -366,44 +411,78 @@
     margin-bottom: 30px;
 }
 .content ul .media h3{
+    font-size: 28px;
+    color: #000;
     text-align: left;
     font-weight: bold;
     margin-left: 20px;
     transition: .3s;
-    vertical-align: top;
-    -webkit-box-orient: vertical;
-    word-break: break-all;
-    text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
-    width: 650px;
 }
 .content ul .media .dec{
-    position: absolute;
+    position: relative;
     left:20px;
-    bottom: 20px;
+    bottom: 0;
     font-size: 16px;
+    height: 40px;
+    text-align: left;
+    line-height: 40px;
 }
 .content ul .media .dec span{
     margin: 10px 20px;
     color: #99a2aa;
 }
+.content ul .media .dec span img{
+    width: 20px;
+    height: 20px;
+    position: relative;
+    top: -2px;
+    margin-right: 5px;
+}
+.content ul .media .dec span:nth-of-type(1){
+    margin-left: 0;
+}
+.content ul .media .dec span:nth-of-type(2) img{
+    width: 30px;
+    height: 30px;
+}
+.content ul .media .dec ul{
+    line-height: normal;
+    color: #000;
+}
+
+
+
 /*广告栏*/
 .content .adv_item{
-    border-bottom: 1px solid #ccc;
     width: 100%;
-    height: 466px;
+    height: 420px;
     cursor: pointer;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: 26px;
+    margin-bottom: 55px;
     position: relative;
 }
 .content .adv_item img{
     width: 100%;
     height: 100%;
+    position:relative;
+}
+.content .adv_item:after{
+    content: '';
+    width: 100%;
+    height: 30px;
+    background: url("../../../public/image/guide/广告栏-下横线.png") no-repeat center center;
+    position: absolute;
+    bottom: -42px;
+    left: 0;
+}
+.content .adv_item:nth-of-type(3):after{
+    background: none;
 }
 .content .adv{
-    padding: 10px 10px 10px 20px;
+    padding: 10px 10px -5px 20px;
+    padding-top: 50px;
+    padding-left: 20px;
     text-align: center;
 
 }
@@ -418,6 +497,36 @@
     text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
 }
 /*页码栏*/
+.pageContainer nav{
+    display: inline-block;
+    position: relative;
+    left: -30px;
+}
+.pageContainer .jumppage{
+    display: inline-block;
+}
+.pageContainer .jumppage input{
+    height: 45px;
+    width: 80px;
+    border-radius: 6px;
+    position: relative;
+    top: -56px;
+    left: -30px;
+    border: 1px solid #ccc;
+}
+.pageContainer .jumppage input:nth-of-type(2){
+    left: 0;
+    background-color: #fff;
+}
+.pageContainer .jumppage input:nth-of-type(2):hover{
+    color: #00a1b6;
+}
+.pageContainer .jumppage span{
+    position: relative;
+    top: -56px;
+    left: -30px;
+    font-size: 20px;
+}
 .pageContainer li{
     cursor: pointer;
 }

@@ -55,7 +55,7 @@
                             </li>
                             <!--专业介绍-->
                             <li>
-                                <a href="#">艺考干货</a>
+                                <router-link to="/guide" tag="a">艺考干货</router-link>
                             </li>
                             <!--艺考指南-->
                             <li>

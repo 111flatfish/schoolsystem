@@ -1,47 +1,49 @@
 <template>
     <div class="message">
-        <!--头部-->
-
         <!--轮播图-->
         <Banner v-bind:banner-data="type" v-bind:location-data="loc"></Banner>
         <!--内容-->
         <main class="container">
-            <h3 style="text-align: left;margin-bottom: 20px">留言</h3>
-            <div class="row clearfix message_content" v-for="item in currentMessage">
-                <!--学生留言-->
-                <div class="message_item col-md-9">
-                    <div class="media">
-                        <div class="media-left">
-                            <!--头像-->
-                            <a href="#">
-                                <img class="media-object" src="../../../public/image/teacherheader/2.jpeg" alt="student">
-                            </a>
-                        </div>
-                        <!--内容-->
-                        <div class="media-body">
-                            <h3 class="media-heading">{{item.access}}</h3>
-                            <time>{{item.create_time}}</time>
-                            <div class="studentcontent">
-                                <p>{{item.question}}</p>
+            <div class="message_header">
+                <h1>留言板</h1>
+            </div>
+            <div class="message_inner">
+                <div class="row clearfix message_content" v-for="item in currentMessage">
+                    <!--学生留言-->
+                    <div class="message_item message_student col-md-offset-2 col-md-8">
+                        <div class="media">
+                            <div class="media-left">
+                                <!--头像-->
+                                <a href="#">
+                                    <img class="media-object" src="../../../public/image/question/图标-问答Q.png" alt="student">
+                                </a>
+                            </div>
+                            <!--内容-->
+                            <div class="media-body">
+                                <h3 class="media-heading">{{item.access}}</h3>
+                                <time>{{item.create_time}}</time>
+                                <div class="studentcontent">
+                                    <p>{{item.question}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--老师答复-->
-                <div class="message_item col-md-9">
-                    <div class="media">
-                        <div class="media-left">
-                            <!--头像-->
-                            <a href="#">
-                                <img class="media-object" src="../../../public/image/teacherheader/3.jpg" alt="teacher">
-                            </a>
-                        </div>
-                        <!--内容-->
-                        <div class="media-body">
-                            <h3 class="media-heading">{{item.answer_name}}</h3>
-                            <time>{{item.answer_time}}</time>
-                            <div class="teachercontent">
-                                <p>{{item.answer}}</p>
+                    <!--老师答复-->
+                    <div class="message_item message_teacher col-md-offset-2 col-md-8">
+                        <div class="media">
+                            <!--内容-->
+                            <div class="media-body">
+                                <h3 class="media-heading">{{item.answer_name}}</h3>
+                                <time>{{item.answer_time}}</time>
+                                <div class="teachercontent">
+                                    <p>{{item.answer}}</p>
+                                </div>
+                            </div>
+                            <div class="media-left">
+                                <!--头像-->
+                                <a href="#">
+                                    <img class="media-object" src="../../../public/image/question/图标-问答A.png" alt="teacher">
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -63,34 +65,33 @@
                         </li>
                     </ul>
                 </nav>
+                <div class="jumppage">
+                    <input type="number" class="btn"><span>/{{totalPage}}</span>
+                    <input type="button" class="btn" value="转到此页">
+                </div>
             </div>
 
             <!--留言表单-->
             <div class="row clearfix message_form">
                 <div class="col-md-2 studentheadimg">
                     <!--头像-->
-                    <img src="../../../public/image/teacherheader/2.jpeg" alt="student">
+                    <img src="../../../public/image/question/图标-问答Q.png" alt="student">
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-9">
                     <form class="form-horizontal" id="form">
                         <div class="form-group">
                             <!--留言内容-->
-                            <label for="inputtext" class="col-sm-2 control-label">留言内容 <span class="isneed">*</span></label>
-                            <div class="col-sm-10">
+                            <label for="inputtext" class="col-sm-3 control-label">留言内容 <span class="isneed">*</span></label>
+                            <div class="col-sm-9">
                                 <textarea class="form-control" rows="3" id="inputtext" name="content" v-model="message.msg" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <!--手机号码-->
-                            <label for="inputphone" class="col-sm-2 control-label">请输入您的手机号码</label>
-                            <div class="col-sm-10">
+                            <label for="inputphone" class="col-sm-3 control-label">请输入您的手机号码</label>
+                            <div class="col-sm-9">
                                 <input type="number" class="form-control" id="inputphone" v-model="message.phone" placeholder="phone">
-                            </div>
-                        </div>
-                        <!--提交按钮-->
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10 submit">
-                                <button type="submit" class="btn btn-primary">提交</button>
+                                <button type="submit" class="btn btn-primary" id="buttonsubmit">提交</button>
                             </div>
                         </div>
                     </form>
@@ -230,12 +231,79 @@ main{
     font-weight: 400;
     margin: 20px auto;
 }
+.message_inner{
+    border: 1px solid #000;
+    border-radius: 8px;
+}
+.message .message_header{
+    background: url("../../../public/image/question/图标-标题.png") no-repeat center center;
+    background-size:230px 140px;
+    height: 200px;
+    padding-top: 40px;
+    padding-right: 30px;
+}
+.message .message_header h1{
+    text-align: center;
+    font-size: 75px;
+    font-weight: 900;
+    text-shadow: 1px 1px 5px #fff;
+    -webkit-text-stroke: 1px #fff;
+}
+
+
+.message .message_teacher .media{
+    text-align:right;
+}
+.message_teacher h3{
+    text-align:right;
+    padding-right: 20px;
+    font-size: 30px;
+}
+.message_teacher time{
+    float: right;
+    margin-right: 30px;
+    font-size: 25px;
+    width: 100%;
+}
+.message_student time{
+    float: left;
+    margin-left: 15px;
+    font-size: 25px;
+    width: 100%;
+    text-align: left;
+}
+.message_student .media-body{
+    text-align: left;
+}
+.message_student .media-body .studentcontent{
+    position: relative;
+    left: 0;
+
+}
+.message_student .media-body .studentcontent p{
+    display: inline-block;
+}
+.message_teacher .media-body{
+    text-align:right;
+}
+.message_teacher .media-body .teachercontent{
+    position: relative;
+    right: -2%;
+}
+.message_teacher .media-body .teachercontent p{
+    display: inline-block;
+}
+
+
+
+
 /*留言表单*/
 .message_content{
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
     padding: 20px 0;
-
+    background: url("../../../public/image/question/尖端横线.png") no-repeat bottom center;
+}
+.message_content:nth-of-type(4){
+    background: none;
 }
 .message_content .media-left img{
     border-radius: 50%;
@@ -243,6 +311,9 @@ main{
 .message_form {
     padding: 15px;
     margin-top: 20px;
+}
+.message_form label{
+    font-size: 18px;
 }
 .message_form .studentheadimg img{
     width: 100%;
@@ -264,10 +335,22 @@ main{
 .message_form .form-group #inputtext{
     width: 90%;
     height: 150px;
+    font-size: 18px;
 }
 .message_form .form-group #inputphone{
-    width: 90%;
+    width: 50%;
     height: 50px;
+    font-size: 18px;
+}
+.message_form .form-group #buttonsubmit{
+    height: 50px;
+    width: 100px;
+    background: #fff;
+    color: #FFA500;
+    border: 2px solid #FFA500;
+    border-radius: 12px;
+    font-size: 25px;
+    margin-left: 80px;
 }
 /*页码栏*/
 .pageContainer li{
@@ -276,8 +359,38 @@ main{
 .pageContainer li span{
     width: 50px;
 }
+.pageContainer nav{
+    display: inline-block;
+    position: relative;
+    left: -30px;
+}
 .actived{
     background-color:#ffe284;
+}
+.pageContainer .jumppage{
+    display: inline-block;
+}
+.pageContainer .jumppage input{
+    height: 45px;
+    width: 80px;
+    border-radius: 6px;
+    position: relative;
+    top: -40px;
+    left: 10px;
+    border: 1px solid #ccc;
+}
+.pageContainer .jumppage input:nth-of-type(2){
+    left: 40px;
+    background-color: #fff;
+}
+.pageContainer .jumppage input:nth-of-type(2):hover{
+    color: #00a1b6;
+}
+.pageContainer .jumppage span {
+    position: relative;
+    top: -35px;
+    left: 10px;
+    font-size: 25px;
 }
 
 @media (max-width: 768px) {

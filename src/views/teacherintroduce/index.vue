@@ -1,27 +1,42 @@
 <template>
     <div class="teacher">
-        <!--头部-->
-
         <!--内容-->
         <main class="container teacher">
-            <!--搜索框-->
-            <div class="search row clearfix">
-                <form class="searchform col-md-offset-1 col-md-9">
-                    <input type="text" placeholder="搜索老师" class="form-control txt">
-                    <button type="button" value="搜索" class="btn form-control glyphicon glyphicon-search"></button>
-                </form>
+            <!--&lt;!&ndash;搜索框&ndash;&gt;-->
+            <!--<div class="search row clearfix">-->
+                <!--<form class="searchform col-md-offset-1 col-md-9">-->
+                    <!--<input type="text" placeholder="搜索老师" class="form-control txt">-->
+                    <!--<button type="button" value="搜索" class="btn form-control glyphicon glyphicon-search"></button>-->
+                <!--</form>-->
+            <!--</div>-->
+            <div class="teacher_header">
+                <h1>大咖往事</h1>
             </div>
             <!--老师内容-->
             <div class="row clearfix">
-                <div class="col-md-offset-1 col-md-9 content">
+                <div class="col-md-10 content">
                     <div class="row clearfix teachercontent">
                         <!--文本-->
                         <div class="col-md-6  name">
-                            <h1>姓名 {{}}</h1>
-                            <p>毕业院校 {{}}</p>
-                            <p>标签 {{}}</p>
+                            <h1>田二妞</h1>
+                            <p>毕业院校：中国传媒大学 </p>
+                            <div class="teacher_lable">
+                                <p>标签：</p>
+                                <ul>
+                                    <li>国家一级保护动物</li>
+                                    <li>国家一级保护动物</li>
+                                    <li>国家一级保护动物</li>
+                                </ul>
+                            </div>
+                            <div class="teacher_achievement">
+                                <p>教学成果：</p>
+                                <ul>
+                                    <li>中央戏剧学院 <span style="font-size: 30px;font-weight: bolder;">15</span> 名</li>
+                                    <li>北京电影学院 <span style="font-size: 30px;font-weight: bolder;">15</span> 名</li>
+                                    <li>中国传媒大学 <span style="font-size: 30px;font-weight: bolder;">15</span> 名</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-md-1"></div>
                         <!--轮播图片-->
                         <div class=" col-md-3 img">
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -37,8 +52,21 @@
                                         <img src="../../../public/image/teacherheader/1.jpeg" alt="teacher">
                                     </div>
                                 </div>
+
+                                <!-- 切换图片 -->
+                                <!--左-->
+                                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="border-radius: 4px">
+                                    <span class="pre" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <!--右-->
+                                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="border-radius: 4px">
+                                    <span class="next" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
                             </div>
                         </div>
+                        <img src="../../../public/image/teacher/尖端横线.png" alt="尖端横线" width="100%">
                     </div>
                     <!--简介-->
                     <h3 style="text-align: left;margin-left: 30px;font-weight: bold">简介</h3>
@@ -62,17 +90,16 @@
             </div>
 
             <!--导航条-->
-            <div class="row clearfix control col-md-offset-1 col-md-9">
-                <div class="col-lg-3 teacher_banner">
-                     <input type="button" value="上一个老师" class="btn btn-primary form-control">
-                </div>
-                <div class="col-lg-6 teacher_banner"></div>
-                <div class="col-lg-3 teacher_banner">
-                    <input type="button" value="下一个老师" class="btn btn-primary form-control">
-                </div>
-            </div>
+            <!--<div class="row clearfix control col-md-offset-1 col-md-9">-->
+                <!--<div class="col-lg-3 teacher_banner">-->
+                     <!--<input type="button" value="上一个老师" class="btn btn-primary form-control">-->
+                <!--</div>-->
+                <!--<div class="col-lg-6 teacher_banner"></div>-->
+                <!--<div class="col-lg-3 teacher_banner">-->
+                    <!--<input type="button" value="下一个老师" class="btn btn-primary form-control">-->
+                <!--</div>-->
+            <!--</div>-->
         </main>
-        <!--底部-->
 
     </div>
 </template>
@@ -106,6 +133,23 @@
 
 <style scoped>
 /*老师内容*/
+.teacher{
+    margin-top: 250px;
+    margin-left: 7.33333333%;
+    margin-bottom: 50px;
+}
+.teacher .teacher_header{
+    background: url("../../../public/image/teacher/标题容器.png") no-repeat;
+    background-size:433px 163px;
+    background-position: 30% 10%;
+    height: 200px;
+    padding-top: 5px;
+}
+.teacher .teacher_header h1{
+    text-align: center;
+    margin-right: 30%;
+    font-size: 71px;
+}
 .teacher .content{
     border: 1px solid #e5e5e5;
     /*margin: 15px;*/
@@ -115,27 +159,56 @@
     margin: 0;
 }
 .teachercontent .name{
-    padding: 15px 0 15px 0;
+    padding: 30px 0 15px 0;
     line-height: 40px;
     margin-right: 15px;
 }
-.teachercontent .name p,h1{
+.teachercontent .name ul li{
+    font-size: 22px;
+}
+.teachercontent .name h1{
+    font-size: 60px;
+    text-decoration: underline;
+}
+.teachercontent .name p{
+    font-size: 35px;
+    color:#000;
     text-align: left;
     margin-left: 30px;
     margin-top: 30px;
 }
-.teachercontent .name p{
-    font-size: 18px;
-    color:#000;
-}
 .teachercontent .img{
     width: 380px;
-    margin: 10px 0 10px 0;
+    margin: 30px 0 10px 50px;
     border-radius: 4px;
 }
 .teachercontent .img img{
     height: 350px;
     border-radius: 4px;
+}
+.teachercontent .left,.right{
+    background-image: none;
+}
+.teachercontent .left .pre{
+    display: inline-block;
+    background: url("../../../public/image/grade/图标-箭头-ff9900.png") no-repeat center center;
+    background-size: 77px 77px;
+    width: 77px;
+    height: 77px;
+    position: relative;
+    top: 30%;
+    left: -180%;
+}
+.teachercontent .right .next{
+    display: inline-block;
+    background: url("../../../public/image/grade/图标-箭头-ff9900.png") no-repeat center center;
+    background-size: 77px 77px;
+    width: 77px;
+    height: 77px;
+    transform: rotateY(180deg);
+    position: relative;
+    top: 30%;
+    right: -132%;
 }
 .teacher .content .synopsis{
     padding: 25px;
@@ -144,7 +217,7 @@
     text-indent:25px
 }
 .teacher .content .synopsis p{
-    font-size: 16px;
+    font-size: 18px;
 }
 /*导航条*/
 .teacher  .control{

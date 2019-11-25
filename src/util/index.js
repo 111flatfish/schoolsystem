@@ -239,6 +239,89 @@ function aboutInit(that) {
             }
         });
     });
+    $(function () {
+        // 初始化位置
+        let group = $(".about_honor ul li");
+        let len = 280;
+        for(let i = 0 ; i < group.length;i++){
+            group.eq(i).css("left",`${len*i}px`);
+        }
+        group.eq(1).children("img").addClass("honorActive").end().css("z-index","2005");
+        // 轮播
+        that.timer2 = setInterval(function () {
+            group = $(".about_honor ul li");
+            group.first().clone(true).appendTo(".about_honor ul").css("left",`${len*(group.length)}px`);
+            let group2 = $(".about_honor ul li");
+            group2.stop(true).animate({
+                left:`-=${len}`
+            },500,function () {
+                group2.first().remove();
+                group2.eq(2).children("img").addClass("honorActive").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").end().css("z-index","1005");
+            })
+        },3000);
+
+        // 点击图片切换
+        $(".about_honor ul").mouseenter(function () {
+            clearInterval(that.timer2);
+        }).mouseleave(function () {
+            that.timer2 = setInterval(function () {
+                group = $(".about_honor ul li");
+                group.first().clone(true).appendTo(".about_honor ul").css("left",`${len*(group.length)}px`);
+                let group2 = $(".about_honor ul li");
+                group2.stop(true).animate({
+                    left:`-=${len}`
+                },500,function () {
+                    group2.first().remove();
+                    group2.eq(2).children("img").addClass("honorActive").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").end().css("z-index","1005");
+                })
+            },3000);
+        });
+
+        // 点击上一张或下一张
+        let group3 = $(".about_honor ul li");
+        let isClick = false;
+        group3.click(function () {
+            if(!isClick){
+                isClick = true;
+                // window.console.log($(this).index());
+                let index = $(this).index();
+                switch (index) {
+                    // 上一张
+                    case 0:
+                        let group4 = $(".about_honor ul li");
+                        group4.last().clone(true).prependTo(".about_honor ul").stop(true).css("left",`${-len}px`);
+                        let group5 = $(".about_honor ul li");
+                        group5.stop(true).animate({
+                            left:`+=${len}`
+                        },500,function () {
+                            group5.last().remove();
+                            group5.eq(1).children("img").addClass("honorActive").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").end().css("z-index","1005");
+                            // group5.eq(1).children("img").addClass("honorActive").end().siblings().children("img").removeClass("honorActive");
+                            isClick = false;
+                        });
+                        break;
+                    // 中间
+                    case 1:
+                        isClick = false;
+                        break;
+                    // 下一张
+                    case 2:
+                        let group = $(".about_honor ul li");
+                        group.first().clone(true).appendTo(".about_honor ul").stop(true).css("left",`${len*(group.length)}px`);
+                        let group2 = $(".about_honor ul li");
+                        group2.stop(true).animate({
+                            left:`-=${len}`
+                        },500,function () {
+                            group2.first().remove();
+                            group2.eq(2).children("img").addClass("honorActive").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").end().css("z-index","1005");
+                            // window.console.log(src);
+                            isClick = false;
+                        });
+                        break;
+                }
+            }
+        });
+    });
 }
 
 

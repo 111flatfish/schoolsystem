@@ -5,6 +5,9 @@
         <Banner v-bind:banner-data="type" v-bind:location-data="loc"></Banner>
         <!--内容-->
         <main class="container">
+            <div class="achievement_header">
+                <h1>历届成绩</h1>
+            </div>
             <!--成绩展示区-->
             <div class="row clearfix">
                 <div class="col-sm-6 col-md-3 content" v-for="item in currentGrade">
@@ -14,6 +17,8 @@
                         <!--描述-->
                         <div class="caption">
                             <h3>{{item.name}}</h3>
+                            <p>{{item.school}}</p>
+                            <p>{{item.school}}</p>
                             <p>{{item.school}}</p>
                         </div>
                     </div>
@@ -134,20 +139,48 @@
 
 <style scoped>
 .achievement{
-    background-color: #f4f5f7;
-    background: url("../../../public/image/background/background2.jpg") no-repeat;
-    background-size: 100% 100%;
+    margin-top: 250px;
+}
+.achievement .achievement_header{
+    background: url("../../../public/image/teacher/标题容器.png") no-repeat center center;
+    background-size:433px 163px;
+    height: 200px;
+    padding-top: 25px;
+}
+.achievement .achievement_header h1{
+    text-align: center;
+    font-size: 71px;
+}
+.achievement .thumbnail{
+    padding: 0;
+    box-shadow: 1px 1px 2px 2px rgba(0,0,0,.2);
 }
 .achievement .thumbnail:hover{
     box-shadow: 0 0 5px 3px rgba(0,0,0,.2);
     cursor: pointer;
 }
 .achievement .thumbnail img{
-    width: 310px;
-    height: 310px;
+    width: 100%;
 }
 .achievement .thumbnail p{
     font-weight: bold;
+}
+.achievement .thumbnail h3{
+    font-size: 34px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.achievement .thumbnail h3:after{
+    content: '';
+    border-bottom: 2px solid #000;
+    height: 3px;
+    width: 100px;
+    position: absolute;
+    top:40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+
 }
 main{
     color: #404040;
@@ -182,7 +215,7 @@ main nav{
     .achievement .thumbnail h3{
         font-size: 18px;
         font-weight: bold;
-        margin-top: 0px;
+        margin-top: 0;
     }
     .achievement .thumbnail p{
         font-size: 14px;

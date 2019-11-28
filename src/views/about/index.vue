@@ -542,6 +542,9 @@ main{
     }
 }
 @media (max-width: 768px) {
+    .about{
+        margin-top: 60px;
+    }
     .about_evi_content .showaboutimg{
         height: 250px;
     }

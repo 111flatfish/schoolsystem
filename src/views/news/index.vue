@@ -549,6 +549,50 @@
     }
 
     @media (max-width: 768px) {
+        /*内容*/
+        .news{
+            margin-top: 60px;
+        }
+        /*搜索框*/
+        .news .search input{
+            font-size: 16px;
+        }
+        .news .search button{
+            height: 30px;
+            font-size: 16px;
+            right: 0;
+            width: 30%;
+            padding: 0;
+            margin-left: 60px;
+        }
+        .news .searchfilter>ul li{
+            margin-right: 20px;
+        }
+        /*文章内容*/
+        .content{
+            padding: 0;
+        }
+        .content ul{
+            padding-right: 0;
+        }
+        .content ul .media{
+            margin: 0;
+            padding:10px 5px;
+        }
+        .article_content{
+            padding: 0;
+        }
+        .content ul .media .media-body .dec{
+            bottom:45px;
+        }
+        .content ul .media .media-body .dec{
+            left: 0;
+            bottom: 45px;
+            text-align: left;
+            width: 210px;
+        }
+
+
         .searchinput,.searchfilter{
             display: inline-block;
             padding: 5px;
@@ -559,11 +603,6 @@
         }
         .news .search input{
             height: 30px;
-        }
-        .news .search button{
-            height: 30px;
-            font-size: 22px;
-            right: 0px;
         }
         .content{
             margin: 0;
@@ -578,17 +617,11 @@
             width: 120px;
             height: 100px;
         }
-        .content ul .media{
-            padding: 10px;
+        .row{
+            margin: 0;
         }
         .content ul .media .media-body p{
             margin: 10px 0 10px 0;
-            width: 210px;
-        }
-        .content ul .media .media-body .dec{
-            left: 0;
-            bottom: 0px;
-            text-align: left;
             width: 210px;
         }
         .content ul .media .media-body span{
@@ -598,21 +631,49 @@
         .content ul .media .media-body .dec li{
             font-size: 12px;
         }
+        .content ul .media .media-body .dec ul{
+            position: relative;
+            left: -8px;
+        }
         .content ul .media .media-body .media-heading{
-            margin-left: 0px;
+            margin-left: 0;
         }
 
+        /*页码栏*/
+        .pageContainer nav{
+            left: 0;
+        }
+        .pagination{
+            display: block;
+        }
+        .pageContainer li span{
+            width: 30px;
+            text-align: center;
+            padding: 5px;
+        }
+        /*跳转栏*/
+        .pageContainer .jumppage{
+            display: block;
+        }
+        .pageContainer .jumppage input{
+            left: 0;
+            top: 0;
+        }
+        .pageContainer .jumppage span{
+            left: 0;
+            top: 0;
+        }
+        .pageContainer .jumppage input:nth-of-type(2){
+            left: 20px;
+        }
+
+        /*广告栏*/
         .content .adv{
             margin-top: 0;
             padding-left: 10px;
         }
         .content .adv_item{
             height: 300px;
-        }
-        .pageContainer li span{
-            width: 30px;
-            text-align: center;
-            padding: 5px;
         }
 
     }

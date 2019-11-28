@@ -305,6 +305,18 @@
     }
     /*小于768*/
     @media (max-width: 768px) {
+        .container-fluid > .navbar-collapse{
+            margin: 0 0;
+        }
+        .container-fluid{
+            padding: 0 0;
+        }
+        .navbar-collapse{
+            padding: 0 0;
+        }
+        .navbar-toggle{
+            margin-right: 30px;
+        }
         .header .header_content{
             display: none;
         }
@@ -324,11 +336,13 @@
         /*第二条*/
         .header .nav2{
             margin-left:-180px;
+            z-index: 5002;
         }
         .header .nav2 li{
             width: 250px;
             margin: 0 auto;
         }
+
     }
 
 

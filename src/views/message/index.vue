@@ -394,6 +394,10 @@ main{
 }
 
 @media (max-width: 768px) {
+    /*内容*/
+    .message{
+        margin-top: 60px;
+    }
     .message_item{
         margin: 10px 0 20px 0;
     }
@@ -412,13 +416,14 @@ main{
         padding: 5px;
     }
     .message_content .teachercontent p:before, .message_content .studentcontent p:before{
-        top:6px;
+        top:-7px;
     }
     .message_content .teachercontent p:after, .message_content .studentcontent p:after{
-        top:8px;
+        top:-7px;
     }
     .message_content{
         padding: 10px 0;
+        background-size: 90%;
     }
     .pageContainer li span{
         width: 30px;
@@ -430,9 +435,6 @@ main{
     }
     .message_form .studentheadimg img{
         width: 80px;
-    }
-    .message_form .studentheadimg{
-        top:-180px
     }
     .message_form>div,.message_form .studentheadimg{
         display: inline-block;
@@ -450,5 +452,30 @@ main{
     .message_form label{
         font-size: 14px;
     }
+    /*页码栏*/
+    .pageContainer nav{
+        display: block;
+    }
+    .pagination{
+        position: relative;
+        left: 20px;
+    }
+    /*页码跳转*/
+    .pageContainer .jumppage input{
+        top:0;
+        left: -20px;
+    }
+    .pageContainer .jumppage input:nth-of-type(2){
+        left: 20px;
+    }
+    .pageContainer .jumppage span{
+        top:0;
+        left: -10px;
+    }
+    /*输入框*/
+    .message_form .form-group #buttonsubmit{
+        margin-left: 24px;
+    }
+
 }
 </style>

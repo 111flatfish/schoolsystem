@@ -205,6 +205,21 @@ main nav{
 }
 
 @media (max-width: 768px) {
+    /*头部*/
+    .achievement{
+        margin-top: 60px;
+    }
+    .achievement .achievement_header h1{
+        font-size: 58px;
+    }
+    .achievement .achievement_header{
+        background-size:300px 150px;
+    }
+    .achievement .thumbnail h3:after{
+        top: 20px;
+    }
+
+    /*内容*/
     .achievement .thumbnail img{
         width: 130px;
         height: 130px;
@@ -216,6 +231,7 @@ main nav{
         font-size: 18px;
         font-weight: bold;
         margin-top: 0;
+        margin-bottom: 10px;
     }
     .achievement .thumbnail p{
         font-size: 14px;

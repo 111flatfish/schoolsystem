@@ -144,6 +144,39 @@
         cursor: pointer;
     }
 
+    @media (max-width: 768px) {
+        /*图像*/
+        .footer_image img{
+            display: none;
+        }
+        /*二维码*/
+        .footer_content_erweima ul li:nth-of-type(1){
+            left: 0;
+        }
+        .footer_content_erweima ul li:nth-of-type(2){
+            right: 0;
+        }
+        .footer_content_erweima ul li img{
+            width: 120px;
+            height: 120px;
+        }
+        .footer_content_erweima h2{
+            margin: 5px 0;
+        }
+        .footer_content_erweima{
+            margin-top: 15px;
+        }
+        /*热线*/
+        .footer_content_txt ul li{
+            display: block;
+            position: relative;
+        }
+        .footer_content_txt ul li:nth-of-type(2){
+            left: 0;
+            margin-left: 0;
+        }
+
+    }
 
 
 </style>

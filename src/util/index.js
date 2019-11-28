@@ -4,62 +4,6 @@ import qs from "qs"
 // index页jQuery初始化
 function indexInit(that) {
     $(document).ready(function () {
-    for(let i = 0 ; i < $(".scrollbox .media").length;i++){
-        $(".scrollbox .media").eq(i).css("top",`${185*i}px`);
-    };
-    for(let j = 0 ; j < $(".scrollbox2 .media").length;j++){
-        $(".scrollbox2 .media").eq(j).css("top",`${185*j}px`);
-    };
-
-
-        // 信息向上滑动,slideUp,slideDown,fadeTo均为动画效果
-        that.timer = setInterval(function () {
-            let group = $(".scrollbox .media");
-            $(".scrollbox .media").animate({
-                top:`-=185`
-            });
-            $(".scrollbox .media").first().hide(10,function () {
-                $(this).css("top",`${185*(group.length-1)}px`).appendTo(".scrollbox").stop(true).fadeTo(300,1);
-            });
-        }, 3000);
-        that.timer2 = setInterval(function () {
-            let group2 = $(".scrollbox2 .media");
-            $(".scrollbox2 .media").animate({
-                top:`-=185`
-            });
-            $(".scrollbox2 .media").first().hide(10,function () {
-                $(this).css("top",`${185*(group2.length-1)}px`).appendTo(".scrollbox2").stop(true).fadeTo(300,1);
-            });
-        }, 2500);
-
-        // 鼠标悬停，动画停止
-        $(".scrollbox").mouseenter(function () {
-            window.clearInterval(that.timer);
-        }).mouseleave(function () {
-            that.timer = setInterval(function () {
-                let group = $(".scrollbox .media");
-                $(".scrollbox .media").animate({
-                    top:`-=185`
-                });
-                $(".scrollbox .media").first().hide(10,function () {
-                    $(this).css("top",`${185*(group.length-1)}px`).appendTo(".scrollbox").stop(true).fadeTo(300,1);
-                });
-            }, 3000);
-        });
-        $(".scrollbox2").mouseenter(function () {
-            window.clearInterval(that.timer2);
-        }).mouseleave(function () {
-            that.timer2 = setInterval(function () {
-                let group2 = $(".scrollbox2 .media");
-                $(".scrollbox2 .media").animate({
-                    top:`-=185`
-                });
-                $(".scrollbox2 .media").first().hide(10,function () {
-                    $(this).css("top",`${185*(group2.length-1)}px`).appendTo(".scrollbox2").stop(true).fadeTo(300,1);
-                });
-            }, 2500);
-        });
-        //
         // 表单缩放
         // 最小化
         $(".form #minimize").click(function () {
@@ -73,13 +17,15 @@ function indexInit(that) {
                     $(".form").show(200);
                 });
         });
-
         // 当来源为其他时弹出输入框
         $("#form #selectFrom").click(function () {
             if($(this).val() == "other"){
                 $(this).next("#selectFromTxt").show();
             }
         });
+        // 师资力量的轮播图
+        $(".index_teacher_banner .item").first().addClass("active");
+
     });
 }
 
@@ -246,7 +192,9 @@ function aboutInit(that) {
         for(let i = 0 ; i < group.length;i++){
             group.eq(i).css("left",`${len*i}px`);
         }
-        group.eq(1).children("img").addClass("honorActive").end().css("z-index","2005");
+        group.eq(1).children("img").addClass("honorActive").css("opacity","1").end().css({
+            zIndex:"2005"
+        });
         // 轮播
         that.timer2 = setInterval(function () {
             group = $(".about_honor ul li");
@@ -256,7 +204,9 @@ function aboutInit(that) {
                 left:`-=${len}`
             },500,function () {
                 group2.first().remove();
-                group2.eq(2).children("img").addClass("honorActive").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").end().css("z-index","1005");
+                group2.eq(2).children("img").addClass("honorActive").css("opacity","1").end().css({
+                    zIndex:"2005",
+                }).siblings().children("img").removeClass("honorActive").css("opacity","0.5").end().css("z-index","1005");
             })
         },3000);
 
@@ -272,7 +222,9 @@ function aboutInit(that) {
                     left:`-=${len}`
                 },500,function () {
                     group2.first().remove();
-                    group2.eq(2).children("img").addClass("honorActive").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").end().css("z-index","1005");
+                    group2.eq(2).children("img").addClass("honorActive").css("opacity","1").end().css({
+                        zIndex:"2005"
+                    }).siblings().children("img").removeClass("honorActive").css("opacity","0.5").end().css("z-index","1005");
                 })
             },3000);
         });
@@ -295,7 +247,7 @@ function aboutInit(that) {
                             left:`+=${len}`
                         },500,function () {
                             group5.last().remove();
-                            group5.eq(1).children("img").addClass("honorActive").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").end().css("z-index","1005");
+                            group5.eq(1).children("img").addClass("honorActive").css("opacity","1").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").css("opacity","0.5").end().css("z-index","1005");
                             // group5.eq(1).children("img").addClass("honorActive").end().siblings().children("img").removeClass("honorActive");
                             isClick = false;
                         });
@@ -313,7 +265,7 @@ function aboutInit(that) {
                             left:`-=${len}`
                         },500,function () {
                             group2.first().remove();
-                            group2.eq(2).children("img").addClass("honorActive").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").end().css("z-index","1005");
+                            group2.eq(2).children("img").addClass("honorActive").css("opacity","1").end().css("z-index","2005").siblings().children("img").removeClass("honorActive").css("opacity","0.5").end().css("z-index","1005");
                             // window.console.log(src);
                             isClick = false;
                         });

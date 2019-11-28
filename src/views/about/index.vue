@@ -505,17 +505,20 @@ main{
     left: 0;
     bottom: 0;
     margin-top: 100px;
-    height: 700px;
+    height: 800px;
     overflow: hidden;
+    margin-left: 50px;
 
 }
 .honorActive{
     transform: scale(1.1,1.4);
     transition: .5s;
+    opacity: 1;
 }
 .about_honor ul li img{
     width: 740px;
     height: 360px;
+    opacity: 0.5;
 }
 .about_honor ul li {
     position: absolute;
@@ -529,7 +532,15 @@ main{
 
 
 
-
+@media (max-width: 1600px) {
+    /*学校荣誉*/
+    .about_honor ul li img{
+        width: 560px;
+    }
+    .about_honor ul{
+        margin-left: 0;
+    }
+}
 @media (max-width: 768px) {
     .about_evi_content .showaboutimg{
         height: 250px;

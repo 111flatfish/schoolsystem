@@ -80,8 +80,8 @@
                             </ul>
                         </nav>
                         <div class="jumppage">
-                            <input type="number" class="btn"><span>/{{totalPage}}</span>
-                            <input type="button" class="btn" value="转到此页">
+                            <input type="number" class="btn" v-model="inputPage"><span>/{{totalPage}}</span>
+                            <input type="button" class="btn" value="转到此页" @click="jump">
                         </div>
                     </div>
 
@@ -128,6 +128,7 @@
               currentPage:1,            //当前页，默认为1
               pageNum:5,                //一页最多显示的文章数
               totalPage:1,             //总页数
+              inputPage:1,              //输入跳转的页面
 
               // 是否搜索
               isSearch:false,
@@ -144,6 +145,7 @@
               type:"guide",
               // banner位置
               loc:"title"
+
 
           }
         },
@@ -165,7 +167,6 @@
                     });
                     // 默认显示第一页
                     this.currenArticle = this.articles.slice(0,5);
-
                 }else {
                     this.$router.push({
                         path:"/error"
@@ -188,6 +189,12 @@
                 this.currentPage = n;
                 this.currenArticle = this.articles.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
 
+            },
+            // 跳转页面
+            jump(){
+                this.inputPage<1?this.inputPage=1:this.inputPage>this.totalPage?this.inputPage = this.totalPage:null;
+                this.currentPage = this.inputPage;
+                this.currenArticle = this.articles.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
             },
             // 点击上一页或者下一页
             pagePreOrNext(n){
@@ -514,6 +521,9 @@
     left: -30px;
     border: 1px solid #ccc;
 }
+.pageContainer .jumppage input:nth-of-type(1){
+    font-size: 20px;
+}
 .pageContainer .jumppage input:nth-of-type(2){
     left: 0;
     background-color: #fff;
@@ -523,9 +533,9 @@
 }
 .pageContainer .jumppage span{
     position: relative;
-    top: -56px;
+    top: -52px;
     left: -30px;
-    font-size: 20px;
+    font-size: 22px;
 }
 .pageContainer li{
     cursor: pointer;

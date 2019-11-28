@@ -628,6 +628,7 @@
     }
 
     /*内容展示区2*/
+    /*考察内容*/
     .showcontent .show2{
         margin-top: 30px;
         border-radius: 4px;
@@ -655,7 +656,7 @@
         color: #333333;
     }
     .showcontent .show2 .nav-tabs li a{
-        width: 163px;
+        width: 178.4px;
         border-width: 2px;
         text-align: center;
     }
@@ -828,7 +829,11 @@
         margin-bottom: 50px;
         margin-left: 0;
     }
-
+    @media (max-width: 1600px){
+        .showcontent .show2 .nav-tabs li a{
+            width: 134.6px;
+        }
+    }
     @media (max-width:768px) {
         .showcontent .show2 .tab-content .tab-pane img{
             height: 200px;

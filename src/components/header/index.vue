@@ -47,7 +47,7 @@
                         <ul class="nav navbar-nav nav1">
                             <!--首页-->
                             <li>
-                                <a href="#">戏传首页</a>
+                                <router-link tag="a" to="/index">戏传首页</router-link>
                             </li>
                             <!--戏传特色-->
                             <li>
@@ -59,19 +59,19 @@
                             </li>
                             <!--艺考指南-->
                             <li>
-                                <a href="#">学院成绩</a>
+                                <router-link to="/achievement" tag="a">学院成绩</router-link>
                             </li>
                             <!--历届成绩-->
                             <li>
-                                <a href="#">答疑解惑</a>
+                                <router-link to="/message" tag="a">答疑解惑</router-link>
                             </li>
                             <!--留言板-->
                             <li>
-                                <a href="#">戏传新闻</a>
+                                <router-link to="/news" tag="a">戏传新闻</router-link>
                             </li>
                             <!--关于我们-->
                             <li>
-                                <a href="#">关于我们</a>
+                                <router-link to="/about" tag="a">关于我们</router-link>
                             </li>
                         </ul>
                         <!--第二个导航条-->
@@ -204,9 +204,6 @@
         height: 45px;
     }
 
-
-
-
     /*导航条*/
     .header .collapse{
         font-size: 16px;
@@ -219,9 +216,9 @@
     }
     .header .navbar{
         background: #fff;
-        border: none;
-        width: 100%;
+        width: 105%;
         margin-bottom: 0;
+        /*border-top: 1px solid #ccc;*/
 
     }
     .header .navbar li{
@@ -258,7 +255,6 @@
         left: 50%;
         margin-left: -665px;
         float: none;
-
     }
     /*第二条*/
     .header .nav2{

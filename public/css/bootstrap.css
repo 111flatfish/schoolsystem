@@ -1597,11 +1597,39 @@ pre code {
     width: 930px;
   }
 }
-@media (min-width: 1200px) {
-  .container {
-    width: 1300px;
-  }
+@media (min-width: 1280px) {
+.container {
+width: 1100px;
 }
+}
+@media (min-width: 1600px) {
+.container {
+width: 1400px;
+}
+}
+
+
+
+/*@media (max-width: 2500px) {*/
+  /*.container {*/
+    /*width: 1400px;*/
+  /*}*/
+/*}*/
+/*@media (max-width: 1600px) and (min-width: 970px){*/
+  /*.container {*/
+    /*width: 1100px;*/
+    /*!*width: 930px;*!*/
+  /*}*/
+/*}*/
+/*@media (max-width: 970px)and (min-width: 768px){*/
+  /*.container {*/
+    /*width: 930px;*/
+    /*!*width: 730px;*!*/
+  /*}*/
+/*}*/
+
+
+
 .container-fluid {
   padding-right: 15px;
   padding-left: 15px;

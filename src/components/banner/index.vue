@@ -95,9 +95,6 @@
     }
 }
 @media (max-width:400px ){
-    .banner{
-        margin-bottom: 15px;
-    }
     .banner img{
         width: 100%;
         height: 200px;

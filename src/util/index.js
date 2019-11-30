@@ -3,10 +3,11 @@ import qs from "qs"
 // 公共函数
 // index页jQuery初始化
 function indexInit(that) {
-    $(document).ready(function () {
+    $(function () {
         // 表单缩放
         // 最小化
         $(".form #minimize").click(function () {
+                window.console.log("aa");
                 $(".form").hide(function () {
                     $(".form_min").show();
                 });
@@ -23,9 +24,6 @@ function indexInit(that) {
                 $(this).next("#selectFromTxt").show();
             }
         });
-        // 师资力量的轮播图
-        $(".index_teacher_banner .item").first().addClass("active");
-
     });
 }
 
@@ -63,16 +61,36 @@ function guideInit(that) {
                     that.filterArg = 366;
                     break;
             }
+            that.selectFn(that.filterArg);
             $(this).addClass("filterActive").siblings().removeClass("filterActive");
         });
     });
 }
 
 // 新闻详情页初始化
-function newsInit() {
-    // 广告栏初始化，必须在请求后获取高度
+function newsInit(that) {
+    // 广告栏初始化
     $(function () {
-        $(".news .content .adv .adv_item").css("height","466px");
+        // 初始筛选为全部
+        $(".searchfilter ul li").last().addClass("filterActive");
+        $(".searchfilter ul li").click(function () {
+            switch ($(this).text()) {
+                case "最近七天":
+                    that.filterArg = 7;
+                    break;
+                case "最近一月":
+                    that.filterArg = 30;
+                    break;
+                case "最近半年":
+                    that.filterArg = 183;
+                    break;
+                case "全部":
+                    that.filterArg = 366;
+                    break;
+            }
+            that.selectFn(that.filterArg);
+            $(this).addClass("filterActive").siblings().removeClass("filterActive");
+        });
     });
 }
 
@@ -188,7 +206,12 @@ function aboutInit(that) {
     $(function () {
         // 初始化位置
         let group = $(".about_honor ul li");
-        let len = 280;
+        let len;
+        if(group.first().outerWidth()<200){
+            len = 120;
+        }else {
+            len = 280;
+        }
         for(let i = 0 ; i < group.length;i++){
             group.eq(i).css("left",`${len*i}px`);
         }

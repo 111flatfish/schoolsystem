@@ -78,11 +78,11 @@
                         <ul class="nav navbar-nav nav2">
                             <!--播音与主持艺术专业-->
                             <li>
-                                <router-link to="/major/perform" tag="a">播音与主持艺术专业</router-link>
+                                <router-link to="/major/broadcasting" tag="a">播音与主持艺术专业</router-link>
                             </li>
                             <!--戏剧影视表演-->
                             <li>
-                                <router-link to="/major/broadcasting" tag="a">戏剧影视表演</router-link>
+                                <router-link to="/major/perform" tag="a">戏剧影视表演</router-link>
                             </li>
                             <!--广播电视编导专业-->
                             <li>

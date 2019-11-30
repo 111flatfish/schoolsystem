@@ -223,6 +223,9 @@ main{
     font-weight: 400;
     margin: 0 auto;
 }
+.about{
+    margin-top: 207px;
+}
 /*学校简介*/
 .about_introduce{
     background-color: #d6d6d6;
@@ -281,7 +284,6 @@ main{
 }
 .about_evi_content .showaboutimg{
     width: 100%;
-    height: 600px;
 }
 .about_evi_content ul{
     width: 425px;
@@ -542,15 +544,20 @@ main{
     }
 }
 @media (max-width: 768px) {
+    /*学校简介*/
+    .about_introduce_content{
+        margin: 50px 0;
+    }
+    /*办学理念*/
+    .about_evi_content{
+        margin: 10px 0;
+    }
     .about{
         margin-top: 60px;
     }
-    .about_evi_content .showaboutimg{
-        height: 250px;
-    }
-    ul{
-        width: 170px;
-        height: 48px;
+    .about_evi_content ul{
+        width: 209px;
+        height: 60px;
         position:absolute;
         right: 20px;
         bottom: 10px;
@@ -560,7 +567,7 @@ main{
         background-color: white;
         border-radius: 4px;
     }
-    ul li img{
+    .about_evi_content ul li img{
         width: 50px;
         height: 40px;
         margin-right: 5px;
@@ -571,5 +578,33 @@ main{
     .about_idea_content div:nth-child(2){
         padding: 0;
     }
+    /*教学特色*/
+    .about_feature{
+        display: none;
+    }
+    /*教学体系*/
+    .about .about_system_header span,.about .about_honor_header span{
+        font-size: 50px;
+    }
+    .about_system_content .media .media-left{
+        display: block;
+    }
+    .about_system_content .media{
+        height: 100%;
+    }
+    /*学校荣耀*/
+    .about_honor ul{
+        height: 300px;
+        margin-top: 0;
+    }
+    .about_honor ul li img{
+        width: 120px;
+        height: 100px;
+    }
+    .honorActive{
+        transform: scale(1.8,1.4);
+    }
+
+
 }
 </style>

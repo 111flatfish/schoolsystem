@@ -231,6 +231,9 @@ main{
     font-weight: 400;
     margin: 20px auto;
 }
+.message{
+    margin-top: 207px;
+}
 .message_inner{
     border: 1px solid #000;
     border-radius: 8px;

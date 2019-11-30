@@ -31,7 +31,7 @@
 
                                 <!-- 图片内容 -->
                                 <div class="carousel-inner index_teacher_banner" role="listbox" style="border-radius: 4px">
-                                    <div class="item" v-for="item in teacher">
+                                    <div class="item" v-for="item in teacher" @click="ToTeacher(item.id)">
                                         <img v-bind:src="item.picture" alt="teacher">
                                         <div class="carousel-caption">
                                             <h1>{{item.name}}</h1>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="index_article_content_subcontent">
                                     <ul class="row clearfix">
-                                        <li class="media" >
+                                        <li class="media" v-for="item in article">
                                             <div class="media-left">
                                                 <!--图片-->
                                                 <a href="#">
@@ -154,65 +154,27 @@
                                             <!--内容-->
                                             <div class="media-body">
                                                 <!--标题-->
-                                                <h3 class="media-heading">文章标题栏</h3>
+                                                <h3 class="media-heading">{{item.title}}</h3>
                                                 <!--内容-->
-                                                <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                                                <p>{{item.content}}</p>
                                                 <!--简介-->
                                                 <div class="dec">
-                                                    <span><img src="../../../public/image/article/图标-时钟.png" alt="time">2019-01-01</span><span><img
-                                                        src="../../../public/image/article/图标-眼睛.png" alt="hit">999+</span><span>标签
-                                                    <!--<ul v-for="item2 in item.lable" style="display: inline-block">-->
-                                                    <!--<li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>-->
-                                                    <!--</ul>-->
-                                </span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="media" >
-                                            <div class="media-left">
-                                                <!--图片-->
-                                                <a href="#">
-                                                    <img class="media-object" src="../../../public/image/article/article.jpg" alt="图片">
-                                                </a>
-                                            </div>
-                                            <!--内容-->
-                                            <div class="media-body">
-                                                <!--标题-->
-                                                <h3 class="media-heading">文章标题栏</h3>
-                                                <!--内容-->
-                                                <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                                                <!--简介-->
-                                                <div class="dec">
-                                                    <span><img src="../../../public/image/article/图标-时钟.png" alt="time">2019-01-01</span><span><img
-                                                        src="../../../public/image/article/图标-眼睛.png" alt="hit">999+</span><span>标签
-                                                    <!--<ul v-for="item2 in item.lable" style="display: inline-block">-->
-                                                    <!--<li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>-->
-                                                    <!--</ul>-->
-                                </span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="media" >
-                                            <div class="media-left">
-                                                <!--图片-->
-                                                <a href="#">
-                                                    <img class="media-object" src="../../../public/image/article/article.jpg" alt="图片">
-                                                </a>
-                                            </div>
-                                            <!--内容-->
-                                            <div class="media-body">
-                                                <!--标题-->
-                                                <h3 class="media-heading">文章标题栏</h3>
-                                                <!--内容-->
-                                                <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                                                <!--简介-->
-                                                <div class="dec">
-                                                    <span><img src="../../../public/image/article/图标-时钟.png" alt="time">2019-01-01</span><span><img
-                                                        src="../../../public/image/article/图标-眼睛.png" alt="hit">999+</span><span>标签
-                                                    <!--<ul v-for="item2 in item.lable" style="display: inline-block">-->
-                                                    <!--<li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>-->
-                                                    <!--</ul>-->
-                                </span>
+                                                    <!--发布时间-->
+                                                    <span>
+                                                        <img src="../../../public/image/article/图标-时钟.png" alt="time">{{item.create_time}}
+                                                    </span>
+                                                    <!--浏览量-->
+                                                    <span>
+                                                        <img src="../../../public/image/article/图标-眼睛.png" alt="hit">999+
+                                                    </span>
+                                                    <!--标签-->
+                                                    <span>
+                                                        <ul v-for="item2 in item.lable" style="display: inline-block">
+                                                            <li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 2px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">
+                                                                {{item2}}
+                                                            </li>
+                                                        </ul>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </li>
@@ -226,7 +188,7 @@
                                 </div>
                                 <div class="index_article_content_subcontent">
                                     <ul class="row clearfix">
-                                        <li class="media" >
+                                        <li class="media" v-for="item in news">
                                             <div class="media-left">
                                                 <!--图片-->
                                                 <a href="#">
@@ -236,65 +198,22 @@
                                             <!--内容-->
                                             <div class="media-body">
                                                 <!--标题-->
-                                                <h3 class="media-heading">文章标题栏</h3>
+                                                <h3 class="media-heading">{{item.title}}</h3>
                                                 <!--内容-->
-                                                <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                                                <p>{{item.content}}</p>
                                                 <!--简介-->
                                                 <div class="dec">
-                                                    <span><img src="../../../public/image/article/图标-时钟.png" alt="time">2019-01-01</span><span><img
-                                                        src="../../../public/image/article/图标-眼睛.png" alt="hit">999+</span><span>标签
-                                                    <!--<ul v-for="item2 in item.lable" style="display: inline-block">-->
-                                                    <!--<li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>-->
-                                                    <!--</ul>-->
-                                </span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="media" >
-                                            <div class="media-left">
-                                                <!--图片-->
-                                                <a href="#">
-                                                    <img class="media-object" src="../../../public/image/article/article.jpg" alt="图片">
-                                                </a>
-                                            </div>
-                                            <!--内容-->
-                                            <div class="media-body">
-                                                <!--标题-->
-                                                <h3 class="media-heading">文章标题栏</h3>
-                                                <!--内容-->
-                                                <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                                                <!--简介-->
-                                                <div class="dec">
-                                                    <span><img src="../../../public/image/article/图标-时钟.png" alt="time">2019-01-01</span><span><img
-                                                        src="../../../public/image/article/图标-眼睛.png" alt="hit">999+</span><span>标签
-                                                    <!--<ul v-for="item2 in item.lable" style="display: inline-block">-->
-                                                    <!--<li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>-->
-                                                    <!--</ul>-->
-                                </span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li class="media" >
-                                            <div class="media-left">
-                                                <!--图片-->
-                                                <a href="#">
-                                                    <img class="media-object" src="../../../public/image/article/article.jpg" alt="图片">
-                                                </a>
-                                            </div>
-                                            <!--内容-->
-                                            <div class="media-body">
-                                                <!--标题-->
-                                                <h3 class="media-heading">文章标题栏</h3>
-                                                <!--内容-->
-                                                <p>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                                                <!--简介-->
-                                                <div class="dec">
-                                                    <span><img src="../../../public/image/article/图标-时钟.png" alt="time">2019-01-01</span><span><img
-                                                        src="../../../public/image/article/图标-眼睛.png" alt="hit">999+</span><span>标签
-                                                    <!--<ul v-for="item2 in item.lable" style="display: inline-block">-->
-                                                    <!--<li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>-->
-                                                    <!--</ul>-->
-                                </span>
+                                                    <span>
+                                                        <img src="../../../public/image/article/图标-时钟.png" alt="time">{{item.create_time}}
+                                                    </span>
+                                                    <span>
+                                                        <img src="../../../public/image/article/图标-眼睛.png" alt="hit">999+
+                                                    </span>
+                                                    <span>
+                                                        <ul v-for="item2 in item.news_lable" style="display: inline-block">
+                                                            <li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>
+                                                        </ul>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </li>
@@ -325,10 +244,10 @@
                                             </div>
                                             <!--内容-->
                                             <div class="media-body">
-                                                <h3 class="media-heading">192.168.22.35</h3>
-                                                <time>2019-01-01</time>
+                                                <h3 class="media-heading">{{question.ip}}</h3>
+                                                <time>{{question.create_time}}</time>
                                                 <div class="studentcontent">
-                                                    <p>包租婆，为什么突然之间没有水了呢?</p>
+                                                    <p>{{question.question}}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -337,9 +256,9 @@
                                         <div class="media">
                                             <!--内容-->
                                             <div class="media-body">
-                                                <time>2019-01-01</time>
+                                                <time>{{question.answer_time}}</time>
                                                 <div class="teachercontent">
-                                                    <p>因为这里的水沟十八弯，这里的管道九连环。</p>
+                                                    <p>{{question.answer}}</p>
                                                 </div>
                                             </div>
                                             <div class="media-left">
@@ -567,6 +486,8 @@
                 grade:[],
                 // 老师介绍栏
                 teacher:[],
+                // 问答
+                question:[],
                 // 表单数据
                 formData:{
                     user_name:null,
@@ -590,7 +511,11 @@
         },
         // 方法
         methods:{
-
+            ToTeacher(id){
+                this.$router.push({
+                    path:`/teacher/${id}`
+                });
+            }
         },
         // 组件
         components:{
@@ -599,20 +524,31 @@
         // 组件创建
         created(){
             let that = this;
-            // 请求新闻数据
-              axiosReq.get("getNews/num/5").then(data=>{
+                 // 请求新闻数据
+                axiosReq.get("getNews/num/3/day/40 ").then(data=>{
                     this.news = data.data;
+                  // 拆分文章标签
+                  this.news.forEach((value)=>{
+                      value.create_time = value.create_time.match(/\d{4}-\d*-\d{2}/)[0];
+                      value.news_lable = value.news_lable.split(",");
+                  });
               });
-              // 请求文章数据
-                axiosReq.get("getArticle/num/3").then(data=>{
+                // 请求文章数据
+                axiosReq.get("getArticle/num/3/day/40").then(data=>{
                     this.article = data.data;
+                    // 拆分文章标签
+                    this.article.forEach((value)=>{
+                       value.create_time = value.create_time.match(/\d{4}-\d*-\d{2}/)[0];
+                       value.lable = value.lable.split(",");
+                    });
                 });
                 // 获取老师数据
                 axiosReq.get("getTeachers/num/4").then(data=>{
                     this.teacher = data.data;
                     this.$nextTick(()=> {
                         $(function () {
-                            util.indexInit(that);
+                            // 师资力量的轮播图
+                            $(".index_teacher_banner .item").first().addClass("active");
                         })
                     })
                 });
@@ -620,10 +556,17 @@
                 axiosReq.get("getStudentGrade").then(data=>{
                     this.grade = data.data.splice(0,8);
                 });
+                // 获取最新留言
+                axiosReq.get("getQuestion").then(data=>{
+                    this.question = data.data[0];
+                    this.question.create_time = this.question.create_time.match(/\d{4}-\d*-\d{2}/)[0];
+                    this.question.answer_time = this.question.answer_time.match(/\d{4}-\d*-\d{2}/)[0];
+                });
         },
         // 组件挂载
         mounted() {
             let that = this;
+            util.indexInit(that);
             // 初始化jQuery动画和特效
             // 表单验证
             this.$nextTick(function () {
@@ -678,7 +621,9 @@
             });
             // textarea框的大小控制
             $(function () {
-                $(".index_question_inputquestoin textarea").attr("cols","30")
+                if($(window).outerWidth()<= 768){
+                    $(".index_question_inputquestoin textarea").attr("cols","30")
+                }
             });
         },
         updated(){
@@ -969,6 +914,7 @@
     .index_article_content_subcontent ul .media .media-body{
         position: relative;
         text-align: left;
+        width: 100%;
     }
     .index_article_content_subcontent ul .media .media-body p{
         font-size: 16px;
@@ -978,7 +924,7 @@
         text-align: left;
         margin-left: 10px;
         display: inline-block;
-        width: 58%;
+        width: 90%;
         height: 65px;
     }
 
@@ -1004,7 +950,7 @@
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
-        width: 650px;
+        width: 90%;
     }
     .index_article_content_subcontent ul .media .dec{
         text-align: left;
@@ -1050,7 +996,7 @@
         margin: 80px auto;
     }
     .index_question_content>div:nth-of-type(1){
-        margin-left: 5.3333333%;
+        margin-left: 3.33333%;
     }
     .index_question_content h1{
         color:#000;
@@ -1171,27 +1117,28 @@
         z-index: 2003;
     }
     .index_side ul{
-        width: 180px;
+        width: 200px;
         text-align: center;
     }
     .index_side ul li{
         margin: 20px 0;
         background-color: #eaeaea;
         border-radius: 50%;
-        width: 70px;
-        height: 70px;
-        line-height: 70px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
         position: relative;
+        box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3);
     }
     /*侧边栏图标*/
     .index_side ul li img{
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         cursor: pointer;
     }
     .index_side ul li:nth-of-type(5) img{
-        width: 50px;
-        height: 40px;
+        width: 40px;
+        height: 30px;
     }
     .index_side ul li span{
         padding: 10px;
@@ -1489,7 +1436,7 @@
     .form_min{
         position: fixed;
         bottom: 10px;
-        right: 80px;
+        right: 110px;
         z-index: 9999;
         display: none;
         cursor: pointer;
@@ -1508,7 +1455,12 @@
         }
     }
     @media (max-width:1600px) {
-        /*侧边栏*/
+        .index_article_content .col-md-5{
+            width: 45%;
+        }
+        .index_article_content .col-md-offset-2{
+            margin-left: 10%;
+        }
 
         /*文章动态*/
         .index_aritcle_content_subheader h1{
@@ -1516,7 +1468,10 @@
         }
         /*文章内容*/
         .index_article_content_subcontent ul .media .media-body p{
-            width: 38%;
+            width: 80%;
+        }
+        .index_article_content_subcontent ul .media .media-body h3{
+            width: 85%;
         }
         /*文章标签*/
         .index_article_content_subcontent ul .media .dec span{
@@ -1529,6 +1484,9 @@
         }
         .index_question_inputquestoin input:nth-of-type(2){
             left: 35%;
+        }
+        .index_question_content>div:nth-of-type(1){
+            margin-left: 1%;
         }
         /*学生成绩*/
         .index_grade_banner .index_grade_student img{

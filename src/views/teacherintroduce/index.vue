@@ -14,18 +14,16 @@
             </div>
             <!--老师内容-->
             <div class="row clearfix">
-                <div class="col-md-10 content">
+                <div class="col-md-12 content">
                     <div class="row clearfix teachercontent">
                         <!--文本-->
                         <div class="col-md-6  name">
-                            <h1>田二妞</h1>
-                            <p>毕业院校：中国传媒大学 </p>
+                            <h1>{{teacher.name}}</h1>
+                            <p>{{teacher.school}}</p>
                             <div class="teacher_lable">
                                 <p>标签：</p>
                                 <ul>
-                                    <li>国家一级保护动物</li>
-                                    <li>国家一级保护动物</li>
-                                    <li>国家一级保护动物</li>
+                                    <li v-for="item in teacher.lable">{{item}}</li>
                                 </ul>
                             </div>
                             <div class="teacher_achievement">
@@ -72,17 +70,8 @@
                     <h3 style="text-align: left;margin-left: 30px;font-weight: bold">简介</h3>
                     <div class="row clearfix synopsis">
                         <article>
-                            <p>2009年12月
-                                鹿乃 twitter
-                                鹿乃 twitter
-                                左右在NICO注册账号
-                                初次投稿是在2010年1月6日的恋爱サーキュレーション　她的声音很可爱， 所以被很多人认为是萝莉音。
-                                因为她的日语发音不怎么标准，所以也被一部分人认为她是才刚学会日语的天朝人。
-                                2010年1月下旬左右开始在NICO上活跃
-                                5月25日上传的けいおん！！に负けた鹿乃がおちゃめ机能歌ってみた 在翻唱排名中获得了第五位的成绩，点击首次超过了10万次。7月23日上传的歌ってみた ハロ/ハワユ鹿乃，取得了首次歌ってみたカテラン（翻唱排行榜）排名第一名的记录。还有这首歌在26日的カテゴリ合算(分类合算，我的名单)中取得了第一名，第2天27日突破了10万次点播。而且这首歌还进了ボカロオリジナルを歌ってみた（V家原创歌曲翻唱）殿堂！已经加入了《Sevencolors》组合.
-                                鹿乃
-                                鹿乃(5张)
-                                2011年1月6日以Sevencolors的名义发了第一张单曲专辑ばんび～の
+                            <p>
+                                {{teacher.introduce}}
                             </p>
                         </article>
                     </div>
@@ -108,15 +97,30 @@
     // 引入组件
     import Header from "../../components/header"
     import Footer from "../../components/footer"
-
+    // 引入axios
+    import axiosReq from "../../util/axiosConfig"
     export default {
         name: "teacher",
+        // 老师数据
+        data(){
+          return{
+              teacher:null
+          }
+        },
         // 路由传参
         props:["id"],
         // 组件
         components:{
             Header,
             Footer
+        },
+        created(){
+            axiosReq.get(`getTeacher/id/${this.id}`).then(data=>{
+                this.teacher = data.data[0];
+                // 拆分标签
+                this.teacher.lable = this.teacher.lable.split(",");
+
+            });
         },
         mounted() {
             // 老师图片轮播
@@ -135,19 +139,19 @@
 /*老师内容*/
 .teacher{
     margin-top: 250px;
-    margin-left: 7.33333333%;
+    margin-left: 7.5%;
     margin-bottom: 50px;
 }
 .teacher .teacher_header{
     background: url("../../../public/image/teacher/标题容器.png") no-repeat;
     background-size:433px 163px;
-    background-position: 30% 10%;
+    background-position: 45% 10%;
     height: 200px;
     padding-top: 5px;
 }
 .teacher .teacher_header h1{
     text-align: center;
-    margin-right: 30%;
+    margin-right: 7%;
     font-size: 71px;
 }
 .teacher .content{
@@ -168,7 +172,15 @@
 }
 .teachercontent .name h1{
     font-size: 60px;
-    text-decoration: underline;
+    position: relative;
+}
+.teachercontent .name h1:after{
+    content: "____";
+    position: absolute;
+    left:0;
+    right: 0;
+    top:8px;
+
 }
 .teachercontent .name p{
     font-size: 35px;
@@ -211,7 +223,7 @@
     right: -132%;
 }
 .teacher .content .synopsis{
-    padding: 25px;
+    padding: 45px;
     line-height: 25px;
     text-align: left;
     text-indent:25px
@@ -259,7 +271,9 @@
 .teacher .search button:hover{
     color:#00a1d6;
 }
+@media (max-width: 1600px) {
 
+}
 @media (max-width: 768px) {
     .teachercontent .img{
         width: 320px;

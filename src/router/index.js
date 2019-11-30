@@ -10,6 +10,7 @@ import achievementRouter from "./../router/achievement"
 import messageRouter from "./../router/message"
 import aboutRouter from "./../router/about"
 import index from "./../views/index"
+import errorRouter from "./../router/error"
 
 Vue.use(VueRouter);
 // 路由
@@ -23,6 +24,7 @@ const routes = [
     achievementRouter,
     messageRouter,
     aboutRouter,
+    errorRouter,
     // 首页路由
     {
         path:"/",

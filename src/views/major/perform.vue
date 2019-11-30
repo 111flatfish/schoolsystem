@@ -6,6 +6,11 @@
         <!--内容-->
         <main>
             <div class="container">
+                <!--专业图片-->
+                <div class="row clearfix showcontent_major">
+                    <img src="../../../public/image/major/表演（长）.jpg" alt="表演">
+                </div>
+                <!--专业介绍-->
                 <div class="row clearfix showcontent">
                     <!--内容显示区-->
                     <div class="col-md-5">
@@ -53,7 +58,6 @@
                     </div>
                 </div>
                 <!--分数要求-->
-
                 <div class="row clearfix showcontent_score">
                     <div class="showcontent_score_header">
                         <img src="../../../public/image/score/标签-分数要求.png" alt="label">
@@ -592,6 +596,13 @@
 </script>
 
 <style scoped>
+    .perform{
+        margin-top: 207px;
+    }
+    /*专业图片*/
+    .showcontent_major img{
+        width: 100%;
+    }
     /*内容展示区1*/
     .showcontent{
         background-color: #d6d6d6;
@@ -655,8 +666,11 @@
         font-weight: 600;
         color: #333333;
     }
+    .showcontent .show2 .nav-tabs li{
+        width: 25%;
+    }
     .showcontent .show2 .nav-tabs li a{
-        width: 178.4px;
+        width: 100%;
         border-width: 2px;
         text-align: center;
     }
@@ -702,6 +716,10 @@
     .showcontent_score_content{
         margin-top: 30px;
     }
+    .showcontent_score_content img{
+        width: 100%;
+    }
+
 
     /*就业岗位*/
     .showcontent_job{
@@ -718,6 +736,10 @@
         margin-left: 0;
         margin-top: 30px;
     }
+    .showcontent_job_content img{
+        width: 100%;
+    }
+
     /*顶级大学*/
     .showcontent_college{
         margin: 80px 0;
@@ -829,17 +851,16 @@
         margin-bottom: 50px;
         margin-left: 0;
     }
-    @media (max-width: 1600px){
-        .showcontent .show2 .nav-tabs li a{
-            width: 134.6px;
-        }
-    }
+
     @media (max-width:768px) {
+        .perform{
+            margin-top: 60px;
+        }
         .showcontent .show2 .tab-content .tab-pane img{
             height: 200px;
         }
         .slide{
-            margin-right: 0px;
+            margin-right: 0;
         }
         .slide ul{
             height: 140px;
@@ -849,11 +870,21 @@
             height: 100px;
         }
         .common_showcontent{
-            padding: 0px;
+            padding: 0;
         }
-        .common_showcontent ul .img img{
-            width: 150px;
-            height: 150px;
+        /*老师轮播图*/
+        .showcontent_teacher .right .next{
+            left: -35%;
+        }
+        .showcontent_teacher .left .pre{
+            right: 22%;
+        }
+        /*标题*/
+        .showcontent .show1 h1,.showcontent .show2 .show2_header h1{
+            font-size: 40px;
+        }
+        .showcontent_score_header span{
+            font-size: 50px;
         }
     }
 </style>

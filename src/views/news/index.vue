@@ -3,10 +3,10 @@
         <!--轮播图-->
         <Banner v-bind:banner-data="type" v-bind:location-data="loc"></Banner>
         <!--内容-->
-        <main class="container news">
+        <main class="container">
             <!--logo-->
             <div class="news_logo">
-                <h1>艺考指南</h1>
+                <h1>戏传新闻</h1>
             </div>
             <!--搜索栏-->
             <div class="row clearfix search">
@@ -15,7 +15,7 @@
                     <div class="search">
                         <form class="searchform" enctype="application/x-www-form-urlencoded">
                             <input type="text" placeholder="搜索文章标题或标签" class="  txt" v-model="searchArg">
-                            <button type="button" value="搜索" class="btn" @click="searchArticle">点击搜索</button>
+                            <button type="button" class="btn" value="搜索"  @click="searchArticle">点击搜索</button>
                         </form>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                 <!--广告栏-->
                 <div class="col-md-4 column adv">
                     <div class="adv_item" v-for="item in adv">
-                        <img src="../../../public/image/teacherheader/2.jpeg" alt="adv">
+                        <img v-bind:src="item.image_url" alt="adv">
                         <div class="adv_item_txt">
                             {{item.introduce}}
                         </div>
@@ -134,7 +134,7 @@
                 isSearch:false,
 
                 // 筛选值
-                filterArg:30,
+                filterArg:366,
                 // 搜索参数
                 searchArg:"",
 
@@ -167,7 +167,6 @@
                     });
                     // 默认显示第一页
                     this.currenArticle = this.articles.slice(0,5);
-
                 }else {
                     this.$router.push({
                         path:"/error"
@@ -226,8 +225,8 @@
                 });
             },
             // 筛选日期处理函数
-            selectFn(e){
-                axiosReq.get(`getArticleInTime/day/${e.target.value}`).then(data=>{
+            selectFn(arg){
+                axiosReq.get(`getArticle/num/1000/day/${arg}`).then(data=>{
                     if(data.data.length > 0){
                         this.totalPage = Math.ceil(data.data.length/this.pageNum);
                         this.articles = data.data;
@@ -325,9 +324,14 @@
         border-radius: 10px;
         color: #ffa500;
         margin-left: 50px;
+        height: 62px;
+        margin-bottom: 5px;
     }
     .news .search button:hover{
         color:#00a1d6;
+    }
+    .btn:focus{
+        outline: none;
     }
     .news .search select{
         height: 44px;
@@ -340,6 +344,7 @@
     }
     .news{
         padding: 0;
+        margin-top: 207px;
     }
     .news .searchfilter{
         margin-top: 10px;
@@ -367,7 +372,6 @@
     /*内容栏*/
     .content{
         margin: 40px 0 40px 0;
-        padding:0 20px;
         border-top: 2px solid #ccc;
         border-bottom: 2px solid #ccc;
     }
@@ -377,9 +381,7 @@
     .content ul{
         padding-right: 20px;
     }
-    .content .article_content{
-        border-right: 3px solid #aaa;
-    }
+
     .content ul .media{
         padding: 30px 10px;
         overflow: hidden;
@@ -462,9 +464,12 @@
 
 
     /*广告栏*/
+    .content .adv{
+        border-left: 3px solid #ccc;
+    }
     .content .adv_item{
         width: 100%;
-        height: 420px;
+        height: 440.6px;
         cursor: pointer;
         margin-top: 26px;
         margin-bottom: 55px;
@@ -548,6 +553,11 @@
         background-color:#ffe284;
     }
 
+    @media (max-width: 1600px) {
+        .news .searchfilter>ul li{
+            margin-right: 18px;
+        }
+    }
     @media (max-width: 768px) {
         /*内容*/
         .news{
@@ -564,6 +574,7 @@
             width: 30%;
             padding: 0;
             margin-left: 60px;
+
         }
         .news .searchfilter>ul li{
             margin-right: 20px;
@@ -666,6 +677,7 @@
         .pageContainer .jumppage input:nth-of-type(2){
             left: 20px;
         }
+
 
         /*广告栏*/
         .content .adv{

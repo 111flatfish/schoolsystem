@@ -97,8 +97,7 @@ ul,ol,li{
     text-align: center;
 }
 .common_showcontent ul .img img{
-    width: 300px;
-    height: 330px;
+    width: 100%;
     border-bottom: 1px solid #ccc;
 }
 .common_showcontent ul .content{

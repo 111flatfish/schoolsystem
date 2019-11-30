@@ -3,7 +3,7 @@
         <!--轮播图-->
         <Banner v-bind:banner-data="type" v-bind:location-data="loc"></Banner>
         <!--内容-->
-        <main class="container guide">
+        <main class="container">
             <!--logo-->
             <div class="guide_logo">
                 <h1>艺考指南</h1>
@@ -15,7 +15,7 @@
                     <div class="search">
                         <form class="searchform" enctype="application/x-www-form-urlencoded">
                             <input type="text" placeholder="搜索文章标题或标签" class="  txt" v-model="searchArg">
-                            <button type="button" value="搜索" class="btn" @click="searchArticle">点击搜索</button>
+                            <button type="button" class="btn" value="搜索"  @click="searchArticle">点击搜索</button>
                         </form>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                 <!--广告栏-->
                 <div class="col-md-4 column adv">
                     <div class="adv_item" v-for="item in adv">
-                        <img src="../../../public/image/teacherheader/2.jpeg" alt="adv">
+                        <img v-bind:src="item.image_url" alt="adv">
                         <div class="adv_item_txt">
                             {{item.introduce}}
                         </div>
@@ -134,7 +134,7 @@
               isSearch:false,
 
               // 筛选值
-                filterArg:30,
+                filterArg:366,
               // 搜索参数
               searchArg:"",
 
@@ -225,8 +225,8 @@
                 });
             },
             // 筛选日期处理函数
-            selectFn(e){
-                axiosReq.get(`getArticleInTime/day/${e.target.value}`).then(data=>{
+            selectFn(arg){
+                axiosReq.get(`getArticle/num/1000/day/${arg}`).then(data=>{
                     if(data.data.length > 0){
                         this.totalPage = Math.ceil(data.data.length/this.pageNum);
                         this.articles = data.data;
@@ -324,9 +324,14 @@
     border-radius: 10px;
     color: #ffa500;
     margin-left: 50px;
+    height: 62px;
+    margin-bottom: 5px;
 }
 .guide .search button:hover{
     color:#00a1d6;
+}
+.btn:focus{
+    outline: none;
 }
 .guide .search select{
     height: 44px;
@@ -339,6 +344,7 @@
 }
 .guide{
     padding: 0;
+    margin-top: 207px;
 }
 .guide .searchfilter{
     margin-top: 10px;
@@ -366,7 +372,6 @@
 /*内容栏*/
 .content{
     margin: 40px 0 40px 0;
-    padding:0 20px;
     border-top: 2px solid #ccc;
     border-bottom: 2px solid #ccc;
 }
@@ -376,9 +381,7 @@
 .content ul{
    padding-right: 20px;
 }
-.content .article_content{
-    border-right: 3px solid #aaa;
-}
+
 .content ul .media{
     padding: 30px 10px;
     overflow: hidden;
@@ -461,9 +464,12 @@
 
 
 /*广告栏*/
+.content .adv{
+    border-left: 3px solid #ccc;
+}
 .content .adv_item{
     width: 100%;
-    height: 420px;
+    height: 440.6px;
     cursor: pointer;
     margin-top: 26px;
     margin-bottom: 55px;
@@ -547,6 +553,11 @@
     background-color:#ffe284;
 }
 
+@media (max-width: 1600px) {
+    .guide .searchfilter>ul li{
+        margin-right: 18px;
+    }
+}
 @media (max-width: 768px) {
     /*内容*/
     .guide{
@@ -563,6 +574,7 @@
         width: 30%;
         padding: 0;
         margin-left: 60px;
+
     }
     .guide .searchfilter>ul li{
         margin-right: 20px;

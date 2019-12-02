@@ -54,7 +54,7 @@
                                 </a>
                             </div>
                             <div class="index_teacher_link">
-                                <h2>部分高考教官因学校规定禁止对外宣传，入学后可享受考官直接授课福利</h2>
+                                <h2>部分高考教官因学校规定禁止对外宣传，入学后可享受考官神秘福利</h2>
                                 <span></span>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                                             <div class="col-sm-6 col-md-3" v-for="item2 in grade.slice(4,8)" :key="item2.id">
                                                 <div class="thumbnail">
                                                     <!--图片-->
-                                                    <img src="../../../public/image/grade/student.jpg" alt="grade">
+                                                    <img v-bind:src="item2.picture" alt="grade">
                                                     <!--描述-->
                                                     <div class="caption">
                                                         <h3>{{item2.name}}</h3>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="index_article_content_subcontent">
                                     <ul class="row clearfix">
-                                        <li class="media" v-for="item in article">
+                                        <li class="media" v-for="item in article" @click="ToArticle(item.id)">
                                             <div class="media-left">
                                                 <!--图片-->
                                                 <a href="#">
@@ -183,7 +183,7 @@
                             </div>
                             <div class="col-md-offset-2 col-md-5">
                                 <div class="index_aritcle_content_subheader">
-                                    <h1>公司动态</h1>
+                                    <h1>戏传新闻</h1>
                                     <p>Our News<span>更多>>></span></p>
                                 </div>
                                 <div class="index_article_content_subcontent">
@@ -511,10 +511,17 @@
         },
         // 方法
         methods:{
+            // 跳转到老师详情页
             ToTeacher(id){
                 this.$router.push({
                     path:`/teacher/${id}`
                 });
+            },
+            // 跳转到文章详情页
+            ToArticle(id){
+                this.$router.push({
+                    path:`/article/${id}`
+                })
             }
         },
         // 组件
@@ -688,33 +695,47 @@
     .index_teacher_content{
         margin-top: 30px;
     }
+    /*老师图片*/
     .index_teacher_banner .item>img{
-        width: 30%;
+        width: 33%;
         height: 500px;
         position: relative;
-        left: 180px;
+        left: 170px;
+    }
+    .index_teacher_banner .item .carousel-caption{
+        left: 50%;
+        right: 0;
+        padding-bottom: 0;
+        bottom: 0;
     }
     .index_teacher_banner .item .carousel-caption>h1,.carousel-caption>h3,.carousel-caption>p{
-        position: relative;
-        bottom: 150px;
-        left: 40%;
+        /*position: relative;*/
+        /*bottom: 150px;*/
+        /*top:10px;*/
+        /*left: 40%;*/
         color: #000;
-        width:70%;
+        width:80%;
         text-align: left;
     }
     .index_teacher_banner .item h1{
         font-size: 60px;
         font-weight: bold;
+        top:0;
+        margin-top: 30px;
     }
     .index_teacher_banner .item h3{
         font-size: 32px;
         color: #bbb;
+        top:0;
         border-bottom: 2px solid #ffA500;
         padding-bottom: 10px;
     }
     .index_teacher_banner .item p{
         font-size: 24px;
-        left: 25%;
+        /*left: 25%;*/
+        height: 335px;
+        display: block;
+        overflow: hidden;
     }
     .index_teacher_content .left,.right{
         background-image: none;
@@ -791,7 +812,7 @@
     }
     .index_grade_student .thumbnail h3{
         font-size: 26px;
-        margin: 0 10px;
+        margin: 5px 10px;
         color: #000;
         font-weight: bold;
     }
@@ -1446,9 +1467,6 @@
         height: 80px;
     }
 
-
-
-
     @media (min-width: 768px) {
         .col-sm-10 {
             width: 110.333333%;
@@ -1466,10 +1484,6 @@
         .index_aritcle_content_subheader h1{
             font-size: 40px;
         }
-        /*文章内容*/
-        .index_article_content_subcontent ul .media .media-body p{
-            width: 80%;
-        }
         .index_article_content_subcontent ul .media .media-body h3{
             width: 85%;
         }
@@ -1480,23 +1494,23 @@
         }
         /*答疑解惑*/
         .index_question_inputquestoin div{
-            padding-left: 0;
+            padding-left: 8%;
         }
         .index_question_inputquestoin input:nth-of-type(2){
-            left: 35%;
-        }
-        .index_question_content>div:nth-of-type(1){
-            margin-left: 1%;
+            left: 26%;
         }
         /*学生成绩*/
         .index_grade_banner .index_grade_student img{
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
         }
-        /*师资力量*/
-        .index_teacher_banner .carousel-caption{
-            left: 35%;
-            top:22%;
+        /*侧边栏*/
+        .index_side ul{
+            width: 110px;
+        }
+        /*悬浮表单*/
+        .form_min{
+            right: 18px;
         }
     }
     @media (max-width: 1200px){

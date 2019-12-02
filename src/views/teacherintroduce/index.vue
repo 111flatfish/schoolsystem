@@ -19,7 +19,8 @@
                         <!--文本-->
                         <div class="col-md-6  name">
                             <h1>{{teacher.name}}</h1>
-                            <p>{{teacher.school}}</p>
+                            <p>毕业院校：{{teacher.school}}</p>
+                            <p>执教起点：1996年</p>
                             <div class="teacher_lable">
                                 <p>标签：</p>
                                 <ul>
@@ -29,9 +30,9 @@
                             <div class="teacher_achievement">
                                 <p>教学成果：</p>
                                 <ul>
-                                    <li>中央戏剧学院 <span style="font-size: 30px;font-weight: bolder;">15</span> 名</li>
-                                    <li>北京电影学院 <span style="font-size: 30px;font-weight: bolder;">15</span> 名</li>
-                                    <li>中国传媒大学 <span style="font-size: 30px;font-weight: bolder;">15</span> 名</li>
+                                    <li>中央戏剧学院 <span style="font-size: 34px;font-weight: bolder;">15</span> 名</li>
+                                    <li>北京电影学院 <span style="font-size: 34px;font-weight: bolder;">15</span> 名</li>
+                                    <li>中国传媒大学 <span style="font-size: 34px;font-weight: bolder;">15</span> 名</li>
                                 </ul>
                             </div>
                         </div>
@@ -67,10 +68,10 @@
                         <img src="../../../public/image/teacher/尖端横线.png" alt="尖端横线" width="100%">
                     </div>
                     <!--简介-->
-                    <h3 style="text-align: left;margin-left: 30px;font-weight: bold">简介</h3>
+                    <h3 style="text-align: left;margin-left: 80px;font-weight: bold">简介</h3>
                     <div class="row clearfix synopsis">
                         <article>
-                            <p>
+                            <p style="white-space: pre-wrap">
                                 {{teacher.introduce}}
                             </p>
                         </article>
@@ -163,19 +164,19 @@
     margin: 0;
 }
 .teachercontent .name{
-    padding: 30px 0 15px 0;
+    padding: 30px 0 15px 84px;
     line-height: 40px;
     margin-right: 15px;
 }
 .teachercontent .name ul li{
-    font-size: 22px;
+    font-size: 30px;
 }
 .teachercontent .name h1{
     font-size: 60px;
     position: relative;
 }
 .teachercontent .name h1:after{
-    content: "____";
+    content: "______";
     position: absolute;
     left:0;
     right: 0;
@@ -223,13 +224,13 @@
     right: -132%;
 }
 .teacher .content .synopsis{
-    padding: 45px;
+    padding: 45px 95px;
     line-height: 25px;
     text-align: left;
-    text-indent:25px
+    text-indent:35px
 }
 .teacher .content .synopsis p{
-    font-size: 18px;
+    font-size: 20px;
 }
 /*导航条*/
 .teacher  .control{
@@ -272,7 +273,9 @@
     color:#00a1d6;
 }
 @media (max-width: 1600px) {
-
+    .teacher{
+        margin: 250px auto;
+    }
 }
 @media (max-width: 768px) {
     .teachercontent .img{

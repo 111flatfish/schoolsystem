@@ -13,12 +13,10 @@
                 <div class="col-sm-6 col-md-3 content" v-for="item in currentGrade">
                     <div class="thumbnail">
                         <!--图片-->
-                        <img src="../../../public/image/teacherheader/2.jpeg" alt="grade">
+                        <img v-bind:src="item.picture" alt="grade">
                         <!--描述-->
                         <div class="caption">
                             <h3>{{item.name}}</h3>
-                            <p>{{item.school}}</p>
-                            <p>{{item.school}}</p>
                             <p>{{item.school}}</p>
                         </div>
                     </div>
@@ -153,20 +151,22 @@
 }
 .achievement .thumbnail{
     padding: 0;
-    box-shadow: 1px 1px 2px 2px rgba(0,0,0,.2);
+    box-shadow: 1px 1px 2px 2px rgba(0,0,0,.4);
 }
 .achievement .thumbnail:hover{
-    box-shadow: 0 0 5px 3px rgba(0,0,0,.2);
+    box-shadow: 0 0 5px 3px rgba(0,0,0,.4);
     cursor: pointer;
 }
 .achievement .thumbnail img{
     width: 100%;
+    height: 330px;
 }
 .achievement .thumbnail p{
     font-weight: bold;
+    margin-bottom: 30px;
 }
 .achievement .thumbnail h3{
-    font-size: 34px;
+    font-size: 36px;
     position: relative;
     margin-bottom: 20px;
 }
@@ -174,7 +174,7 @@
     content: '';
     border-bottom: 2px solid #000;
     height: 3px;
-    width: 100px;
+    width: 110px;
     position: absolute;
     top:40px;
     left: 0;
@@ -188,7 +188,7 @@ main{
     margin: 20px auto;
 }
 main .thumbnail p{
-    font-size: 18px;
+    font-size: 20px;
 }
 main nav{
     height: 100px;

@@ -535,10 +535,6 @@ main{
 
 
 @media (max-width: 1600px) {
-    /*学校荣誉*/
-    .about_honor ul li img{
-        width: 560px;
-    }
     .about_honor ul{
         margin-left: 0;
     }

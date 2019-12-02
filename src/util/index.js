@@ -6,8 +6,14 @@ function indexInit(that) {
     $(function () {
         // 表单缩放
         // 最小化
+        // let formflag = that.$state.getformflag;
+        let formflag = that.$store.getters.getformflag;
+        if(formflag == false) {
+            $(".form").css("display","none");
+            $(".form_min").show();
+        }
         $(".form #minimize").click(function () {
-                window.console.log("aa");
+                that.$store.commit("setformflag",false);
                 $(".form").hide(function () {
                     $(".form_min").show();
                 });

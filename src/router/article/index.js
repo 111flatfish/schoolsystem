@@ -1,5 +1,6 @@
 import article from "../../views/article"
 export default {
-    path:"/article",
-    component:article
+    path:"/article/:id",
+    component:article,
+    props:true
 }

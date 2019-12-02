@@ -10,8 +10,8 @@
                     <div class="footer_content_txt">
                         <h3>地址：广东省深圳市南山区南山街道桂庙路22号</h3>
                         <ul>
-                            <li>咨询热线：400-000-0000</li>
-                            <li>电话：15626580565</li>
+                            <li>咨询热线：156-2658-0565</li>
+                            <li>官方邮箱：zhongxingyijiao@yeah.net</li>
                             <li>邮政编码：518042</li>
                         </ul>
                     </div>
@@ -22,12 +22,12 @@
                                 <img src="../../../public/image/footer/二维码-官方微信号.png" alt="erweima">
                             </li>
                             <li>
-                                <img src="../../../public/image/footer/二维码-官方微信号.png" alt="erweima">
+                                <img src="../../../public/image/footer/二维码-官方微博.jpg" alt="erweima">
                             </li>
                         </ul>
                     </div>
                     <div class="footer_content_copyright">
-                        <p>Copyright &copy;2019-{{year}}.All rightreserved.|备案号|众行艺教（深圳）教育科技有限公司</p>
+                        <p>Copyright &copy;2019-{{year}}.All rightreserved.|粤ICP备19146936|众行艺教（深圳）教育科技有限公司</p>
                         <span>站点地图</span>
                     </div>
                 </div>

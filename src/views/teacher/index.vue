@@ -1,12 +1,12 @@
 <template>
-    <div class="achievement">
+    <div class="teacher">
         <!--头部-->
         <!--轮播图-->
         <Banner v-bind:banner-data="type" v-bind:location-data="loc"></Banner>
         <!--内容-->
         <main class="container">
-            <div class="achievement_header">
-                <h1>历届成绩</h1>
+            <div class="teacher_header">
+                <h1>师资展示</h1>
             </div>
             <!--成绩展示区-->
             <div class="row clearfix">
@@ -54,11 +54,11 @@
     // 引入axios
     import axiosReq from  "../../util/axiosConfig"
     export default {
-        name: "achievement",
+        name: "teacher",
         data(){
             return{
                 // 成绩数据
-                grades:[],               // 初始化页面获取的总成绩数
+                teachers:[],               // 初始化页面获取的总成绩数
                 currentGrade:[],          //当前页渲染的成绩
 
                 // 页码栏数据
@@ -67,7 +67,7 @@
                 totalPage:1,             //总页数
 
                 // banner类型
-                type:"achievement",
+                type:"teacher",
                 // banner位置
                 loc:"title"
 
@@ -82,9 +82,9 @@
             // 初始化页面获取成绩请求
             axiosReq.get("getStudentGrade/num/20").then(data=>{
                 this.totalPage = Math.ceil(data.data.length/this.pageNum);
-                this.grades = data.data;
+                this.teachers = data.data;
                 // 默认显示第一页
-                this.currentGrade = this.grades.slice(0,12);
+                this.currentGrade = this.teachers.slice(0,12);
             });
         },
         // 方法
@@ -94,14 +94,14 @@
                 if(n === this.currentPage)return ;
                 if(typeof n === "string")return ;
                 this.currentPage = n;
-                this.currentGrade = this.grades.slice((this.currentPage-1)*12,(this.currentPage-1)*12+12);
+                this.currentGrade = this.teachers.slice((this.currentPage-1)*12,(this.currentPage-1)*12+12);
 
             },
             // 点击上一页或者下一页
             pagePreOrNext(n){
                 this.currentPage += n;
                 this.currentPage < 1?this.currentPage =1:this.currentPage>this.totalPage?this.currentPage = this.totalPage:null;
-                this.currentGrade = this.grades.slice((this.currentPage-1)*12,(this.currentPage-1)*12+12);
+                this.currentGrade = this.teachers.slice((this.currentPage-1)*12,(this.currentPage-1)*12+12);
 
             }
         },
@@ -136,42 +136,42 @@
 </script>
 
 <style scoped>
-.achievement{
+.teacher{
     margin-top: 125px;
 }
-.achievement .achievement_header{
+.teacher .teacher_header{
     background: url("../../../public/image/teacher/标题容器.png") no-repeat center center;
     background-size:433px 163px;
     height: 200px;
     padding-top: 25px;
 }
-.achievement .achievement_header h1{
+.teacher .teacher_header h1{
     text-align: center;
     font-size: 71px;
 }
-.achievement .thumbnail{
+.teacher .thumbnail{
     padding: 0;
     box-shadow: 1px 1px 2px 2px rgba(0,0,0,.4);
 }
-.achievement .thumbnail:hover{
+.teacher .thumbnail:hover{
     box-shadow: 0 0 5px 3px rgba(0,0,0,.4);
     cursor: pointer;
 }
-.achievement .thumbnail img{
+.teacher .thumbnail img{
     width: 100%;
     height: 350px;
 }
-.achievement .thumbnail p{
+.teacher .thumbnail p{
     font-weight: bold;
     margin-bottom: 15px;
 }
-.achievement .thumbnail h3{
+.teacher .thumbnail h3{
     font-size: 36px;
     position: relative;
     margin-bottom: 20px;
     margin-top: 10px;
 }
-.achievement .thumbnail h3:after{
+.teacher .thumbnail h3:after{
     content: '';
     border-bottom: 2px solid #000;
     height: 3px;
@@ -205,40 +205,40 @@ main nav{
     background-color:#ffe284;
 }
 @media (max-width: 1600px) {
-    .achievement .thumbnail img{
+    .teacher .thumbnail img{
         height: 273px;
     }
 }
 @media (max-width: 768px) {
     /*头部*/
-    .achievement{
+    .teacher{
         margin-top: 60px;
     }
-    .achievement .achievement_header h1{
+    .teacher .teacher_header h1{
         font-size: 58px;
     }
-    .achievement .achievement_header{
+    .teacher .teacher_header{
         background-size:300px 150px;
     }
-    .achievement .thumbnail h3:after{
+    .teacher .thumbnail h3:after{
         top: 20px;
     }
 
     /*内容*/
-    .achievement .thumbnail img{
+    .teacher .thumbnail img{
         width: 130px;
         height: 130px;
     }
-    .achievement .content{
+    .teacher .content{
         display: inline-block;
     }
-    .achievement .thumbnail h3{
+    .teacher .thumbnail h3{
         font-size: 18px;
         font-weight: bold;
         margin-top: 0;
         margin-bottom: 10px;
     }
-    .achievement .thumbnail p{
+    .teacher .thumbnail p{
         font-size: 14px;
     }
     .pageContainer li span{

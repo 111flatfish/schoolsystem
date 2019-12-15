@@ -5,6 +5,7 @@
         <!--内容-->
         <main class="container">
             <div class="message_header">
+                <img src="../../../public/image/question/图标-标题.png" alt="问答">
                 <h1>留言板</h1>
             </div>
             <div class="message_inner">
@@ -91,7 +92,7 @@
                             <label for="inputphone" class="col-sm-3 control-label">请输入您的手机号码</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="inputphone" v-model="message.phone" placeholder="phone">
-                                <button type="submit" class="btn btn-primary" id="buttonsubmit">提交</button>
+                                <button type="submit" class="btn" id="buttonsubmit">提交</button>
                             </div>
                         </div>
                     </form>
@@ -232,20 +233,19 @@ main{
     margin: 20px auto;
 }
 .message{
-    margin-top: 207px;
+    margin-top: 125px;
 }
 .message_inner{
     border: 1px solid #000;
     border-radius: 8px;
 }
-.message .message_header{
-    background: url("../../../public/image/question/图标-标题.png") no-repeat center center;
-    background-size:230px 140px;
-    height: 200px;
-    padding-top: 40px;
-    padding-right: 30px;
+.message .message_header img{
+    width: 140px;
+    height: 85px;
+    margin-bottom: 40px;
 }
 .message .message_header h1{
+    display: inline-block;
     text-align: center;
     font-size: 75px;
     font-weight: 900;
@@ -355,6 +355,9 @@ main{
     font-size: 25px;
     margin-left: 80px;
 }
+.message_form .form-group #buttonsubmit:focus{
+    outline: none;
+}
 /*页码栏*/
 .pageContainer li{
     cursor: pointer;
@@ -404,6 +407,12 @@ main{
     .message_item{
         margin: 10px 0 20px 0;
     }
+    .message_item .media .teachercontent{
+        margin-left: -7px;
+    }
+    .message .message_header img{
+        margin-bottom: 0;
+    }
     .message_content .media-left img{
         width: 60px;
         height: 60px;
@@ -424,6 +433,7 @@ main{
     .message_content .teachercontent p:after, .message_content .studentcontent p:after{
         top:-7px;
     }
+
     .message_content{
         padding: 10px 0;
         background-size: 90%;
@@ -467,6 +477,7 @@ main{
     .pageContainer .jumppage input{
         top:0;
         left: -20px;
+        height: 35px;
     }
     .pageContainer .jumppage input:nth-of-type(2){
         left: 20px;
@@ -478,6 +489,9 @@ main{
     /*输入框*/
     .message_form .form-group #buttonsubmit{
         margin-left: 24px;
+        height: 35px;
+        font-size: 21px;
+        margin-bottom: 4px;
     }
 
 }

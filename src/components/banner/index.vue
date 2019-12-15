@@ -54,7 +54,12 @@
                     })
                 })
             });
-
+            $(function () {
+                // 轮播图轮播时间
+                $('.carousel').carousel({
+                    interval: 3000
+                });
+            });
         },
         mounted() {
 
@@ -66,8 +71,8 @@
 
 <style scoped>
 .banner{
+    padding: 0 ;
     margin: 0 auto;
-    padding: 0;
 }
 .banner .item img{
     margin: 0 auto;
@@ -75,7 +80,7 @@
 }
 .banner img{
     width: 100%;
-    height: 750px;
+    height: 48%;
 }
 .banner .column{
     padding: 0;

@@ -25,7 +25,7 @@
                             <span>师资力量</span>
                             <h2>传媒艺考资深教师教授</h2>
                         </div>
-                        <div class="index_teacher_content container">
+                        <div class="index_teacher_content">
                             <!--老师轮播图-->
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
@@ -55,7 +55,7 @@
                             </div>
                             <div class="index_teacher_link">
                                 <h2>部分高考教官因学校规定禁止对外宣传，入学后可享受考官神秘福利</h2>
-                                <span></span>
+                                <router-link tag="span" to="/showteacher">更多 >>></router-link>
                             </div>
                         </div>
                     </div>
@@ -67,64 +67,92 @@
                             <img src="../../../public/image/grade/图标-学员.png" alt="label">
                             <span>学生成绩</span>
                         </div>
-                        <div class="index_grade_content container">
+                        <div class="index_grade_content">
                             <!--学生成绩轮播图-->
-                            <div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">
+                            <!--<div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">-->
+                                <!--&lt;!&ndash; 图片内容 &ndash;&gt;-->
+                                <!--<div class="carousel-inner index_grade_banner" role="listbox" style="border-radius: 4px">-->
+                                    <!--<div class="item active">-->
+                                        <!--<div class="index_grade_student row clearfix">-->
+                                            <!--<div class="col-sm-6 col-md-3" v-for="item in grade.slice(0,4)" :key="item.id">-->
+                                                <!--<div class="thumbnail">-->
+                                                    <!--&lt;!&ndash;图片&ndash;&gt;-->
+                                                    <!--<img src="../../../public/image/grade/student.jpg" alt="grade">-->
+                                                    <!--&lt;!&ndash;描述&ndash;&gt;-->
+                                                    <!--<div class="caption">-->
+                                                        <!--<h3>{{item.name}}</h3>-->
+                                                        <!--<p>通过院校：</p>-->
+                                                        <!--<ul>-->
+                                                            <!--<li>{{item.school}}</li>-->
+                                                        <!--</ul>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="item">-->
+                                        <!--<div class="index_grade_student row clearfix">-->
+                                            <!--<div class="col-sm-6 col-md-3" v-for="item2 in grade.slice(4,8)" :key="item2.id">-->
+                                                <!--<div class="thumbnail">-->
+                                                    <!--&lt;!&ndash;图片&ndash;&gt;-->
+                                                    <!--<img v-bind:src="item2.picture" alt="grade">-->
+                                                    <!--&lt;!&ndash;描述&ndash;&gt;-->
+                                                    <!--<div class="caption">-->
+                                                        <!--<h3>{{item2.name}}</h3>-->
+                                                        <!--<p>通过院校：</p>-->
+                                                        <!--<ul>-->
+                                                            <!--<li>{{item2.school}}</li>-->
+                                                        <!--</ul>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
 
-                                <!-- 图片内容 -->
-                                <div class="carousel-inner index_grade_banner" role="listbox" style="border-radius: 4px">
-                                    <div class="item active">
-                                        <div class="index_grade_student row clearfix">
-                                            <div class="col-sm-6 col-md-3" v-for="item in grade.slice(0,4)" :key="item.id">
-                                                <div class="thumbnail">
-                                                    <!--图片-->
-                                                    <img src="../../../public/image/grade/student.jpg" alt="grade">
-                                                    <!--描述-->
-                                                    <div class="caption">
-                                                        <h3>{{item.name}}</h3>
-                                                        <p>通过院校：</p>
-                                                        <ul>
-                                                            <li>{{item.school}}</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <!--&lt;!&ndash; 切换图片 &ndash;&gt;-->
+                                <!--&lt;!&ndash;左&ndash;&gt;-->
+                                <!--<a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev" style="border-radius: 4px">-->
+                                    <!--<span class="pre" aria-hidden="true"></span>-->
+                                    <!--<span class="sr-only">Previous</span>-->
+                                <!--</a>-->
+                                <!--&lt;!&ndash;右&ndash;&gt;-->
+                                <!--<a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next" style="border-radius: 4px">-->
+                                    <!--<span class="next" aria-hidden="true"></span>-->
+                                    <!--<span class="sr-only">Next</span>-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <div class="index_grade_banner row clearfix">
+                                <ul class="index_grade_list">
+                                    <li v-for="item in grade.slice(0,8)" :key="item.id" class="item">
+                                        <div class="index_grade_img">
+                                            <img v-bind:src="item.picture" alt="学生成绩">
                                         </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="index_grade_student row clearfix">
-                                            <div class="col-sm-6 col-md-3" v-for="item2 in grade.slice(4,8)" :key="item2.id">
-                                                <div class="thumbnail">
-                                                    <!--图片-->
-                                                    <img v-bind:src="item2.picture" alt="grade">
-                                                    <!--描述-->
-                                                    <div class="caption">
-                                                        <h3>{{item2.name}}</h3>
-                                                        <p>通过院校：</p>
-                                                        <ul>
-                                                            <li>{{item2.school}}</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        <div class="index_grade_text">
+                                            <h3>{{item.name}}</h3>
+                                            <p>通过院校：</p>
+                                            <ul>
+                                            <li>{{item.school}}</li>
+                                            </ul>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <!-- 切换图片 -->
-                                <!--左-->
-                                <a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev" style="border-radius: 4px">
+                                    </li>
+                                </ul>
+                                <div class="index_grade_nav">
+                                    <!-- 切换图片 -->
+                                    <!--左-->
+                                    <a class="left carousel-control" role="button" data-slide="prev" style="border-radius: 4px">
                                     <span class="pre" aria-hidden="true"></span>
                                     <span class="sr-only">Previous</span>
-                                </a>
-                                <!--右-->
-                                <a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next" style="border-radius: 4px">
+                                    </a>
+                                    <!--右-->
+                                    <a class="right carousel-control" role="button" data-slide="next" style="border-radius: 4px">
                                     <span class="next" aria-hidden="true"></span>
                                     <span class="sr-only">Next</span>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
                             <div class="index_grade_link">
-                                <span></span>
+                                <router-link tag="span" to="/achievement">更多 >>></router-link>
                             </div>
                         </div>
                     </div>
@@ -136,11 +164,11 @@
                             <img src="../../../public/image/article/图标-文章.png" alt="label">
                             <span>文章动态</span>
                         </div>
-                        <div class="index_article_content row clearfix container">
+                        <div class="index_article_content row clearfix">
                             <div class="col-md-5">
-                                <div class="index_aritcle_content_subheader">
+                                <div class="index_article_content-subheader">
                                     <h1>艺考干货</h1>
-                                    <p>Media Info<span>更多>>></span></p>
+                                    <p>Media Info<router-link tag="span" to="/guide">更多>>></router-link></p>
                                 </div>
                                 <div class="index_article_content_subcontent">
                                     <ul class="row clearfix">
@@ -165,7 +193,7 @@
                                                     </span>
                                                     <!--浏览量-->
                                                     <span>
-                                                        <img src="../../../public/image/article/图标-眼睛.png" alt="hit">999+
+                                                        <img src="../../../public/image/article/图标-眼睛.png" alt="hit">{{item.view_num}}
                                                     </span>
                                                     <!--标签-->
                                                     <span>
@@ -182,9 +210,9 @@
                                 </div>
                             </div>
                             <div class="col-md-offset-2 col-md-5">
-                                <div class="index_aritcle_content_subheader">
+                                <div class="index_article_content-subheader">
                                     <h1>戏传新闻</h1>
-                                    <p>Our News<span>更多>>></span></p>
+                                    <p>Our News<router-link tag="span" to="/news">更多>>></router-link></p>
                                 </div>
                                 <div class="index_article_content_subcontent">
                                     <ul class="row clearfix">
@@ -211,7 +239,7 @@
                                                     </span>
                                                     <span>
                                                         <ul v-for="item2 in item.news_lable" style="display: inline-block">
-                                                            <li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>
+                                                            <li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 2px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>
                                                         </ul>
                                                     </span>
                                                 </div>
@@ -256,6 +284,7 @@
                                         <div class="media">
                                             <!--内容-->
                                             <div class="media-body">
+                                                <h3 class="media-heading">{{question.answer_name}}</h3>
                                                 <time>{{question.answer_time}}</time>
                                                 <div class="teachercontent">
                                                     <p>{{question.answer}}</p>
@@ -270,7 +299,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="index_question_inputquestoin">
+                                <div class="index_question_inputquestion">
                                     <h1>我要提问</h1>
                                     <textarea name="question" id="question" cols="70" rows="6"></textarea>
                                     <div>
@@ -283,15 +312,15 @@
                                 <div class="index_question_commonquestion">
                                     <h1>常见问题</h1>
                                     <ul class="index_question_commonquestion_content">
-                                        <li><h1>1.提问问题？</h1></li>
-                                        <li><h1>2.提问问题？</h1></li>
-                                        <li><h1>3.提问问题？</h1></li>
-                                        <li><h1>4.提问问题？</h1></li>
-                                        <li><h1>5.提问问题？</h1></li>
-                                        <li><h1>6.提问问题？</h1></li>
-                                        <li><h1>7.提问问题？</h1></li>
-                                        <li><h1>8.提问问题？</h1></li>
-                                        <li><h1>9.提问问题？</h1></li>
+                                        <li><h1>1.请问表演专业的学习需要多长时间呢？</h1></li>
+                                        <li><h1>2.编导专业要学什么呢？</h1></li>
+                                        <li><h1>3.学播音需要什么条件？</h1></li>
+                                        <li><h1>4.我能考上北京电影学院吗？</h1></li>
+                                        <li><h1>5.请问上课时间具体是什么时候呢？</h1></li>
+                                        <li><h1>6.请问播音专业的课程费用是多少钱呢？</h1></li>
+                                        <li><h1>7.班级人数？</h1></li>
+                                        <li><h1>8.直播课和录播课的区别？</h1></li>
+                                        <li><h1>9.编导专业课程最后需要去北京集训吗？</h1></li>
                                     </ul>
                                 </div>
                             </div>
@@ -315,44 +344,6 @@
                 </div>
             </div>
         </main>
-        <!--悬浮侧边栏-->
-        <div class="index_side">
-            <ul>
-                <li>
-                    <span>156-2658-0565</span>
-                    <img src="../../../public/image/side/phone.png" alt="phone">
-                </li>
-                <li>
-                    <span>
-                        <img src="../../../public/image/side/二维码-官方微信号.png" alt="微信二维码">
-                        <p>戏传艺考官方公众号</p>
-                        <img src="../../../public/image/side/二维码-官方微信号.png" alt="微博二维码">
-                        <p>戏传艺考官方公众号</p>
-                    </span>
-                    <img src="../../../public/image/side/weixin.png" alt="weixin">
-                </li>
-                <li>
-                    <span>
-                        <img src="../../../public/image/side/二维码-官方微信号.png" alt="qq">
-                    </span>
-                    <img src="../../../public/image/side/qq.png" alt="qq">
-                </li>
-                <li>
-                    <span>
-                        <img src="../../../public/image/side/二维码-官方微信号.png" alt="微博二维码">
-                    </span>
-                    <img src="../../../public/image/side/weibo.png" alt="weibo">
-                </li>
-                <li>
-                    <span>zhongxingyijiao@yeah.net</span>
-                    <img src="../../../public/image/side/email.png" alt="email">
-                </li>
-                <li>
-                    <span>如有疑问请点击此处</span>
-                    <img src="../../../public/image/side/question.png" alt="question">
-                </li>
-            </ul>
-        </div>
         <!--悬浮表单-->
         <!--表单展开-->
         <div class="form container">
@@ -398,7 +389,7 @@
                                     <div class="form-group">
                                         <!--<label for="inputqq3" class="col-sm-2 control-label">QQ</label>-->
                                         <div class="col-sm-10 control-input">
-                                            <input type="number" class="form-control inputqq" name="qq" id="inputqq3" v-model="formData.connect">
+                                            <input type="email" class="form-control inputqq" name="qq" id="inputqq3" v-model="formData.qq">
                                             <select name="connect" id="selectconnectmode" v-model="formData.connectmode">
                                                 <option value="qq">QQ</option>
                                                 <option value="weixin">微信</option>
@@ -431,7 +422,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-10 control-input" >
-                                            <input type="number" class="form-control inputcity"  name="phone"  placeholder="所在城市">
+                                            <input type="text" class="form-control inputcity"  name="city" v-model="formData.city" placeholder="所在城市">
                                         </div>
                                     </div>
                                 </div>
@@ -491,12 +482,13 @@
                 // 表单数据
                 formData:{
                     user_name:null,
-                    email:null,
+                    email:"test@qq.com",
                     sex:"男",
                     tel:null,
                     connectmode:"qq",
-                    connect:null,
+                    qq:null,
                     major:"",
+                    city:null,
                     whereKnew:"",
                     whereKnew2:"",
                 },
@@ -521,7 +513,14 @@
             ToArticle(id){
                 this.$router.push({
                     path:`/article/${id}`
-                })
+                });
+                axiosReq.get(`upArticleView/id/${id}`).then(data=>{
+                    if(data.status == 404){
+                        this.$router.push({
+                            path:"/error"
+                        });
+                    }
+                });
             }
         },
         // 组件
@@ -550,7 +549,8 @@
                     });
                 });
                 // 获取老师数据
-                axiosReq.get("getTeachers/num/4").then(data=>{
+                // 初始为获取编导老师信息
+                axiosReq.get("getTeachers/name/编导/num/4").then(data=>{
                     this.teacher = data.data;
                     this.$nextTick(()=> {
                         $(function () {
@@ -562,6 +562,7 @@
                 // 获取学生成绩数据
                 axiosReq.get("getStudentGrade").then(data=>{
                     this.grade = data.data.splice(0,8);
+                    util.index_grade(that);
                 });
                 // 获取最新留言
                 axiosReq.get("getQuestion").then(data=>{
@@ -592,8 +593,6 @@
                             tip:"请输入电话号码",
                             msg:"电话号码不正确"
                         },
-                        email:"email",
-                        qq:"integer(+0)",
                         from:{
                             rule:"required",
                             msg:"请至少选择一个或输入来源"
@@ -611,25 +610,22 @@
                             that.formData.whereKnew = that.formData.whereKnew2;
                         }
                         axiosReq.post("appointment",that.formData).then(data=>{
-                            window.console.log(that.formData);
-                            window.console.log(data);
+                            if(data.status == 200){
+                                window.alert("预约成功！");
+                                that.$store.commit("setformflag",false);
+                                $(".form").css("display","none");
+                                $(".form_min").show();
+                            }
                         });
 
                     }
                 });
             });
-            // 侧边栏鼠标悬停
-            $(function () {
-               $(".index_side ul li").mouseenter(function () {
-                   $(this).children("span").stop().show(100);
-               }).mouseleave(function () {
-                   $(this).children("span").stop().hide(100);
-               });
-            });
+
             // textarea框的大小控制
             $(function () {
                 if($(window).outerWidth()<= 768){
-                    $(".index_question_inputquestoin textarea").attr("cols","30")
+                    $(".index_question_inputquestion textarea").attr("cols","32")
                 }
             });
         },
@@ -645,7 +641,6 @@
         destroyed() {
                 // 清除定时器，防止再次渲染时多个定时器作用在同一个元素上
                 window.clearInterval(this.timer);
-                window.clearInterval(this.timer2);
         }
     }
 
@@ -653,7 +648,7 @@
 
 <style scoped>
     .index{
-        margin-top: 200px;
+        margin-top: 125px;
     }
 
     /*就业前景*/
@@ -696,14 +691,17 @@
         margin-top: 30px;
     }
     /*老师图片*/
+    .index_teacher_banner .item{
+        cursor: pointer;
+    }
     .index_teacher_banner .item>img{
-        width: 33%;
-        height: 500px;
+        width: 30%;
+        height: 37%;
         position: relative;
         left: 170px;
     }
     .index_teacher_banner .item .carousel-caption{
-        left: 50%;
+        left: 45%;
         right: 0;
         padding-bottom: 0;
         bottom: 0;
@@ -720,12 +718,16 @@
     .index_teacher_banner .item h1{
         font-size: 60px;
         font-weight: bold;
-        top:0;
-        margin-top: 30px;
+        margin-top:0;
+        position: relative;
+        top: 10px;
+    }
+    .index_teacher_banner .item:hover  .carousel-caption h1{
+        color: #399fda;
     }
     .index_teacher_banner .item h3{
         font-size: 32px;
-        color: #bbb;
+        color: #999;
         top:0;
         border-bottom: 2px solid #ffA500;
         padding-bottom: 10px;
@@ -733,7 +735,7 @@
     .index_teacher_banner .item p{
         font-size: 24px;
         /*left: 25%;*/
-        height: 335px;
+        height: 375px;
         display: block;
         overflow: hidden;
     }
@@ -772,11 +774,19 @@
     }
     .index_teacher_link span{
         display: inline-block;
-        background:url("../../../public/image/teacher/button.png") no-repeat;
         width: 180px;
-        height: 65px;
+        height: 60px;
+        line-height: 60px;
         margin-top: 20px;
         cursor: pointer;
+        font-size: 30px;
+        color: #FFA500;
+        font-weight: bolder;
+        border-radius: 10px;
+        border:3px solid #FFA500;
+    }
+    .index_teacher_link span:hover{
+        color: #00a1b6;
     }
 
     /*学生成绩*/
@@ -798,60 +808,72 @@
         margin: 80px auto;
     }
     /*轮播图*/
-    .index .index_grade #carousel-example-generic2{
+    .index_grade_banner{
+        margin: 0 auto;
+        display: inline-block;
+        width: 100%;
+    }
+    .index_grade_banner .index_grade_list{
         overflow: hidden;
+        width: 81%;
+        height: 450px;
+        margin: 0 auto;
+        position: relative;
     }
-    .index_grade_banner .index_grade_student img{
-        margin-top: 20px;
-        width: 180px;
-        height: 180px;
-    }
-    .index_grade_student .thumbnail{
+    .index_grade_banner .index_grade_list>li{
+        float: none;
+        display: inline-block;
+        position: absolute;
+        width: 250px;
         border: 2px solid #000;
-        border-radius: 8%;
+        margin: 0 15px;
+        border-radius: 25px;
+        padding: 20px 0;
+        background-color: #fff;
+        box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.5);
     }
-    .index_grade_student .thumbnail h3{
-        font-size: 26px;
-        margin: 5px 10px;
-        color: #000;
-        font-weight: bold;
+    .index_grade_banner .index_grade_img{
+        height: 250px;
     }
-    .index_grade_student .caption p:nth-of-type(1){
+    .index_grade_banner .index_grade_img img{
+        width: 80%;
+        height: 100%;
+    }
+    .index_grade_banner .index_grade_text{
         text-align: left;
-        font-size: 20px;
         color: #000;
         font-weight: bolder;
+    }
+    .index_grade_banner .index_grade_text h3{
+        margin-top: 10px;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 28px;
+    }
+    .index_grade_banner .index_grade_text p{
         margin-bottom: 0;
-        position: relative;
-        left: -30px;
+        margin-left: 20px;
+        font-size: 20px;
     }
-    .index_grade_student .caption ul li{
-        margin-top:0;
+    .index_grade_banner .index_grade_text ul li{
+        text-align: center;
         font-size: 18px;
-        color: #000;
-        font-weight: bold;
     }
-    .index_grade_banner{
-       margin-left: 10%;
-        overflow: hidden;
-    }
-    .index_grade_banner .col-md-3{
-        width: 20%;
-    }
-    .index_grade_content .left,.right{
+
+    .index_grade_banner .left,.right{
         background-image: none;
     }
-    .index_grade_content .left .pre{
+    .index_grade_banner .left .pre{
         display: inline-block;
         background: url("../../../public/image/grade/图标-箭头-ff9900.png") no-repeat center center;
         background-size: 77px 77px;
         width: 77px;
         height: 77px;
         position: relative;
-        top: 30%;
+        top: 40%;
         left: -24%;
     }
-    .index_grade_content .right .next{
+    .index_grade_banner .right .next{
         display: inline-block;
         background: url("../../../public/image/grade/图标-箭头-ff9900.png") no-repeat center center;
         background-size: 77px 77px;
@@ -859,7 +881,7 @@
         height: 77px;
         transform: rotateY(180deg);
         position: relative;
-        top: 30%;
+        top: 40%;
         right: -24%;
     }
     .index_grade_link{
@@ -867,11 +889,19 @@
     }
     .index_grade_link span{
         display: inline-block;
-        background:url("../../../public/image/teacher/button.png") no-repeat;
         width: 180px;
-        height: 65px;
+        height: 60px;
+        line-height: 60px;
         margin-top: 20px;
         cursor: pointer;
+        font-size: 30px;
+        color: #FFA500;
+        font-weight: bolder;
+        border-radius: 10px;
+        border:3px solid #FFA500;
+    }
+    .index_grade_link span:hover{
+        color: #00a1b6;
     }
 
     /*文章动态*/
@@ -896,29 +926,32 @@
         width: 180px;
         height: 180px;
     }
-    .index_aritcle_content_subheader {
+    .index_article_content-subheader {
         width: 100%;
         position: relative;
         text-align: left;
         border-bottom: 2px solid #ffA500;
     }
-    .index_aritcle_content_subheader h1,p{
+    .index_article_content-subheader h1,p{
         display: inline-block;
         font-weight: bold;
 
     }
-    .index_aritcle_content_subheader h1{
+    .index_article_content-subheader h1{
         font-size: 50px;
         margin-right: 25px;
     }
-    .index_aritcle_content_subheader p{
+    .index_article_content-subheader p{
         font-size: 24px;
     }
-    .index_aritcle_content_subheader p span{
+    .index_article_content-subheader p span{
         color:#ffA500;
         position: absolute;
         right: 0;
         cursor: pointer;
+    }
+    .index_article_content-subheader p span:hover{
+        color: #00a1b6;
     }
 
     .index_article_content_subcontent ul .media{
@@ -975,7 +1008,7 @@
     }
     .index_article_content_subcontent ul .media .dec{
         text-align: left;
-        position: absolute;
+        position: relative;
         left: 0;
         bottom: 0;
         font-size: 18px;
@@ -991,12 +1024,18 @@
         margin-bottom: 3px;
         margin-right: 5px;
     }
+
     .index_article_content_subcontent ul .media .dec span:nth-child(2) img{
         width: 32px;
         height: 32px;
         margin-bottom: 3px;
         margin-right: 3px;
-
+        margin-left: 5px;
+    }
+    .index_article_content_subcontent ul .media .dec span:nth-of-type(3){
+        position: absolute;
+        right: 0;
+        top:3px;
     }
     /*答疑解惑*/
     .index .index_question{
@@ -1016,6 +1055,10 @@
         text-align: center;
         margin: 80px auto;
     }
+    textarea{
+        border: 1px solid #000;
+        border-radius: 2px;
+    }
     .index_question_content>div:nth-of-type(1){
         margin-left: 3.33333%;
     }
@@ -1023,7 +1066,7 @@
         color:#000;
         font-weight: bolder;
     }
-    .index_question_content .index_question_newmessage,.index_question_content .index_question_inputquestoin{
+    .index_question_content .index_question_newmessage,.index_question_content .index_question_inputquestion{
         background-color: #fff;
         padding:30px 20px 0 20px;
         margin-bottom: 30px;
@@ -1063,31 +1106,35 @@
     }
     .index_question_an .media-body .teachercontent p{
         font-size: 22px;
-        margin-top: 30px;
         font-weight: normal;
         margin-bottom: 30px;
     }
+    .index_question_an .media-body h3{
+        text-align: right;
+        font-weight: bolder;
+        font-size: 26px;
+    }
     .index_question_an .media-body time{
         position:absolute;
-        right: 0;
+        left: 5px;
         top: 0;
         font-size: 20px;
     }
 
-    .index_question_inputquestoin{
+    .index_question_inputquestion{
         text-align: center;
     }
-    .index_question_inputquestoin div{
+    .index_question_inputquestion div{
         text-align: left;
         padding-left: 14%;
     }
-    .index_question_inputquestoin input:nth-of-type(1){
+    .index_question_inputquestion input:nth-of-type(1){
         display: inline-block;
         width: 50%;
         margin-top: 15px;
         margin-bottom: 30px;
     }
-    .index_question_inputquestoin input:nth-of-type(2){
+    .index_question_inputquestion input:nth-of-type(2){
         display: inline-block;
         position: relative;
         left: 19%;
@@ -1098,12 +1145,126 @@
         padding: 30px 40px;
         text-align: left;
     }
+    .index_question_commonquestion_content li{
+        cursor: pointer;
+        position: relative;
+    }
+    .index_question_commonquestion_content li:nth-of-type(1):hover:after{
+        content: '回答：其实这个问题因人而异，毕竟每个人的资质不同，表演专业不同于编导专业的学习，它不是一个具有固定知识点的专业，而且每位考官对于专业审核都有自己的想法和理念，甚至其理念的外在考核形式有可能是截然不同的。所以很多艺考培训班才能够以此为名目，借此整年整年地上课，而事实上，这毫无意义。毕竟表演专业是一门艺术类的学科，它的考核没有“正确答案”，很多时候老师会告诉你考试内容，纠正你一些专业上的谬误，但是老师无法代替你去考试，表演艺术如果经过千百次地练习，很容易使得自己的内心麻木，无法触动自己，而如果自己的表演甚至无法打动自己又谈何打动他人呢？ 所以在戏传的课堂上，我们注重启发，注重想法，注重学生的主观能动性，我们设下三个月左右的课程学习时间，更多的学习是要开发学生的艺术思维，不让艺术学习变成一种练习题。我们努力保证学生学习表演的初心，希望每位学生来报名的时候抱着对表演专业的憧憬，去考试的时候怀揣对表演专业的热爱、感动与虔诚。 愿你每次开始表演，都满怀最初的心潮澎湃。';
+        background-color: #fff;
+        width: 350px;
+        position: absolute;
+        left:0;
+        top:50px;
+        z-index: 1007;
+        font-size: 16px;
+        box-shadow: 2px 2px 3px 3px rgba(0,0,0,.3);
+        text-indent: 32px;
+    }
+    .index_question_commonquestion_content li:nth-of-type(2):hover:after{
+        content: '回答：传媒艺考中的编导专业，狭义上是指“广播电视编导”这一门专业，广义上是指“影视编导”其中包含： 广播电视编导（文艺编导、电视编辑、媒体创意、电视编导、影视编导等方向）； 戏剧影视文学（创意策划、戏剧创作、动漫策划、电视导演、广告导演、影视策划与制片、电视剧创作等方向）； 戏剧影视导演（戏剧导演、戏剧教育、演出制作、影视导演、影视制片等方向）； 影视摄影与制作（电视节目制作、电视摄影与制作、电视摄影、照明艺术、航空摄影等方向）； 还有其他如：导演、摄影、数字媒体艺术、电影学等相关专业。 以上是编导专业学习之后可以进行考试的方向，而编导专业具体要学习的内容包括：影评，视听语言，故事，电视节目分析与策划，文学常识，面试，笔试等七门课程。 ';
+        background-color: #fff;
+        width: 350px;
+        position: absolute;
+        left:0;
+        top:50px;
+        z-index: 1007;
+        font-size: 16px;
+        box-shadow: 2px 2px 3px 3px rgba(0,0,0,.3);
+        text-indent: 32px;
+    }
+    .index_question_commonquestion_content li:nth-of-type(3):hover:after{
+        content: '回答：这个问题其实是每一位有意向学播音的艺考生，都想了解的问题。 首先我们明确一点，学习播音专业并没有任何硬性要求。 但是，以下条件如果能达到会使得你的考试更顺利，更容易得分。 1、男生身高在170-185之间，女生身高在160-175之间； 2、面部无明显伤疤或胎记，五官端正； 3、嗓音条件良好。 以上如果所有条件都满足，那么恭喜你！你非常适合学播音专业！ ';
+        background-color: #fff;
+        width: 350px;
+        position: absolute;
+        left:0;
+        top:50px;
+        z-index: 1007;
+        font-size: 16px;
+        box-shadow: 2px 2px 3px 3px rgba(0,0,0,.3);
+        text-indent: 32px;
+    }
+    .index_question_commonquestion_content li:nth-of-type(4):hover:after{
+        content: "回答：孩子，我不知道。而且我相信如果有人能给你肯定的答案，那他一定是在骗你。 毕竟我们甚至没见过面，没了解过你的一切。我有很多学生都会在学习专业之前、之时、之后来问我这个问题。 “我能考上XXXX大学吗？”我也无法回答这个问题。 我能回答你什么问题呢？ “戏传艺考的师资力量是最好的吗？” “是的，戏传艺考的师资力量涵盖名校考官到资深传媒艺考老师，是全中国最顶尖的师资力量。” 我们能保证把能考上名校的技能全都教给你，但是我们无法保证你能学到多少，更无法保证你最后在考场上能呈现出多少。 学习是一个很私人的事情，你付出了多少努力，就会有多少回报，但这些很多东西往往都是看不到的。我们可以通过测试、考核等手段最后大概估量一下你的水平，但是没人能知道你最后能考到一个什么样的学校或者是什么学校。我们能保证的是，不低于二本。 谋事在人，成事在天。先付出足够的努力，再来谈未来，再来谈梦想。 ";
+        background-color: #fff;
+        width: 350px;
+        position: absolute;
+        left:0;
+        top:50px;
+        z-index: 1007;
+        font-size: 16px;
+        box-shadow: 2px 2px 3px 3px rgba(0,0,0,.3);
+        text-indent: 32px;
+    }
+    .index_question_commonquestion_content li:nth-of-type(5):hover:after{
+        content: "回答：我们戏传每年的开课时间都不太一样，不过每年都是在寒暑假有一次北京实地集训，而网络课堂是全年都有开设的，可咨询15626580565或添加微信xcykkefu即可了解更多内容喔！";
+        background-color: #fff;
+        width: 350px;
+        position: absolute;
+        left:0;
+        top:50px;
+        z-index: 1007;
+        font-size: 16px;
+        box-shadow: 2px 2px 3px 3px rgba(0,0,0,.3);
+        text-indent: 32px;
+    }
+    .index_question_commonquestion_content li:nth-of-type(6):hover:after{
+        content: "回答：我们的收费标准是根据学生的自身条件设定的，如果条件好完全有可能免费入学哦！而且长期班和短期班的费用也不一样，一次性缴纳全程班学费即可获赠价值2499的pico小怪兽G2 VR一体机一部！或享受等值学费抵扣优惠！";
+        background-color: #fff;
+        width: 350px;
+        position: absolute;
+        left:0;
+        top:50px;
+        z-index: 1007;
+        font-size: 16px;
+        box-shadow: 2px 2px 3px 3px rgba(0,0,0,.3);
+        text-indent: 32px;
+    }
+    .index_question_commonquestion_content li:nth-of-type(7):hover:after{
+        content: "回答：戏传艺考所有专业直播课一个班的容纳上限是八人，北京集训的时候表演、播音专业一个班的容纳上线是十人，编导专业一个班的容纳上限是三十人。";
+        background-color: #fff;
+        width: 350px;
+        position: absolute;
+        left:0;
+        top:50px;
+        z-index: 1007;
+        font-size: 16px;
+        box-shadow: 2px 2px 3px 3px rgba(0,0,0,.3);
+        text-indent: 32px;
+    }
+    .index_question_commonquestion_content li:nth-of-type(8):hover:after{
+        content: "回答：直播课需要准时准点上课，不能迟到，整个过程中学生有任何不明白的地方可以及时向老师提问，当场解决，课时费较高； 录播课可以随时随地看，有没看懂的问题，需要将问题写在文档里发给班主任，再由班主任转交给科任老师，老师看到后会录制答疑视频发到课程平台上，学生再上平台观看，课时费较低。 ";
+        background-color: #fff;
+        width: 350px;
+        position: absolute;
+        left:0;
+        top:50px;
+        z-index: 1007;
+        font-size: 16px;
+        box-shadow: 2px 2px 3px 3px rgba(0,0,0,.3);
+        text-indent: 32px;
+    }
+    .index_question_commonquestion_content li:nth-of-type(9):hover:after{
+        content: "回答：如果最后考核分数高，达到自己的目标了，完全不需要去北京集训。北京集训完全是为了给有名校梦的考生，冲击名校的一个集训。如果考核是满分，名校的水平都到了，更不用来北京集训了。";
+        background-color: #fff;
+        width: 350px;
+        position: absolute;
+        left:0;
+        top:50px;
+        z-index: 1007;
+        font-size: 16px;
+        box-shadow: 2px 2px 3px 3px rgba(0,0,0,.3);
+        text-indent: 32px;
+    }
     .index_question_commonquestion>h1:nth-of-type(1){
         text-align: center;
     }
     .index_question_commonquestion ul li h1{
         font-size: 25px;
     }
+
+
 
     /*友情链接*/
     .index_otherlink{
@@ -1130,199 +1291,6 @@
         cursor: pointer;
     }
 
-    /*侧边栏浮窗*/
-    .index_side{
-        position: fixed;
-        right: -25px;
-        bottom: 80px;
-        z-index: 2003;
-    }
-    .index_side ul{
-        width: 200px;
-        text-align: center;
-    }
-    .index_side ul li{
-        margin: 20px 0;
-        background-color: #eaeaea;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
-        position: relative;
-        box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3);
-    }
-    /*侧边栏图标*/
-    .index_side ul li img{
-        width: 40px;
-        height: 40px;
-        cursor: pointer;
-    }
-    .index_side ul li:nth-of-type(5) img{
-        width: 40px;
-        height: 30px;
-    }
-    .index_side ul li span{
-        padding: 10px;
-        position: absolute;
-        right: 100px;
-        border: 1px solid #000;
-        background-color: #f4f5f7;
-        border-radius: 10px;
-        box-shadow: -2px 2px 2px 2px rgba(0,0,0,.3);
-        font-size: 24px;
-        color: #222;
-        display: none;
-    }
-    .index_side ul li span:before,.index_side ul li span:after{
-        content: "";
-        width: 0;
-        height: 0;
-        position: absolute;
-        border:solid transparent;
-        transform: scaleY(0.4);
-        z-index: 8000;
-    }
-    .index_side ul li span:before{
-        border-width: 28px;
-        border-left-color: #000;
-        right:-56px;
-        top: 2px;
-    }
-    .index_side ul li span:after{
-        border-width: 28px;
-        border-left-color: #f4f5f7;
-        top: 2px;
-        right:-54px;
-    }
-    /*第一个图标*/
-    .index_side ul li:nth-of-type(1) span{
-        width: 170px;
-        height: 60px;
-        line-height: 45px;
-    }
-    /*第二个*/
-    .index_side ul li:nth-of-type(2) span{
-        width: 250px;
-        height: 130px;
-        line-height: 45px;
-    }
-    .index_side ul li:nth-of-type(2) span img{
-        height: 100px;
-        width: 100px;
-    }
-    .index_side ul li:nth-of-type(2) span img:nth-of-type(1){
-        margin-right: 25px;
-    }
-    .index_side ul li:nth-of-type(2) span p{
-        position: absolute;
-        font-size: 12px;
-    }
-    .index_side ul li:nth-of-type(2) span p:nth-of-type(1){
-        bottom: -23px;
-        left: 5px;
-    }
-    .index_side ul li:nth-of-type(2) span p:nth-of-type(2){
-        bottom: -23px;
-        right:5px;
-    }
-    /*第三个*/
-    .index_side ul li:nth-of-type(3) span img{
-        height: 100px;
-        width: 100px;
-    }
-    /*第四个*/
-    .index_side ul li:nth-of-type(4) span img{
-        height: 100px;
-        width: 100px;
-    }
-    /*第五个*/
-    .index_side ul li:nth-of-type(5) span{
-        width: 270px;
-        height: 60px;
-        line-height: 40px;
-    }
-    /*第六个*/
-    .index_side ul li:nth-of-type(6) span{
-        width: 270px;
-        height: 60px;
-        line-height: 40px;
-    }
-
-    /*新闻栏*/
-    .news{
-        font-weight: 600 !important;
-    }
-
-    .news .list-group-item{
-        background-color: #eee;
-        border: none;
-        color: #444;
-    }
-    .news .news_title{
-        font-size: 22px;
-        color: #222;
-        padding: 20px 0;
-    }
-    .news .list-group-item-heading{
-        text-overflow: ellipsis;
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        font-weight: 600 !important;
-        margin-bottom: 15px;
-    }
-    .news .list-group-item-text{
-        text-align: center;
-        font-weight: normal;
-        color: #99a2aa;
-    }
-    .news .news_content{
-        border-bottom: 2px solid #f4f5f7;
-        padding: 20px 0;
-        cursor: pointer;
-    }
-    .news .news_content:hover .list-group-item-heading{
-        transition: 0.2s;
-        color: #00a1d6;
-    }
-
-    /*文章栏*/
-    .article{
-        font-weight: 600 !important;
-    }
-
-    .article .list-group-item{
-        border: none;
-        background-color: #eee;
-        color: #444;
-    }
-    .article .article_title{
-        font-size: 22px;
-        color: #222;
-        padding: 20px 0;
-    }
-    .article .list-group-item-heading{
-        text-overflow: ellipsis;
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        font-weight: 600 !important;
-        margin-bottom: 15px;
-    }
-    .article .list-group-item-text{
-        font-weight: normal;
-        color: #99a2aa;
-        text-align: center;
-    }
-    .article .article_content{
-        border-bottom: 2px solid #f4f5f7;
-        padding: 20px 0;
-        cursor: pointer;
-    }
-    .article .article_content:hover .list-group-item-heading{
-        color: #00a1d6;
-    }
-
     /*悬浮表单*/
     .form{
         background-color: #6b6b6b;
@@ -1336,17 +1304,17 @@
         box-shadow: 0 2px 15px rgba(0,0,0,.2)!important;
         z-index: 4003;
     }
+    .form .form-group{
+        margin-bottom: 20px;
+    }
+    .form .n-error{
+        font-size: 20px;
+    }
     .form-content .form_logo img{
         width: 250px;
         height: 200px;
         margin-top: 20px;
         padding-right: 15px;
-    }
-    .form .radio{
-        width: 15px;
-        height: 15px;
-        line-height: 15px;
-        margin: 0;
     }
     .form .header{
         font-size: 24px;
@@ -1365,23 +1333,38 @@
         cursor: pointer;
     }
     .form .inputname,.inputqq,.inputphone,.inputcity{
-        height: 45px;
+        height: 40px;
+        width: 230px;
+        font-size: 20px;
+    }
+    .form .inputphone{
         width: 250px;
-        font-size: 25px;
+    }
+    /*qq输入框*/
+    .form .inputqq{
+        width: 160px;
+        position: relative;
+        left: 90px;
+        border: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
     }
     .form .select{
         text-align: left;
     }
     .form #selectconnectmode{
-        height: 45px;
+        height: 40px;
         line-height: 24px;
         border-radius: 4px;
         box-sizing: border-box;
         position: absolute;
-        top:0;
+        top:0px;
         left:15px;
         width: 100px;
-        font-size: 25px;
+        font-size: 20px;
+        border: none;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
         /*很关键：将默认的select选择框样式清除*/
         appearance:none;
         -moz-appearance:none;
@@ -1390,15 +1373,14 @@
         /*在选择框的最右侧中间显示小箭头图片*/
         background: url("../../../public/image/form/下拉图标.png") no-repeat scroll 70px center transparent;
         background-size: 16px;
-        font-size: 25px;
         background-color: #fff;
         padding-left: 15px;
         color: #000;
     }
     .form .select select{
-        height: 45px;
+        height: 40px;
         line-height: 24px;
-        width: 250px;
+        width: 230px;
         border: 1px solid #ccc;
         border-radius: 4px;
         padding: 0 15px;
@@ -1412,9 +1394,9 @@
         -webkit-appearance:none;
 
         /*在选择框的最右侧中间显示小箭头图片*/
-        background: url("../../../public/image/form/下拉图标.png") no-repeat scroll 225px center transparent;
+        background: url("../../../public/image/form/下拉图标.png") no-repeat scroll 198px center transparent;
         background-size: 16px;
-        font-size: 25px;
+        font-size: 20px;
         background-color: #fff;
     }
     .form .select option{
@@ -1436,7 +1418,7 @@
     }
     .form .submit input{
         width: 110px;
-        height:110px;
+        height:100px;
         background-color: #ccff99;
         color: #000;
         font-weight: bold;
@@ -1452,7 +1434,7 @@
         text-align: left;
         display: block;
         font-size: 30px;
-        padding-left: 15px;
+        padding-left: 30px;
     }
     .form_min{
         position: fixed;
@@ -1461,10 +1443,16 @@
         z-index: 9999;
         display: none;
         cursor: pointer;
+        width: 70px;
+        height: 70px;
+        background-color: #508fcb;
+        border-radius: 50%;
+        box-shadow: 2px 2px 2px 2px rgba(0,0,0,.3);
     }
     .form_min img{
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
+
     }
 
     @media (min-width: 768px) {
@@ -1479,9 +1467,53 @@
         .index_article_content .col-md-offset-2{
             margin-left: 10%;
         }
+        /*师资力量*/
+        .index_teacher_banner .item>img{
+            left:135px;
+        }
+        .index_teacher_banner .item p{
+            font-size: 20px;
+            display: block;
+            overflow: hidden;
+            height: 250px;
+        }
+        .index_teacher_banner .item h1{
+            font-size: 56px;
+            font-weight: bold;
+            top:0;
+            margin-top:0;
+        }
+        .index_teacher_banner .item h3{
+            font-size: 28px;
+            top:0;
+            border-bottom: 2px solid #ffA500;
+            padding-bottom: 10px;
+        }
+        .index_teacher_banner .item .carousel-caption{
+            left: 46%;
+        }
+        /*学生成绩*/
+        .index_grade_banner .index_grade_list>li{
+            width: 190px;
+        }
+        .index_grade_banner .index_grade_img{
+            height: 185px;
+        }
+        .index_grade_banner .index_grade_text h3{
+            font-size: 24px;
+        }
+        .index_grade_banner .index_grade_text p{
+            font-size: 18px;
+        }
+        .index_grade_banner .index_grade_text ul li{
+            font-size: 16px;
+        }
+        .index_grade_link{
+            margin-top: 0;
+        }
 
         /*文章动态*/
-        .index_aritcle_content_subheader h1{
+        .index_article_content-subheader h1{
             font-size: 40px;
         }
         .index_article_content_subcontent ul .media .media-body h3{
@@ -1489,28 +1521,22 @@
         }
         /*文章标签*/
         .index_article_content_subcontent ul .media .dec span{
-            margin: 0 2px;
+            margin: 0 8px;
             font-size: 14px;
         }
         /*答疑解惑*/
-        .index_question_inputquestoin div{
-            padding-left: 8%;
+        .index_question_inputquestion div{
+            padding-left: 0;
         }
-        .index_question_inputquestoin input:nth-of-type(2){
-            left: 26%;
-        }
-        /*学生成绩*/
-        .index_grade_banner .index_grade_student img{
-            width: 150px;
-            height: 150px;
-        }
-        /*侧边栏*/
-        .index_side ul{
-            width: 110px;
+        .index_question_inputquestion input:nth-of-type(2){
+            left: 35.8%;
         }
         /*悬浮表单*/
         .form_min{
-            right: 18px;
+            right: 60px;
+        }
+        .form .form-content{
+            margin-bottom: 0;
         }
     }
     @media (max-width: 1200px){
@@ -1579,8 +1605,8 @@
         }
         /*师资力量*/
         .index_teacher .index_teacher_banner .item img{
-            height: 200px;
             width: 100%;
+            height: 107%;
             left: 0;
         }
         .index_teacher .index_teacher_banner .item{
@@ -1588,17 +1614,21 @@
         }
         .index_teacher .index_teacher_banner .item .carousel-caption{
             width: 100%;
-            left: -20%;
-            top:90%;
+            left: 10%;
         }
         .index_teacher .index_teacher_banner .item .carousel-caption>h1{
             font-size: 20px;
+            text-align: center;
+            color: #fff;
         }
         .index_teacher .index_teacher_banner .item h3{
             font-size: 20px;
+            text-align: center;
         }
         .index_teacher .index_teacher_banner .item p{
             font-size: 12px;
+            height: 86px;
+            color: #fff;
         }
         .index_teacher_content .left .pre{
             width: 30px;
@@ -1614,53 +1644,37 @@
             left: 10%;
         }
 
-        /*侧边栏浮窗*/
-        .index_side ul{
-            width: 76px;
-        }
-        .index_side ul li{
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            margin: 5px 0;
-        }
-        .index_side ul li img{
-            width: 30px;
-            height: 30px;
-        }
-        .index_side ul li:nth-of-type(5) img{
-            width: 30px;
-            height: 20px;
-        }
-
         /*学生成绩*/
-        .index_grade_banner .col-md-3{
-            width: 80%;
-        }
         .index_grade_content .left .pre{
             width: 30px;
             height: 30px;
-            top: 60%;
+            top: 44%;
             right: 10%;
         }
         .index_grade_content .right .next{
             width: 30px;
             height: 30px;
             transform: rotateY(180deg);
-            top: 60%;
+            top: 44%;
             left: 10%;
         }
-
+        .index_grade_banner .index_grade_list{
+            width: 67%;
+            height: 369px;
+        }
         /*文章动态*/
-        .index_aritcle_content_subheader h1{
+        .index_article_content-subheader h1{
             font-size: 25px;
             margin-right: 5px;
         }
-        .index_aritcle_content_subheader p{
+        .index_article_content-subheader p{
             font-size: 18px;
         }
+        .index_article_content_subcontent ul .media .media-body{
+            overflow: fragments;
+        }
         .index_article_content_subcontent ul .media .media-body p{
-            width: 24%;
+            width: 85%;
             font-size: 12px;
             line-height: 12px;
             margin: 0;
@@ -1673,6 +1687,19 @@
         .index_article_content_subcontent ul .media h3{
             font-size: 18px;
             margin-left: 0;
+        }
+        .index_article_content .col-md-5{
+            width: 100%;
+        }
+        .index_article_content .col-md-offset-2{
+            margin-left: 0;
+        }
+        .index_article_content_subcontent ul .media .dec span{
+            margin: 0 3px;
+        }
+        .index_article_content_subcontent ul .media .dec span:nth-of-type(3){
+            position: relative;
+            left: -4px;
         }
         /*标签*/
         .index_article_content_subcontent ul .media{
@@ -1713,16 +1740,29 @@
             font-size: 16px;
         }
         .index_question_an .media-body time{
-            right: 20px;
+            left: 20px;
         }
         .index_question_content>div:nth-of-type(1){
             margin-left: 0;
         }
-        .index_question_inputquestoin input{
+        .index_question_inputquestion input{
             font-size: 12px;
         }
         .btn{
             padding: 5px 0;
+        }
+        .index_question_commonquestion_content li:nth-of-type(1):hover:after,
+        .index_question_commonquestion_content li:nth-of-type(2):hover:after,
+        .index_question_commonquestion_content li:nth-of-type(3):hover:after,
+        .index_question_commonquestion_content li:nth-of-type(4):hover:after,
+        .index_question_commonquestion_content li:nth-of-type(5):hover:after,
+        .index_question_commonquestion_content li:nth-of-type(6):hover:after,
+        .index_question_commonquestion_content li:nth-of-type(7):hover:after,
+        .index_question_commonquestion_content li:nth-of-type(8):hover:after,
+        .index_question_commonquestion_content li:nth-of-type(9):hover:after
+        {
+            width: 278px;
+            left:-28px;
         }
 
         /*悬浮表单*/
@@ -1732,7 +1772,9 @@
         }
         .form_min{
             bottom: 22px;
-            right: 7px;
+            right: 12px;
+            width: 60px;
+            height: 60px;
         }
         /*关闭按钮*/
         .form .header{
@@ -1751,10 +1793,14 @@
             width: 110px;
             font-size: 14px;
         }
+        .form .inputphone{
+            width: 240px;
+        }
         .form .select select{
             width: 110px;
             height: 30px;
             font-size: 14px;
+            padding: 0 5px;
         }
         .form .inputqq{
             width: 190px;
@@ -1782,8 +1828,6 @@
         .form .form_logo{
             display: none;
         }
-
-
         input{
             height: 30px;
         }
@@ -1803,7 +1847,7 @@
         }
         .form .form-group{
             text-align: left;
-            margin: 5px 10px 5px -10px;
+            margin: 5px 10px 16px -10px;
         }
         .form-group:nth-child(2) div,.form-group:nth-child(6) div{
             padding-left: 0;

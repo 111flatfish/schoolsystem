@@ -9,17 +9,12 @@
                 </div>
                 <!--图标连接-->
                 <div class="header_connect">
-                    <div class="header_icon">
-                        <span class="erweimaspan1"><img src="../../../public/image/header/微博logo-蓝色.png" alt="weibo">官方微博</span>
-                        <img src="../../../public/image/header/二维码-官方微信号.png" alt="erweima" class="weibo" >
-                        <div class="weixin">
-                            <span class="erweimaspan2"><img src="../../../public/image/header/微信logo-蓝色.png" alt="weixin">微信公众号</span>
-                            <img src="../../../public/image/header/二维码-官方微信号.png" alt="erweima" class="weixinerweima">
-                        </div>
-                    </div>
                     <!--电话-->
                     <div class="header_phone">
-                        <span><img src="../../../public/image/header/电话-蓝色.png" alt="phone">400-000-0000</span>
+                        <span>
+                            <img src="../../../public/image/header/电话-蓝色.png" alt="phone">
+                            <span class="header_phone_text">156-265-8056</span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -51,7 +46,7 @@
                             </li>
                             <!--戏传特色-->
                             <li>
-                                <a href="#">戏传特色</a>
+                                <a href="#">网课筛选</a>
                             </li>
                             <!--专业介绍-->
                             <li>
@@ -59,7 +54,7 @@
                             </li>
                             <!--艺考指南-->
                             <li>
-                                <router-link to="/achievement" tag="a">学院成绩</router-link>
+                                <router-link to="/achievement" tag="a">学员成绩</router-link>
                             </li>
                             <!--历届成绩-->
                             <li>
@@ -101,16 +96,14 @@
         name: "Header",
         mounted() {
             $(function () {
-                $(".erweimaspan1").mouseenter(function () {
-                    $(".weibo").show();
-                }).mouseleave(function () {
-                    $(".weibo").hide();
-                });
-                $(".erweimaspan2").mouseenter(function () {
-                    $(".weixinerweima").show();
-                }).mouseleave(function () {
-                    $(".weixinerweima").hide();
-                });
+                $(".navbar").addClass("relative").removeClass("fixed");
+               $(window).scroll(function () {
+                   if($(window).scrollTop() >= 85){
+                       $(".navbar").addClass("fixed").removeClass("relative")
+                   }else {
+                       $(".navbar").addClass("relative").removeClass("fixed")
+                   }
+               });
             });
         }
     };
@@ -118,11 +111,18 @@
 
 <style scoped>
     .header{
-        position: fixed;
         width: 100%;
-        z-index: 9999;
         background-color: #fff;
-        top: 0;
+        margin: 0 auto;
+    }
+    .fixed{
+        position: fixed;
+        top:0;
+        z-index: 9999;
+    }
+    .relative{
+        position: absolute;
+        z-index: 9999;
     }
     .header .header_content{
         position: relative;
@@ -146,45 +146,14 @@
         text-align: right;
         display: inline-block;
         float: right;
-        margin-top: 15px;
+        margin-top: 10px;
         margin-right: 100px;
 
-    }
-    .header .header_content .header_connect .header_icon{
-        display: inline-block;
-        margin-right: 30px;
-        position: relative;
-        z-index: 2000;
     }
     .header .header_content .header_connect .header_icon span{
         margin: 0 20px;
         color: #000;
         font-weight: bold;
-    }
-    /*二维码*/
-    .header .header_content .header_connect .header_icon .weibo{
-        position: absolute;
-        left: -70px;
-        top:-10px;
-        width: 80px;
-        height: 80px;
-        z-index: 5555;
-        display: none;
-    }
-    .header .header_content .header_connect .header_icon .weixinerweima{
-        position: absolute;
-        left: -70px;
-        top:-10px;
-        width: 80px;
-        height: 80px;
-        z-index: 5555;
-        display: none;
-    }
-    .header .header_content .header_connect .header_icon .weixin span{
-        margin: 0 5px;
-    }
-    .header .header_content .header_connect .header_icon .weixin{
-        padding: 10px 0;
     }
     .header .header_content .header_connect .header_icon img{
         width: 22px;
@@ -194,10 +163,16 @@
     .header .header_content .header_connect .header_phone{
         display: inline-block;
         position: relative;
-        top:-20px;
         right: 10px;
         color: #000;
         font-weight: bold;
+        font-size: 45px;
+        line-height: 64px;
+    }
+    .header .header_connect .header_phone .header_phone_text{
+        position: relative;
+        top: 6px;
+        left: 15px;
     }
     .header .header_content .header_connect .header_phone img{
         width: 45px;
@@ -210,20 +185,23 @@
         line-height: 60px;
         text-align: center;
         width: 100%;
+        padding: 0;
     }
     .header .navbar-brand{
         display: none;
     }
     .header .navbar{
         background: #fff;
-        width: 105%;
         margin-bottom: 0;
+        width: 100%;
         /*border-top: 1px solid #ccc;*/
 
     }
     .header .navbar li{
-        width: 190px;
+        width: 12%;
         text-align: center;
+        float: none;
+        display: inline-block;
     }
     .header .navbar a{
         height: 60px;
@@ -252,28 +230,27 @@
     /*第一条*/
     .header .nav1{
         position: relative;
-        left: 50%;
-        margin-left: -665px;
         float: none;
+        text-align: center;
+
     }
     /*第二条*/
     .header .nav2{
        position: relative;
-        left: 50%;
-        margin-left:-420px;
-        width: 100%;
-
-    }
-    .header .nav2:before{
-        content: '';
-        position: absolute;
-        left: -50%;
-        width:150%;
-        height: 100%;
+        float: none;
+        text-align: center;
         background-color: #9a9a9a;
     }
+    /*.header .nav2:before{*/
+        /*content: '';*/
+        /*position: absolute;*/
+        /*left: -50%;*/
+        /*width:150%;*/
+        /*height: 100%;*/
+        /*background-color: #9a9a9a;*/
+    /*}*/
     .header .nav2 li{
-        width: 280px;
+        width: 20%;
     }
     .header .nav2 li a{
         color: #fff;
@@ -282,14 +259,19 @@
     /*移动端适配*/
     /*大于768*/
     @media (min-width: 768px) {
+        .navbar{
+            border-radius: 0;
+            border-left: none;
+            border-right: none;
+        }
         .container-fluid{
-            padding:0 100px;
+            padding: 0;
         }
     }
     /*小于908*/
     @media (max-width: 908px) {
         .header .navbar li{
-            width: 120px;
+            width: 180px;
         }
         /*第一条*/
         .header .nav1{
@@ -297,7 +279,6 @@
         }
         /*第二条*/
         .header .nav2{
-            margin-left:-180px;
         }
         .header .nav2 li{
             height: 80px;
@@ -311,17 +292,24 @@
         .container-fluid{
             padding: 0 0;
         }
+        .navbar-header{
+            margin: 0;
+        }
         .navbar-collapse{
             padding: 0 0;
         }
         .navbar-toggle{
-            margin-right: 30px;
+            margin-right: 15px;
+            margin-top: 15px;
         }
         .header .header_content{
             display: none;
         }
         .header .navbar-brand{
             display:block;
+        }
+        .fixed{
+            position: absolute;
         }
         /*第一条*/
         .header .nav1{
@@ -335,12 +323,11 @@
         }
         /*第二条*/
         .header .nav2{
-            margin-left:-180px;
-            z-index: 5002;
         }
         .header .nav2 li{
-            width: 250px;
+            width: 278px;
             margin: 0 auto;
+
         }
 
     }

@@ -210,8 +210,9 @@
         },
         // 组件销毁
         destroyed() {
-            // 清除jQuery的定时器，避免重复
+            // 清除jQuery的定时器，避免动画积累
             clearInterval(this.timer);
+            clearInterval(this.timer2);
         }
     }
 
@@ -224,7 +225,8 @@ main{
     margin: 0 auto;
 }
 .about{
-    margin-top: 207px;
+    margin-top: 125px;
+    overflow: hidden;
 }
 /*学校简介*/
 .about_introduce{
@@ -364,7 +366,7 @@ main{
     position: absolute;
 }
 .about_feature_content .about_feature_icon1>img,.about_feature_icon2>img,.about_feature_icon3>img,.about_feature_icon4>img,.about_feature_icon5>img,.about_feature_icon6>img{
-    width: 174px;
+    width: 118px;
     height: 118px;
 }
 .about_feature_content .about_feature_txt{
@@ -387,7 +389,7 @@ main{
 }
 .about_feature_content .about_feature_icon1{
     top:8%;
-    right:0;
+    right:6%;
 }
 .about_feature_content .about_feature_icon1>.about_feature_txt{
     position: relative;
@@ -396,7 +398,7 @@ main{
 }
 .about_feature_content .about_feature_icon2{
     top:-8%;
-    left:43%;
+    left:45.5%;
 }
 .about_feature_content .about_feature_icon2>.about_feature_txt{
     position: relative;
@@ -405,7 +407,7 @@ main{
 }
 .about_feature_content .about_feature_icon3{
     top:8%;
-    left:22%;
+    left:26%;
 }
 .about_feature_content .about_feature_icon3>.about_feature_txt{
     position: relative;
@@ -414,7 +416,7 @@ main{
 }
 .about_feature_content .about_feature_icon4{
     top:42%;
-    left:22%;
+    left:26%;
 }
 .about_feature_content .about_feature_icon4>.about_feature_txt{
     position: relative;
@@ -423,7 +425,7 @@ main{
 }
 .about_feature_content .about_feature_icon5{
     top:58%;
-    left:44%;
+    left:45.5%;
 }
 .about_feature_content .about_feature_icon5>.about_feature_txt{
     position: relative;
@@ -432,7 +434,7 @@ main{
 }
 .about_feature_content .about_feature_icon6{
     top:38%;
-    left:64%;
+    right: 6%;
 }
 .about_feature_content .about_feature_icon6>.about_feature_txt{
     position: relative;
@@ -509,7 +511,6 @@ main{
     margin-top: 100px;
     height: 800px;
     overflow: hidden;
-    margin-left: 50px;
 
 }
 .honorActive{
@@ -518,7 +519,7 @@ main{
     opacity: 1;
 }
 .about_honor ul li img{
-    width: 740px;
+    width: 467px;
     height: 360px;
     opacity: 0.5;
 }
@@ -537,6 +538,35 @@ main{
 @media (max-width: 1600px) {
     .about_honor ul{
         margin-left: 0;
+    }
+    .about_feature_content .about_feature_icon1{
+        top:8%;
+        right:-6%;
+    }
+    .about_feature_content .about_feature_icon2{
+        top:-8%;
+        left:44%;
+    }
+    .about_feature_content .about_feature_icon3{
+        top:8%;
+        left:20%;
+    }
+    .about_feature_content .about_feature_icon4{
+        top:42%;
+        left:20%;
+    }
+    .about_feature_content .about_feature_icon5{
+        top:58%;
+        left:44%;
+    }
+    .about_feature_content .about_feature_icon6{
+        top:38%;
+        right:-6%;
+    }
+    .about_honor ul li img{
+        width: 368px;
+        height: 330px;
+        opacity: 0.5;
     }
 }
 @media (max-width: 768px) {

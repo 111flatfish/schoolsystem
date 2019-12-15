@@ -31,7 +31,7 @@
     height: 500px;
 }
 .error h1{
-    margin-top: 250px;
+    margin-top: 125px;
     font-size: 150px;
 }
 .error p{

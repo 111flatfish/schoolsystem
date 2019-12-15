@@ -8,7 +8,7 @@ export default new Vuex.Store({
     // 专业类型
     majorStyle:"perform",
     // 悬浮表单
-    formflag:true
+    formflag:window.localStorage.getItem("formflag")
   },
   getters:{
     // 获取专业类型
@@ -24,7 +24,7 @@ export default new Vuex.Store({
   mutations:{
     // 设置悬浮表单
     setformflag(state,data){
-      state.formflag = data;
+      state.formflag = window.localStorage.setItem("formflag",data);
     },
     // 设置专业类型
     setmajorstyle(state,data){

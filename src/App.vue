@@ -1,7 +1,10 @@
 <template>
   <div id="app">
     <Header></Header>
-        <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
+      <Side></Side>
     <Footer></Footer>
   </div>
 </template>
@@ -9,11 +12,16 @@
 <script>
   import Header from "./components/header"
   import Footer from "./components/footer"
+  import Side from "./components/side"
   export default {
       name:"App",
       components:{
         Header,
-        Footer
+        Footer,
+        Side
+      },
+      mounted() {
+        this.$store.commit("setformflag",true);
       }
   }
 </script>

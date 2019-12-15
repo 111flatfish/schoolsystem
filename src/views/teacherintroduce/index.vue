@@ -139,7 +139,7 @@
 <style scoped>
 /*老师内容*/
 .teacher{
-    margin-top: 250px;
+    margin-top: 125px;
     margin-left: 7.5%;
     margin-bottom: 50px;
 }

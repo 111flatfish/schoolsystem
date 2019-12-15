@@ -14,8 +14,8 @@
                     <!--搜索框-->
                     <div class="search">
                         <form class="searchform" enctype="application/x-www-form-urlencoded">
-                            <input type="text" placeholder="搜索文章标题或标签" class="  txt" v-model="searchArg">
-                            <button type="button" class="btn" value="搜索"  @click="searchArticle">点击搜索</button>
+                            <input type="text" placeholder="搜索新闻标题或标签" class="  txt" v-model="searchArg">
+                            <button type="button" class="btn" value="搜索"  @click="searchNews">点击搜索</button>
                         </form>
                     </div>
                 </div>
@@ -33,12 +33,12 @@
             <!--展示内容区-->
             <div class="row clearfix content">
                 <!--文章栏-->
-                <div class="col-md-8 column article_content">
+                <div class="col-md-8 column news_content">
                     <!--文章显示区-->
                     <h3 style="text-align: left" v-if="isSearch">搜索结果：</h3>
                     <h3 style="text-align: left" v-if="!isSearch">最新文章：</h3>
                     <ul class="row clearfix">
-                        <li class="media" v-for="item in currenArticle" >
+                        <li class="media" v-for="item in currennews" @click="ToNews(item.id)">
                             <div class="media-left">
                                 <!--图片-->
                                 <a href="#">
@@ -53,12 +53,17 @@
                                 <p>{{item.content}}</p>
                                 <!--简介-->
                                 <div class="dec">
-                                    <span><img src="../../../public/image/news/图标-时钟.png" alt="发布时间">{{item.create_time}}</span><span><img
-                                        src="../../../public/image/news/图标-眼睛.png" alt="浏览数">{{item.view_num}}</span><span>
-                                    <ul v-for="item2 in item.lable" style="display: inline-block">
-                                        <li style=";margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>
-                                    </ul>
-                                </span>
+                                    <span>
+                                        <img src="../../../public/image/news/图标-时钟.png" alt="发布时间">{{item.create_time}}
+                                    </span>
+                                    <span>
+                                        <img src="../../../public/image/news/图标-眼睛.png" alt="浏览数">{{item.view_num}}
+                                    </span>
+                                    <span>
+                                        <ul v-for="item2 in item.news_lable" style="display: inline-block">
+                                            <li style=";margin: 0 5px;border-radius: 4px;background-color: white;padding: 5px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>
+                                        </ul>
+                                     </span>
                                 </div>
                             </div>
                         </li>
@@ -121,8 +126,8 @@
         data(){
             return{
                 // 文章数据
-                articles:[],               // 初始化页面获取的总文章
-                currenArticle:[],          //当前页渲染的文章
+                news:[],               // 初始化页面获取的总文章
+                currennews:[],          //当前页渲染的文章
 
                 // 页码栏数据
                 currentPage:1,            //当前页，默认为1
@@ -136,7 +141,7 @@
                 // 筛选值
                 filterArg:366,
                 // 搜索参数
-                searchArg:"",
+                searchArg:null,
 
                 // 广告栏数据
                 adv:[],
@@ -145,8 +150,6 @@
                 type:"news",
                 // banner位置
                 loc:"title"
-
-
             }
         },
         // 组件
@@ -157,16 +160,16 @@
         },
         created() {
             // 初始化页面获取文章请求
-            axiosReq.get(`getArticle/num/100/day/${this.filterArg}`).then(data=>{
+            axiosReq.get(`getNews/num/100/day/${this.filterArg}`).then(data=>{
                 if(data.data.length > 0){
                     this.totalPage = Math.ceil(data.data.length/this.pageNum);
-                    this.articles = data.data;
+                    this.news = data.data;
                     // 把标签值分割
-                    this.articles.forEach((value)=>{
-                        value.lable = value.lable.split(",");
+                    this.news.forEach((value)=>{
+                        value.news_lable = value.news_lable.split(",");
                     });
                     // 默认显示第一页
-                    this.currenArticle = this.articles.slice(0,5);
+                    this.currennews = this.news.slice(0,5);
                 }else {
                     this.$router.push({
                         path:"/error"
@@ -187,55 +190,65 @@
                 if(n === this.currentPage)return ;
                 if(typeof n === "string")return ;
                 this.currentPage = n;
-                this.currenArticle = this.articles.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
+                this.currennews = this.news.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
 
             },
             // 跳转页面
             jump(){
                 this.inputPage<1?this.inputPage=1:this.inputPage>this.totalPage?this.inputPage = this.totalPage:null;
-                this.currentPage = this.inputPage;
-                this.currenArticle = this.articles.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
+                let jumppage = Number.parseInt(this.inputPage);
+                this.select(jumppage);
             },
             // 点击上一页或者下一页
             pagePreOrNext(n){
                 this.currentPage += n;
                 this.currentPage < 1?this.currentPage =1:this.currentPage>this.totalPage?this.currentPage = this.totalPage:null;
-                this.currenArticle = this.articles.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
+                this.currennews = this.news.slice((this.currentPage-1)*5,(this.currentPage-1)*5+5);
 
             },
             // 搜索文章
-            searchArticle(){
-                axiosReq.get(`queryArticle/name/${this.searchArg}`).then(data=>{
-                    if(data.data.length > 0){
-                        this.isSearch = true;
-                        this.totalPage = Math.ceil(data.data.length/this.pageNum);
-                        this.articles = data.data;
-                        // 把标签值分割
-                        this.articles.forEach((value)=>{
-                            value.lable = value.lable.split(",");
-                        });
-                        // 默认显示第一页
-                        this.currenArticle = this.articles.slice(0,5);
+            searchNews(){
+                if(this.searchArg == null|| this.searchArg == ""){
+                    window.alert("搜索条件不能为空！请重新输入！");
+                }else {
+                    axiosReq.get(`queryNews/name/${this.searchArg}`).then(data => {
+                        if (data.data.length > 0) {
+                            this.isSearch = true;
+                            this.totalPage = Math.ceil(data.data.length / this.pageNum);
+                            this.news = data.data;
+                            // 把标签值分割
+                            this.news.forEach((value) => {
+                                value.news_lable = value.news_lable.split(",");
+                            });
+                            // 默认显示第一页
+                            this.currennews = this.news.slice(0, 5);
 
-                    }else {
-                        this.$router.push({
-                            path:"/error"
-                        })
-                    }
+                        } else {
+                            this.$router.push({
+                                path: "/error"
+                            })
+                        }
+                    });
+                }
+            },
+            // 点击文章，跳转到文章页
+            ToNews(id){
+                this.$router.push({
+                    path:`/news/${id}`
                 });
             },
             // 筛选日期处理函数
             selectFn(arg){
-                axiosReq.get(`getArticle/num/1000/day/${arg}`).then(data=>{
+                axiosReq.get(`getNews/num/1000/day/${arg}`).then(data=>{
                     if(data.data.length > 0){
                         this.totalPage = Math.ceil(data.data.length/this.pageNum);
-                        this.articles = data.data;
+                        this.news = data.data;
                         // 把标签值分割
-                        this.articles.forEach((value)=>{
-                            value.lable = value.lable.split(",");
+                        this.news.forEach((value)=>{
+                            value.news_lable = value.news_lable.split(",");
                         });
                         // 默认显示第一页
-                        this.currenArticle = this.articles.slice(0,5);
+                        this.currennews = this.news.slice(0,5);
 
                     }else {
                         this.$router.push({
@@ -244,16 +257,14 @@
                     }
                 });
             }
-
-
         },
         // 组件
         computed:{
             // 页码计算属性
             pages(){
-                let c = this.currentPage;
-                let t = this.totalPage;
-                let p = this.pageNum;
+                let c = Number.parseInt(this.currentPage);
+                let t =  Number.parseInt(this.totalPage);
+                let p =  Number.parseInt(this.pageNum);
                 let arr = [];
                 if(t <= 9 && t >0){
                     while (t > 0){
@@ -302,7 +313,6 @@
     .news .search input{
         font-size: 25px;
         padding: 5px 10px 8px 10px;
-        height: 60px;
         border: none;
         border-radius: 4px;
         box-shadow: 0 0 4px 2px rgba(0,0,0,.2);
@@ -316,7 +326,7 @@
     }
     .news .search button{
         width: 20%;
-        padding: 10px;
+        padding: 4px;
         font-size: 28px;
         display: inline-block;
         background-color: #fff;
@@ -324,7 +334,7 @@
         border-radius: 10px;
         color: #ffa500;
         margin-left: 50px;
-        height: 62px;
+        height: 50px;
         margin-bottom: 5px;
     }
     .news .search button:hover{
@@ -344,7 +354,7 @@
     }
     .news{
         padding: 0;
-        margin-top: 207px;
+        margin-top: 125px;
     }
     .news .searchfilter{
         margin-top: 10px;
@@ -377,9 +387,6 @@
     }
     .content .column{
         margin-bottom: 0;
-    }
-    .content ul{
-        padding-right: 20px;
     }
 
     .content ul .media{
@@ -417,7 +424,7 @@
         border-radius: 4px;
     }
 
-    .content .article_content>h3{
+    .content .news_content>h3{
         margin-bottom: 30px;
     }
     .content ul .media h3{
@@ -432,7 +439,7 @@
     .content ul .media .dec{
         position: relative;
         left:20px;
-        bottom: 0;
+        bottom: 2px;
         font-size: 16px;
         height: 40px;
         text-align: left;
@@ -441,6 +448,7 @@
     .content ul .media .dec span{
         margin: 10px 20px;
         color: #99a2aa;
+        display: inline-block;
     }
     .content ul .media .dec span img{
         width: 20px;
@@ -455,6 +463,12 @@
     .content ul .media .dec span:nth-of-type(2) img{
         width: 30px;
         height: 30px;
+    }
+    .content ul .media .dec span:nth-of-type(3){
+        width: 30.333%;
+        text-align: right;
+        position: absolute;
+        right: 0;
     }
     .content ul .media .dec ul{
         line-height: normal;
@@ -477,7 +491,7 @@
     }
     .content .adv_item img{
         width: 100%;
-        height: 100%;
+        height: 90%;
         position:relative;
     }
     .content .adv_item:after{
@@ -513,7 +527,7 @@
     .pageContainer nav{
         display: inline-block;
         position: relative;
-        left: -30px;
+        left: -8%;
     }
     .pageContainer .jumppage{
         display: inline-block;
@@ -555,8 +569,34 @@
 
     @media (max-width: 1600px) {
         .news .searchfilter>ul li{
-            margin-right: 18px;
+            margin-right: 16px;
         }
+        .pageContainer nav{
+            left: -5%;
+        }
+        .pageContainer nav ul{
+            height: 29px;
+        }
+        .pageContainer nav ul li span{
+            font-size: 14px;
+            width: 40px;
+        }
+        .pageContainer .jumppage{
+            position: relative;
+            left:30px;
+        }
+        .pageContainer .jumppage input{
+            height: 39px;
+            width: 70px;
+            top:-26px;
+        }
+        .pageContainer .jumppage input:nth-of-type(2){
+            padding: 6px 7px;
+        }
+        .pageContainer .jumppage span{
+            top:-22px;
+        }
+
     }
     @media (max-width: 768px) {
         /*内容*/
@@ -565,20 +605,19 @@
         }
         /*搜索框*/
         .news .search input{
-            font-size: 16px;
+            font-size: 13px;
         }
         .news .search button{
             height: 30px;
             font-size: 16px;
             right: 0;
-            width: 30%;
+            width: 28%;
             padding: 0;
             margin-left: 60px;
+            margin-bottom: 0;
 
         }
-        .news .searchfilter>ul li{
-            margin-right: 20px;
-        }
+
         /*文章内容*/
         .content{
             padding: 0;
@@ -590,17 +629,27 @@
             margin: 0;
             padding:10px 5px;
         }
-        .article_content{
+        .news_content{
             padding: 0;
         }
         .content ul .media .media-body .dec{
-            bottom:45px;
-        }
-        .content ul .media .media-body .dec{
             left: 0;
-            bottom: 45px;
+            bottom: 0;
             text-align: left;
             width: 210px;
+            height: auto;
+            line-height: 20px;
+        }
+        .content ul .media .media-body .dec span{
+            width: auto;
+            text-align: left;
+        }
+        .content ul .media .dec span:nth-of-type(3){
+            position: relative;
+            display: block;
+        }
+        .content ul .media .dec span:nth-of-type(3) ul{
+            height: auto;
         }
 
 
@@ -621,7 +670,7 @@
         .content h3{
             font-size: 18px;
         }
-        .content .article_content h3{
+        .content .news_content h3{
             margin-bottom: 10px;
         }
         .content ul .media .media-left img{
@@ -634,6 +683,7 @@
         .content ul .media .media-body p{
             margin: 10px 0 10px 0;
             width: 210px;
+            height: auto;
         }
         .content ul .media .media-body span{
             margin: 5px;
@@ -657,14 +707,17 @@
         .pagination{
             display: block;
         }
-        .pageContainer li span{
-            width: 30px;
+        .pageContainer nav ul li span{
+            width: 28px;
             text-align: center;
             padding: 5px;
         }
+
+
         /*跳转栏*/
         .pageContainer .jumppage{
             display: block;
+            left: 0;
         }
         .pageContainer .jumppage input{
             left: 0;
@@ -678,11 +731,11 @@
             left: 20px;
         }
 
-
         /*广告栏*/
         .content .adv{
             margin-top: 0;
             padding-left: 10px;
+            padding-top: 0;
         }
         .content .adv_item{
             height: 300px;

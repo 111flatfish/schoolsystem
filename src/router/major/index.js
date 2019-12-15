@@ -9,15 +9,24 @@ export default {
     children:[
         {
             path:"perform",
-            component:perform
+            component:perform,
+            meta:{
+                keepAlive:true
+            }
         },
         {
             path:"choreographer",
-            component:choreographer
+            component:choreographer,
+            meta:{
+                keepAlive:true
+            }
         },
         {
             path:"broadcasting",
-            component:broadcasting
+            component:broadcasting,
+            meta:{
+                keepAlive:true
+            }
         }
     ]
 }

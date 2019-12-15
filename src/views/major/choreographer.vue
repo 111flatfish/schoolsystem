@@ -597,7 +597,7 @@
 
 <style scoped>
     .choreographer{
-        margin-top: 207px;
+        margin-top: 125px;
     }
     /*专业图片*/
     .showcontent_major img{

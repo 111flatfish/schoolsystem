@@ -150,11 +150,8 @@
             display: none;
         }
         /*二维码*/
-        .footer_content_erweima ul li:nth-of-type(1){
-            left: 0;
-        }
-        .footer_content_erweima ul li:nth-of-type(2){
-            right: 0;
+        .footer_content_erweima ul li{
+            margin: auto -15px;
         }
         .footer_content_erweima ul li img{
             width: 120px;

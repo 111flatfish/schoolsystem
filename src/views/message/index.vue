@@ -92,7 +92,7 @@
                             <label for="inputphone" class="col-sm-3 control-label">请输入您的手机号码</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="inputphone" v-model="message.phone" placeholder="phone">
-                                <button type="submit" class="btn" id="buttonsubmit">提交</button>
+                                <button type="button" class="btn" id="buttonsubmit" @click="messagesubmit">提交</button>
                             </div>
                         </div>
                     </form>
@@ -173,7 +173,18 @@
                 this.currentPage += n;
                 this.currentPage < 1?this.currentPage =1:this.currentPage>this.totalPage?this.currentPage = this.totalPage:null;
                 this.currentMessage = this.messages.slice((this.currentPage-1)*4,(this.currentPage-1)*4+4);
-
+            },
+            // 留言提交
+            messagesubmit(){
+                if(this.message.msg == null||this.message.msg == ""){
+                    window.alert("留言不能为空！请重新输入");
+                }else {
+                    axiosReq.post("commit_question",{user_name:"游客",tel:this.message.phone,content:this.message.msg}).then(data=>{
+                        if(data.status == 200){
+                            window.alert("留言成功！");
+                        }
+                    });
+                }
             }
         },
         // 组件
@@ -204,23 +215,6 @@
         },
         // 组件挂载
         mounted() {
-            // 表单验证
-            $(function () {
-                $("#form").validator({
-                    fields:{
-                        content:{
-                            rule:"required",
-                            msg:"留言信息不能为空",
-                            ok:"已填写"
-                        }
-                    },
-                    valid:function () {
-                        axiosReq.post("ask",this.message).then(data=>{
-                            window.console.log(data);
-                        });
-                    }
-                });
-            });
         }
     }
 
@@ -281,8 +275,8 @@ main{
 .message_student .media-body .studentcontent{
     position: relative;
     left: 0;
-
 }
+
 .message_student .media-body .studentcontent p{
     display: inline-block;
 }
@@ -344,6 +338,7 @@ main{
     width: 50%;
     height: 50px;
     font-size: 18px;
+    display: inline-block;
 }
 .message_form .form-group #buttonsubmit{
     height: 50px;

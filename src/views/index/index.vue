@@ -1404,6 +1404,7 @@
     }
     .form .select #selectFromTxt{
         margin-top: 15px;
+        width: 84%;
     }
     .form .select #selectFrom{
         padding-left: 5px;

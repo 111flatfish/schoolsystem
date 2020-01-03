@@ -1,5 +1,5 @@
 <template>
-        <div class="row clearfix banner container">
+        <div class="row clearfix banner">
             <div class="col-md-12 column">
                 <div class="carousel slide" v-bind:id="'carousel-'+locationData">
                     <!--指示灯-->
@@ -85,14 +85,25 @@
 .banner .column{
     padding: 0;
 }
-.banner .carousel-control{
+
+.banner .carousel-control span{
+    font-size: 60px;
     opacity: 0;
+    transition: all 0.6s ease 0s;
 }
-.banner .carousel-indicators li{
-    width: 15px;
-    height: 15px;
+.banner .carousel-control:hover span{
+    opacity: 1;
+    transition: all 0.6s ease 0s;
+}
+.banner .carousel-control span:before{
+    background-color: #333;
+}
+.carousel-indicators li{
+    width: 40px;
+    height: 12px;
     margin: 10px;
 }
+
 @media (max-width:768px ){
     .banner img{
         width: 100%;
@@ -116,7 +127,4 @@
         margin: 5px;
     }
 }
-
-
-
 </style>

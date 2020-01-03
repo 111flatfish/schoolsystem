@@ -328,7 +328,7 @@
                     </div>
                 </div>
                 <!--友情链接-->
-                <div class="row clearfix index_otherlink container">
+                <div class="row clearfix index_otherlink">
                     <div class="col-md-12">
                         <div class="index_otherlink_header">
                             <span>友情链接</span>
@@ -750,7 +750,7 @@
         height: 77px;
         position: relative;
         top: 45%;
-        right: 10%;
+        right: 40%;
     }
     .index_teacher_content .right .next{
         display: inline-block;
@@ -761,7 +761,7 @@
         transform: rotateY(180deg);
         position: relative;
         top: 45%;
-        left: 10%;
+        left: 40%;
     }
 
     .index_teacher_link{

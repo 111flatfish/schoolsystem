@@ -66,7 +66,7 @@
         z-index: 2003;
     }
     .index_side ul{
-        width: 200px;
+        width: 120px;
         text-align: center;
     }
     .index_side ul li{

@@ -1,10 +1,10 @@
 // axios
 import axiosProto from "axios";
-import app from "../main";
 import qs from "qs";
 
 let  axiosReq = axiosProto.create({
-    baseURL:"https://api.wulixianzhi.cn/index/index/",   //api的base_url
+    // 后端接口的基本地址
+    baseURL:"https://api.xichuanyikao.cn/index/index/",   //api的base_url
     timeout:5000                    //请求超时时间
 });
 

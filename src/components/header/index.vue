@@ -104,6 +104,9 @@
                        $(".navbar").addClass("relative").removeClass("fixed")
                    }
                });
+               $(".navbar li").click(function () {
+                   $(this).children("a").css("color","#00bfff").end().siblings().children("a").css("color","#000");
+               });
             });
         }
     };
@@ -194,6 +197,7 @@
         background: #fff;
         margin-bottom: 0;
         width: 100%;
+        box-shadow: 0 3px 4px rgba(0,0,0,.2);
         /*border-top: 1px solid #ccc;*/
 
     }

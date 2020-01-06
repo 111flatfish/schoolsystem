@@ -13,11 +13,17 @@
                 <div class="col-sm-6 col-md-3 content" v-for="item in currentGrade">
                     <div class="thumbnail">
                         <!--图片-->
-                        <img v-bind:src="item.picture" alt="grade">
+                        <div class="achievement_img">
+                            <div class="util"></div>
+                            <img v-bind:src="item.picture" alt="grade">
+                        </div>
                         <!--描述-->
+                        <div class="lable">
+                        </div>
                         <div class="caption">
                             <h3>{{item.name}}</h3>
-                            <p>{{item.school}}</p>
+                            <p>学校：{{item.school}}</p>
+                            <p>专业：{{item.major}}</p>
                         </div>
                     </div>
                 </div>
@@ -138,6 +144,10 @@
 <style scoped>
 .achievement{
     margin-top: 125px;
+    background-color: #f6f6f6;
+}
+.achievement .thumbnail{
+    background:none ;
 }
 .achievement .achievement_header{
     background: url("../../../public/image/teacher/标题容器.png") no-repeat center center;
@@ -149,31 +159,43 @@
     text-align: center;
     font-size: 71px;
 }
-.achievement .thumbnail{
-    padding: 0;
-    box-shadow: 1px 1px 2px 2px rgba(0,0,0,.4);
-}
-.achievement .thumbnail:hover{
-    box-shadow: 0 0 5px 3px rgba(0,0,0,.4);
-    cursor: pointer;
-}
-.achievement .thumbnail img{
+.achievement .achievement_img{
     width: 100%;
-    height: 350px;
+    position: relative;
+    overflow: hidden;
 }
-.achievement .thumbnail p{
-    font-weight: bold;
-    margin-bottom: 15px;
+.achievement .achievement_img .util{
+    height: 0;
+    width: 0;
+    padding-top: 110%;
+}
+.achievement .achievement_img img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: auto;
+    width: 100%;
+}
+.achievement .thumbnail{
+    border: none;
+}
+.achievement .caption p{
+    text-align: left;
+    font-size: 16px;
+    margin-bottom: 6px;
 }
 .achievement .thumbnail h3{
-    font-size: 36px;
+    font-size: 20px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     margin-top: 10px;
+    border-left: 1px solid #000;
+    text-align: left;
+    font-weight: bolder;
+    padding-left: 7px;
 }
 .achievement .thumbnail h3:after{
     content: '';
-    border-bottom: 2px solid #000;
     height: 3px;
     width: 110px;
     position: absolute;
@@ -181,15 +203,54 @@
     left: 0;
     right: 0;
     margin: 0 auto;
-
 }
+.achievement .thumbnail .caption{
+    position: relative;
+    top:-66px;
+    width: 80%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding-left: 18px;
+}
+.achievement .thumbnail:hover .caption{
+    background-color: #f58635;
+    color: #fff;
+    transition: all .3s ease;
+}
+.achievement .thumbnail:hover .caption:before{
+    opacity: 1;
+    transition: all .3s ease;
+}
+.achievement .thumbnail:hover .lable{
+    opacity: 0.5;
+    transition: all .3s ease;
+}
+.achievement .thumbnail .caption:before{
+    content: "名校直通车";
+    position: absolute;
+    left: 0;
+    top:-22px;
+    right: 0;
+    color: #fff;
+    font-size: 16px;
+    opacity: 0;
+    transition: all .3s ease;
+}
+.achievement .thumbnail .lable{
+    position: relative;
+    top: -66px;
+    width: 80%;
+    height: 24px;
+    margin: 0 auto;
+    opacity: 0;
+    background-color: #000;
+    transition: all .3s ease;
+}
+
 main{
     color: #404040;
     font-weight: 400;
     margin: 20px auto;
-}
-main .thumbnail p{
-    font-size: 20px;
 }
 main nav{
     height: 100px;

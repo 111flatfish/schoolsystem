@@ -69,8 +69,14 @@
         created() {
             // 获取指定id的文章
             axiosReq.get(`getAnArticle/id/${this.id}`).then(data=>{
-                this.article = data.data[0];
-                this.article.lable = this.article.lable.split(",");
+                if(data.data.length>0){
+                    this.article = data.data[0];
+                    this.article.lable = this.article.lable.split(",");
+                }else{
+                    this.$router.push({
+                        path:"/error"
+                    })
+                }
             });
             // 初始化获取广告信息
             axiosReq.get("getSomeAdv").then(data=>{

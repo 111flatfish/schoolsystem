@@ -12,7 +12,10 @@
                     <div class="carousel-inner" id="a">
                         <div class="item"  v-for="data in imgs">
                             <!--图片-->
-                            <img alt="轮播图" v-bind:src='data.image_url'/>
+                            <div class="item_img">
+                                <div class="util"></div>
+                                <img alt="轮播图" v-bind:src='data.image_url'/>
+                            </div>
                             <!--文字描述-->
                             <div class="carousel-caption">
                                 <h3>
@@ -74,16 +77,29 @@
     padding: 0 ;
     margin: 0 auto;
 }
-.banner .item img{
-    margin: 0 auto;
-
-}
-.banner img{
+.banner .item_img{
     width: 100%;
-    height: 48%;
+    position: relative;
+    overflow: hidden;
+}
+.banner .util {
+    width: 0;
+    height: 0;
+    padding-top: 48%;
+}
+.banner .item{
+    width: 100%;
+}
+.banner .item .item_img img{
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: auto;
 }
 .banner .column{
     padding: 0;
+
 }
 
 .banner .carousel-control span{

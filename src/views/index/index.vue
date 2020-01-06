@@ -4,341 +4,393 @@
         <Banner v-bind:banner-data="type" v-bind:location-data="loc"></Banner>
         <!--内容-->
         <main>
-            <div class="container">
+            <div>
                 <!--就业前景-->
-                <div class="row clearfix index_prospect">
-                    <div class="col-md-12">
-                        <div class="index_prospect_header">
-                            <img src="../../../public/image/prospect/图标-就业.png" alt="label">
-                            <span>就业前景</span>
-                        </div>
-                        <div class="index_prospect_content">
-                            <img src="../../../public/image/prospect/就业前景图.png" alt="prospect">
+                <div class="index_prospect">
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                                <div class="index_prospect_header">
+                                    <img src="../../../public/image/prospect/图标-就业.png" alt="label">
+                                    <span>就业前景</span>
+                                </div>
+                                <div class="index_prospect_content">
+                                    <img src="../../../public/image/prospect/就业前景图.png" alt="prospect">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!--师资力量-->
-                <div class="row clearfix index_teacher">
-                    <div class="col-md-12">
-                        <div class="index_teacher_header">
-                            <img src="../../../public/image/teacher/图标-师资.png" alt="label">
-                            <span>师资力量</span>
-                            <h2>传媒艺考资深教师教授</h2>
-                        </div>
-                        <div class="index_teacher_content">
-                            <!--老师轮播图-->
-                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-
-                                <!-- 图片内容 -->
-                                <div class="carousel-inner index_teacher_banner" role="listbox" style="border-radius: 4px">
-                                    <div class="item" v-for="item in teacher" @click="ToTeacher(item.id)">
-                                        <img v-bind:src="item.picture" alt="teacher">
-                                        <div class="carousel-caption">
-                                            <h1>{{item.name}}</h1>
-                                            <h3>中央戏剧学院院长</h3>
-                                            <p>{{item.introduce}}</p>
+                <div class="index_teacher">
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                                <div class="index_teacher_header">
+                                    <img src="../../../public/image/teacher/图标-师资.png" alt="label">
+                                    <span>师资力量</span>
+                                    <h2>传媒艺考资深教师教授</h2>
+                                </div>
+                                <div class="index_teacher_content">
+                                    <!--老师轮播图-->
+                                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                        <!--指示灯-->
+                                        <ol class="carousel-indicators">
+                                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                        </ol>
+                                        <!-- 图片内容 -->
+                                        <div class="carousel-inner index_teacher_banner" role="listbox" style="border-radius: 4px">
+                                            <div class="item" >
+                                                <ul>
+                                                    <li v-for="item in teacher.slice(0,3)" @click="ToTeacher(item.id)">
+                                                        <div class="carousel-img">
+                                                            <img v-bind:src="item.picture" alt="teacher">
+                                                        </div>
+                                                        <div class="carousel-dec">
+                                                            <h3>{{item.name}}</h3>
+                                                            <h4>学校：{{item.school}}</h4>
+                                                            <h4>专业：{{item.lable}}</h4>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="item">
+                                                <ul>
+                                                    <li  v-for="item in teacher.slice(3,6)" @click="ToTeacher(item.id)">
+                                                        <div class="carousel-img">
+                                                            <img v-bind:src="item.picture" alt="teacher">
+                                                        </div>
+                                                        <div class="carousel-dec">
+                                                            <h3>{{item.name}}</h3>
+                                                            <h4>学校：{{item.school}}</h4>
+                                                            <h4>专业：{{item.lable}}</h4>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="item">
+                                                <ul>
+                                                    <li  v-for="item in teacher.slice(6,9)" @click="ToTeacher(item.id)">
+                                                        <div class="carousel-img">
+                                                            <img v-bind:src="item.picture" alt="teacher">
+                                                        </div>
+                                                        <div class="carousel-dec">
+                                                            <h3>{{item.name}}</h3>
+                                                            <h4>学校：{{item.school}}</h4>
+                                                            <h4>专业：{{item.lable}}</h4>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
+
+                                    </div>
+                                    <div class="index_teacher_link">
+                                        <h2>部分高考教官因学校规定禁止对外宣传，入学后可享受考官神秘福利</h2>
+                                        <router-link tag="span" to="/showteacher">更多 >>></router-link>
                                     </div>
                                 </div>
-
-                                <!-- 切换图片 -->
-                                <!--左-->
-                                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" style="border-radius: 4px">
-                                    <span class="pre" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                                <!--右-->
-                                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" style="border-radius: 4px">
-                                    <span class="next" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </div>
-                            <div class="index_teacher_link">
-                                <h2>部分高考教官因学校规定禁止对外宣传，入学后可享受考官神秘福利</h2>
-                                <router-link tag="span" to="/showteacher">更多 >>></router-link>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--学生成绩-->
-                <div class="row clearfix index_grade">
-                    <div class="col-md-12">
-                        <div class="index_grade_header">
-                            <img src="../../../public/image/grade/图标-学员.png" alt="label">
-                            <span>学生成绩</span>
-                        </div>
-                        <div class="index_grade_content">
-                            <!--学生成绩轮播图-->
-                            <!--<div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">-->
+                <div class="index_grade">
+                    <div class="container">
+                        <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="index_grade_header">
+                                <img src="../../../public/image/grade/图标-学员.png" alt="label">
+                                <span>学生成绩</span>
+                            </div>
+                            <div class="index_grade_content">
+                                <!--学生成绩轮播图-->
+                                <!--<div id="carousel-example-generic2" class="carousel slide" data-ride="carousel">-->
                                 <!--&lt;!&ndash; 图片内容 &ndash;&gt;-->
                                 <!--<div class="carousel-inner index_grade_banner" role="listbox" style="border-radius: 4px">-->
-                                    <!--<div class="item active">-->
-                                        <!--<div class="index_grade_student row clearfix">-->
-                                            <!--<div class="col-sm-6 col-md-3" v-for="item in grade.slice(0,4)" :key="item.id">-->
-                                                <!--<div class="thumbnail">-->
-                                                    <!--&lt;!&ndash;图片&ndash;&gt;-->
-                                                    <!--<img src="../../../public/image/grade/student.jpg" alt="grade">-->
-                                                    <!--&lt;!&ndash;描述&ndash;&gt;-->
-                                                    <!--<div class="caption">-->
-                                                        <!--<h3>{{item.name}}</h3>-->
-                                                        <!--<p>通过院校：</p>-->
-                                                        <!--<ul>-->
-                                                            <!--<li>{{item.school}}</li>-->
-                                                        <!--</ul>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                    <!--<div class="item">-->
-                                        <!--<div class="index_grade_student row clearfix">-->
-                                            <!--<div class="col-sm-6 col-md-3" v-for="item2 in grade.slice(4,8)" :key="item2.id">-->
-                                                <!--<div class="thumbnail">-->
-                                                    <!--&lt;!&ndash;图片&ndash;&gt;-->
-                                                    <!--<img v-bind:src="item2.picture" alt="grade">-->
-                                                    <!--&lt;!&ndash;描述&ndash;&gt;-->
-                                                    <!--<div class="caption">-->
-                                                        <!--<h3>{{item2.name}}</h3>-->
-                                                        <!--<p>通过院校：</p>-->
-                                                        <!--<ul>-->
-                                                            <!--<li>{{item2.school}}</li>-->
-                                                        <!--</ul>-->
-                                                    <!--</div>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
+                                <!--<div class="item active">-->
+                                <!--<div class="index_grade_student row clearfix">-->
+                                <!--<div class="col-sm-6 col-md-3" v-for="item in grade.slice(0,4)" :key="item.id">-->
+                                <!--<div class="thumbnail">-->
+                                <!--&lt;!&ndash;图片&ndash;&gt;-->
+                                <!--<img src="../../../public/image/grade/student.jpg" alt="grade">-->
+                                <!--&lt;!&ndash;描述&ndash;&gt;-->
+                                <!--<div class="caption">-->
+                                <!--<h3>{{item.name}}</h3>-->
+                                <!--<p>通过院校：</p>-->
+                                <!--<ul>-->
+                                <!--<li>{{item.school}}</li>-->
+                                <!--</ul>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="item">-->
+                                <!--<div class="index_grade_student row clearfix">-->
+                                <!--<div class="col-sm-6 col-md-3" v-for="item2 in grade.slice(4,8)" :key="item2.id">-->
+                                <!--<div class="thumbnail">-->
+                                <!--&lt;!&ndash;图片&ndash;&gt;-->
+                                <!--<img v-bind:src="item2.picture" alt="grade">-->
+                                <!--&lt;!&ndash;描述&ndash;&gt;-->
+                                <!--<div class="caption">-->
+                                <!--<h3>{{item2.name}}</h3>-->
+                                <!--<p>通过院校：</p>-->
+                                <!--<ul>-->
+                                <!--<li>{{item2.school}}</li>-->
+                                <!--</ul>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--</div>-->
                                 <!--</div>-->
 
                                 <!--&lt;!&ndash; 切换图片 &ndash;&gt;-->
                                 <!--&lt;!&ndash;左&ndash;&gt;-->
                                 <!--<a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev" style="border-radius: 4px">-->
-                                    <!--<span class="pre" aria-hidden="true"></span>-->
-                                    <!--<span class="sr-only">Previous</span>-->
+                                <!--<span class="pre" aria-hidden="true"></span>-->
+                                <!--<span class="sr-only">Previous</span>-->
                                 <!--</a>-->
                                 <!--&lt;!&ndash;右&ndash;&gt;-->
                                 <!--<a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next" style="border-radius: 4px">-->
-                                    <!--<span class="next" aria-hidden="true"></span>-->
-                                    <!--<span class="sr-only">Next</span>-->
+                                <!--<span class="next" aria-hidden="true"></span>-->
+                                <!--<span class="sr-only">Next</span>-->
                                 <!--</a>-->
-                            <!--</div>-->
-                            <div class="index_grade_banner row clearfix">
-                                <ul class="index_grade_list">
-                                    <li v-for="item in grade.slice(0,8)" :key="item.id" class="item">
-                                        <div class="index_grade_img">
-                                            <img v-bind:src="item.picture" alt="学生成绩">
-                                        </div>
-                                        <div class="index_grade_text">
-                                            <h3>{{item.name}}</h3>
-                                            <p>通过院校：</p>
-                                            <ul>
-                                            <li>{{item.school}}</li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="index_grade_nav">
-                                    <!-- 切换图片 -->
-                                    <!--左-->
-                                    <a class="left carousel-control" role="button" data-slide="prev" style="border-radius: 4px">
-                                    <span class="pre" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                    </a>
-                                    <!--右-->
-                                    <a class="right carousel-control" role="button" data-slide="next" style="border-radius: 4px">
-                                    <span class="next" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                    </a>
+                                <!--</div>-->
+                                <div class="index_grade_banner row clearfix">
+                                    <ul class="index_grade_list">
+                                        <li v-for="item in grade.slice(0,8)" :key="item.id" class="item">
+                                            <div class="index_grade_img">
+                                                <img v-bind:src="item.picture" alt="学生成绩">
+                                            </div>
+                                            <div class="index_grade_text">
+                                                <h3>{{item.name}}</h3>
+                                                <p>通过院校：</p>
+                                                <ul>
+                                                    <li>{{item.school}}</li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="index_grade_nav">
+                                        <!-- 切换图片 -->
+                                        <!--左-->
+                                        <a class="left carousel-control" role="button" data-slide="prev" style="border-radius: 4px">
+                                            <span class="pre" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                        </a>
+                                        <!--右-->
+                                        <a class="right carousel-control" role="button" data-slide="next" style="border-radius: 4px">
+                                            <span class="next" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="index_grade_link">
-                                <router-link tag="span" to="/achievement">更多 >>></router-link>
+                                <div class="index_grade_link">
+                                    <router-link tag="span" to="/achievement">更多 >>></router-link>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    </div>
                 </div>
                 <!--文章动态-->
-                <div class="row clearfix index_article">
-                    <div class="col-md-12">
-                        <div class="index_article_header">
-                            <img src="../../../public/image/article/图标-文章.png" alt="label">
-                            <span>文章动态</span>
-                        </div>
-                        <div class="index_article_content row clearfix">
-                            <div class="col-md-5">
-                                <div class="index_article_content-subheader">
-                                    <h1>艺考干货</h1>
-                                    <p>Media Info<router-link tag="span" to="/guide">更多>>></router-link></p>
+                <div class="index_article">
+                    <div class="container">
+                        <div class="row clearfix ">
+                            <div class="col-md-12">
+                                <div class="index_article_header">
+                                    <img src="../../../public/image/article/图标-文章.png" alt="label">
+                                    <span>文章动态</span>
                                 </div>
-                                <div class="index_article_content_subcontent">
-                                    <ul class="row clearfix">
-                                        <li class="media" v-for="item in article" @click="ToArticle(item.id)">
-                                            <div class="media-left">
-                                                <!--图片-->
-                                                <a href="#">
-                                                    <img class="media-object" src="../../../public/image/article/article.jpg" alt="图片">
-                                                </a>
-                                            </div>
-                                            <!--内容-->
-                                            <div class="media-body">
-                                                <!--标题-->
-                                                <h3 class="media-heading">{{item.title}}</h3>
-                                                <!--内容-->
-                                                <p>{{item.content}}</p>
-                                                <!--简介-->
-                                                <div class="dec">
-                                                    <!--发布时间-->
-                                                    <span>
+                                <div class="index_article_content row clearfix">
+                                    <div class="col-md-5 index_article_content_article">
+                                        <div class="index_article_content-subheader">
+                                            <h1>艺考干货</h1>
+                                            <p>Media Info<router-link tag="span" to="/guide">更多>>></router-link></p>
+                                        </div>
+                                        <div class="index_article_content_subcontent">
+                                            <ul class="row clearfix">
+                                                <li class="media" v-for="item in article" @click="ToArticle(item.id)">
+                                                    <div class="media-left">
+                                                        <!--图片-->
+                                                        <a href="#">
+                                                            <img class="media-object" src="../../../public/image/article/article.jpg" alt="图片">
+                                                        </a>
+                                                    </div>
+                                                    <!--内容-->
+                                                    <div class="media-body">
+                                                        <!--标题-->
+                                                        <h3 class="media-heading">{{item.title}}</h3>
+                                                        <!--内容-->
+                                                        <p>{{item.content}}</p>
+                                                        <!--简介-->
+                                                        <div class="dec">
+                                                            <!--发布时间-->
+                                                            <span>
                                                         <img src="../../../public/image/article/图标-时钟.png" alt="time">{{item.create_time}}
                                                     </span>
-                                                    <!--浏览量-->
-                                                    <span>
+                                                            <!--浏览量-->
+                                                            <span>
                                                         <img src="../../../public/image/article/图标-眼睛.png" alt="hit">{{item.view_num}}
                                                     </span>
-                                                    <!--标签-->
-                                                    <span>
+                                                            <!--标签-->
+                                                            <span>
                                                         <ul v-for="item2 in item.lable" style="display: inline-block">
                                                             <li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 2px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">
                                                                 {{item2}}
                                                             </li>
                                                         </ul>
                                                     </span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-offset-2 col-md-5">
-                                <div class="index_article_content-subheader">
-                                    <h1>戏传新闻</h1>
-                                    <p>Our News<router-link tag="span" to="/news">更多>>></router-link></p>
-                                </div>
-                                <div class="index_article_content_subcontent">
-                                    <ul class="row clearfix">
-                                        <li class="media" v-for="item in news">
-                                            <div class="media-left">
-                                                <!--图片-->
-                                                <a href="#">
-                                                    <img class="media-object" src="../../../public/image/article/article.jpg" alt="图片">
-                                                </a>
-                                            </div>
-                                            <!--内容-->
-                                            <div class="media-body">
-                                                <!--标题-->
-                                                <h3 class="media-heading">{{item.title}}</h3>
-                                                <!--内容-->
-                                                <p>{{item.content}}</p>
-                                                <!--简介-->
-                                                <div class="dec">
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-offset-2 col-md-5 index_article_content_news">
+                                        <div class="index_article_content-subheader">
+                                            <h1>戏传新闻</h1>
+                                            <p>Our News<router-link tag="span" to="/news">更多>>></router-link></p>
+                                        </div>
+                                        <div class="index_article_content_subcontent">
+                                            <ul class="row clearfix">
+                                                <li class="media" v-for="item in news">
+                                                    <div class="media-left">
+                                                        <!--图片-->
+                                                        <a href="#">
+                                                            <img class="media-object" src="../../../public/image/article/article.jpg" alt="图片">
+                                                        </a>
+                                                    </div>
+                                                    <!--内容-->
+                                                    <div class="media-body">
+                                                        <!--标题-->
+                                                        <h3 class="media-heading">{{item.title}}</h3>
+                                                        <!--内容-->
+                                                        <p>{{item.content}}</p>
+                                                        <!--简介-->
+                                                        <div class="dec">
                                                     <span>
                                                         <img src="../../../public/image/article/图标-时钟.png" alt="time">{{item.create_time}}
                                                     </span>
-                                                    <span>
+                                                            <span>
                                                         <img src="../../../public/image/article/图标-眼睛.png" alt="hit">999+
                                                     </span>
-                                                    <span>
+                                                            <span>
                                                         <ul v-for="item2 in item.news_lable" style="display: inline-block">
                                                             <li style="margin: 0 5px;border-radius: 4px;background-color: white;padding: 2px;box-shadow: 0 0 2px 2px rgba(0,0,0,.1)">{{item2}}</li>
                                                         </ul>
                                                     </span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--答疑解惑-->
-                <div class="row clearfix index_question">
-                    <div class="col-md-12">
-                        <div class="index_question_header">
-                            <img src="../../../public/image/question/图标-疑问.png" alt="label">
-                            <span>答疑解惑</span>
-                        </div>
-                        <div class="index_question_content row container">
-                            <div class="col-md-6">
-                                <div class="index_question_newmessage">
-                                    <h1>最新留言</h1>
-                                    <div class="index_question_que">
-                                        <div class="media">
-                                            <div class="media-left">
-                                                <!--头像-->
-                                                <a href="#">
-                                                    <img class="media-object" src="../../../public/image/question/图标-问答Q.png" alt="question">
-                                                </a>
+                <div class="index_question">
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                                <div class="index_question_header">
+                                    <img src="../../../public/image/question/图标-疑问.png" alt="label">
+                                    <span>答疑解惑</span>
+                                </div>
+                                <div class="index_question_content row container">
+                                    <div class="col-md-6">
+                                        <div class="index_question_newmessage">
+                                            <h1>最新留言</h1>
+                                            <div class="index_question_que">
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <!--头像-->
+                                                        <a href="#">
+                                                            <img class="media-object" src="../../../public/image/question/图标-问答Q.png" alt="question">
+                                                        </a>
+                                                    </div>
+                                                    <!--内容-->
+                                                    <div class="media-body">
+                                                        <h3 class="media-heading">{{question.ip}}</h3>
+                                                        <time>{{question.create_time}}</time>
+                                                        <div class="studentcontent">
+                                                            <p>{{question.question}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <!--内容-->
-                                            <div class="media-body">
-                                                <h3 class="media-heading">{{question.ip}}</h3>
-                                                <time>{{question.create_time}}</time>
-                                                <div class="studentcontent">
-                                                    <p>{{question.question}}</p>
+                                            <div class="index_question_an">
+                                                <div class="media">
+                                                    <!--内容-->
+                                                    <div class="media-body">
+                                                        <h3 class="media-heading">{{question.answer_name}}</h3>
+                                                        <time>{{question.answer_time}}</time>
+                                                        <div class="teachercontent">
+                                                            <p>{{question.answer}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="media-left">
+                                                        <!--头像-->
+                                                        <a href="#">
+                                                            <img class="media-object" src="../../../public/image/question/图标-问答A.png" alt="anwser">
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="index_question_an">
-                                        <div class="media">
-                                            <!--内容-->
-                                            <div class="media-body">
-                                                <h3 class="media-heading">{{question.answer_name}}</h3>
-                                                <time>{{question.answer_time}}</time>
-                                                <div class="teachercontent">
-                                                    <p>{{question.answer}}</p>
-                                                </div>
-                                            </div>
-                                            <div class="media-left">
-                                                <!--头像-->
-                                                <a href="#">
-                                                    <img class="media-object" src="../../../public/image/question/图标-问答A.png" alt="anwser">
-                                                </a>
+                                        <div class="index_question_inputquestion">
+                                            <h1>我要提问</h1>
+                                            <textarea name="question" id="question" cols="70" rows="6"></textarea>
+                                            <div>
+                                                <input type="number" placeholder="请输入您的手机号" class="form-control">
+                                                <input type="submit" value="确定" class="btn btn-primary">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="index_question_inputquestion">
-                                    <h1>我要提问</h1>
-                                    <textarea name="question" id="question" cols="70" rows="6"></textarea>
-                                    <div>
-                                        <input type="number" placeholder="请输入您的手机号" class="form-control">
-                                        <input type="submit" value="确定" class="btn btn-primary">
+                                    <div class="col-md-5">
+                                        <div class="index_question_commonquestion">
+                                            <h1>常见问题</h1>
+                                            <ul class="index_question_commonquestion_content">
+                                                <li><h1>1.请问表演专业的学习需要多长时间呢？</h1></li>
+                                                <li><h1>2.编导专业要学什么呢？</h1></li>
+                                                <li><h1>3.学播音需要什么条件？</h1></li>
+                                                <li><h1>4.我能考上北京电影学院吗？</h1></li>
+                                                <li><h1>5.请问上课时间具体是什么时候呢？</h1></li>
+                                                <li><h1>6.请问播音专业的课程费用是多少钱呢？</h1></li>
+                                                <li><h1>7.班级人数？</h1></li>
+                                                <li><h1>8.直播课和录播课的区别？</h1></li>
+                                                <li><h1>9.编导专业课程最后需要去北京集训吗？</h1></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-5">
-                                <div class="index_question_commonquestion">
-                                    <h1>常见问题</h1>
-                                    <ul class="index_question_commonquestion_content">
-                                        <li><h1>1.请问表演专业的学习需要多长时间呢？</h1></li>
-                                        <li><h1>2.编导专业要学什么呢？</h1></li>
-                                        <li><h1>3.学播音需要什么条件？</h1></li>
-                                        <li><h1>4.我能考上北京电影学院吗？</h1></li>
-                                        <li><h1>5.请问上课时间具体是什么时候呢？</h1></li>
-                                        <li><h1>6.请问播音专业的课程费用是多少钱呢？</h1></li>
-                                        <li><h1>7.班级人数？</h1></li>
-                                        <li><h1>8.直播课和录播课的区别？</h1></li>
-                                        <li><h1>9.编导专业课程最后需要去北京集训吗？</h1></li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!--友情链接-->
-                <div class="row clearfix index_otherlink">
-                    <div class="col-md-12">
-                        <div class="index_otherlink_header">
-                            <span>友情链接</span>
-                        </div>
-                        <div class="index_otherlink_content">
-                            <ul>
-                                <li>这是链接</li>
-                                <li>这是链接</li>
-                                <li>这是链接</li>
-                            </ul>
+                <div class="index_otherlink">
+                    <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                                <div class="index_otherlink_header">
+                                    <span>友情链接</span>
+                                </div>
+                                <div class="index_otherlink_content">
+                                    <ul>
+                                        <li>这是链接</li>
+                                        <li>这是链接</li>
+                                        <li>这是链接</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -549,9 +601,14 @@
                     });
                 });
                 // 获取老师数据
-                // 初始为获取编导老师信息
-                axiosReq.get("getTeachers/name/编导/num/4").then(data=>{
+                axiosReq.get("getSomeTeachers/num/9").then(data=>{
                     this.teacher = data.data;
+                    this.teacher.forEach(value => {
+                        if(value.school.includes("、")){
+                            let temp = value.school.split("、");
+                            value.school = temp[0];
+                        }
+                    });
                     this.$nextTick(()=> {
                         $(function () {
                             // 师资力量的轮播图
@@ -649,12 +706,12 @@
 <style scoped>
     .index{
         margin-top: 125px;
+        background-color: #f8f8f8;
     }
 
     /*就业前景*/
     .index .index_prospect{
         padding:30px 0 60px 0;
-        background-color: #d6d6d6;
     }
     .index .index_prospect_header img{
         width: 128px;
@@ -672,6 +729,9 @@
     /*师资力量*/
     .index .index_teacher{
         padding:30px 0 60px 0;
+        background-color: #fff;
+        /*background: url("../../../public/image/background/9.jpg") no-repeat 0 0;*/
+
     }
     .index .index_teacher_header img{
         width: 128px;
@@ -685,53 +745,87 @@
     .index .index_teacher_header h2{
         margin-top: 50px;
         font-weight: bold;
-        color: #000;
+        color: #FFA500;
     }
     .index_teacher_content{
-        margin-top: 30px;
+        overflow: hidden;
+        margin-top: -90px;
     }
+    .index_teacher_content .carousel-indicators{
+        bottom:-60px;
+    }
+    .index_teacher_content .carousel-indicators li{
+        background-color: #333333;
+        width: 15px;
+        height: 15px;
+        margin: 15px;
+    }
+    .index_teacher_content .carousel-indicators .active{
+        background-color: #FFA500;
+        width: 13px;
+        height: 13px;
+        margin-bottom: 16px;
+    }
+
     /*老师图片*/
+
+    .index_teacher_banner{
+        height: 300px;
+        overflow: visible;
+        position: relative;
+        top: 100px;
+        margin: 100px auto;
+    }
     .index_teacher_banner .item{
         cursor: pointer;
     }
-    .index_teacher_banner .item>img{
-        width: 30%;
-        height: 37%;
+    .index_teacher_banner .item ul{
+        width: 100%;
+        height: auto;
         position: relative;
-        left: 170px;
+        left: 1%;
     }
-    .index_teacher_banner .item .carousel-caption{
-        left: 45%;
-        right: 0;
-        padding-bottom: 0;
-        bottom: 0;
+    .index_teacher_banner .item ul li{
+        display: inline-block;
+        width: 30%;
+        position: relative;
+        margin-right: 2%;
     }
-    .index_teacher_banner .item .carousel-caption>h1,.carousel-caption>h3,.carousel-caption>p{
-        /*position: relative;*/
-        /*bottom: 150px;*/
-        /*top:10px;*/
-        /*left: 40%;*/
-        color: #000;
-        width:80%;
+    .index_teacher_banner .item ul li .carousel-img{
+        position: absolute;
+        top:-24%;
+    }
+    .index_teacher_banner .item ul li .carousel-img img{
+        width: 148px;
+        height: 148px;
+        position: relative;
+        left: 24%;
+        border-radius: 15px;
+    }
+    .index_teacher_banner .item ul li:hover .carousel-dec{
+        background-color: #333333;
+        color: #fff;
+        border-bottom: 3px solid #FFA500;
+    }
+    .index_teacher_banner .item ul li .carousel-dec{
+        background-color: #e9e9e9;
+        padding: 1% 2% 8% 50%;
+    }
+    .index_teacher_banner .item .carousel-dec>h3,.carousel-dec>p{
+
         text-align: left;
     }
-    .index_teacher_banner .item h1{
-        font-size: 60px;
+    .index_teacher_banner .item .carousel-dec h3{
         font-weight: bold;
-        margin-top:0;
-        position: relative;
-        top: 10px;
+        font-size: 22px;
+        margin-top: 20px;
+        margin-bottom: 15px;
     }
-    .index_teacher_banner .item:hover  .carousel-caption h1{
-        color: #399fda;
+    .index_teacher_banner .item .carousel-dec h4{
+        font-size: 18px;
+        text-align: left;
     }
-    .index_teacher_banner .item h3{
-        font-size: 32px;
-        color: #999;
-        top:0;
-        border-bottom: 2px solid #ffA500;
-        padding-bottom: 10px;
-    }
+
     .index_teacher_banner .item p{
         font-size: 24px;
         /*left: 25%;*/
@@ -792,7 +886,7 @@
     /*学生成绩*/
     .index .index_grade{
         padding:30px 0 60px 0;
-        background-color:#d6d6d6 ;
+        background: url("../../../public/image/background/teacherbg.jpg") repeat 0 0;
     }
     .index .index_grade_header img{
         width: 128px;
@@ -802,6 +896,7 @@
         font-size: 75px;
         position: relative;
         top:20px;
+        color: #FFA500;
     }
     .index_grade_content{
         text-align: center;
@@ -809,7 +904,7 @@
     }
     /*轮播图*/
     .index_grade_banner{
-        margin: 0 auto;
+        margin: -32px auto;
         display: inline-block;
         width: 100%;
     }
@@ -825,23 +920,25 @@
         display: inline-block;
         position: absolute;
         width: 250px;
-        border: 2px solid #000;
+        border: 10px solid #2e324b;
         margin: 0 15px;
-        border-radius: 25px;
         padding: 20px 0;
-        background-color: #fff;
-        box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.5);
+    }
+    .index_grade_banner .index_grade_list>li:hover{
+        border-color: #6c6e90;
     }
     .index_grade_banner .index_grade_img{
-        height: 250px;
+        height: 190px;
     }
     .index_grade_banner .index_grade_img img{
         width: 80%;
-        height: 100%;
+        height: 95%;
+        border-radius: 50%;
+        border:10px solid #343851;
     }
     .index_grade_banner .index_grade_text{
         text-align: left;
-        color: #000;
+        color: #6c6e90;
         font-weight: bolder;
     }
     .index_grade_banner .index_grade_text h3{
@@ -920,6 +1017,15 @@
     .index_article_content{
         text-align: center;
         margin: 80px auto;
+        background-color: #fff;
+    }
+    .index_article_content_article{
+        border: 1px solid #ccc;
+        padding: 0;
+    }
+    .index_article_content_news{
+        border: 1px solid #ccc;
+        padding: 0;
     }
     .index_article_banner .index_article_student img{
         margin-top: 20px;
@@ -930,12 +1036,13 @@
         width: 100%;
         position: relative;
         text-align: left;
-        border-bottom: 2px solid #ffA500;
+        background-color: #FFA500;
+        padding-left: 15px;
     }
     .index_article_content-subheader h1,p{
         display: inline-block;
         font-weight: bold;
-
+        color: #fff;
     }
     .index_article_content-subheader h1{
         font-size: 50px;
@@ -945,22 +1052,29 @@
         font-size: 24px;
     }
     .index_article_content-subheader p span{
-        color:#ffA500;
+        color:#fff;
         position: absolute;
-        right: 0;
+        right: 15px;
         cursor: pointer;
     }
     .index_article_content-subheader p span:hover{
         color: #00a1b6;
     }
-
+    .index_article_content_subcontent ul{
+        margin: 0;
+    }
     .index_article_content_subcontent ul .media{
         padding: 30px 10px;
         overflow: hidden;
         cursor: pointer;
+        border-bottom: 1px solid #ccc;
+        margin-top: 0;
+    }
+    .index_article_content_subcontent ul .media:nth-of-type(3){
+        border-bottom: none;
     }
     .index_article_content_subcontent ul .media:hover{
-        box-shadow: 0 0 4px 3px rgba(0,0,0,.1);
+        background-color: #f8f8f8;
     }
     .index_article_content_subcontent ul .media:hover .media-heading{
         color: #00a1d6;
@@ -1440,7 +1554,7 @@
     .form_min{
         position: fixed;
         bottom: 10px;
-        right: 110px;
+        right: 32px;
         z-index: 9999;
         display: none;
         cursor: pointer;
@@ -1469,6 +1583,10 @@
             margin-left: 10%;
         }
         /*师资力量*/
+        .index_teacher_banner .item ul li .carousel-dec{
+            background-color: #e9e9e9;
+            padding: 1% 2% 8% 50%;
+        }
         .index_teacher_banner .item>img{
             left:135px;
         }
@@ -1493,18 +1611,33 @@
         .index_teacher_banner .item .carousel-caption{
             left: 46%;
         }
+
         /*学生成绩*/
+        .index_grade_banner .index_grade_list{
+            width: 70%;
+        }
         .index_grade_banner .index_grade_list>li{
-            width: 190px;
+            width: 220px;
         }
-        .index_grade_banner .index_grade_img{
-            height: 185px;
+        .index_grade_banner .index_grade_img img{
+            width: 90%;
+            height: 95%;
+            border-radius: 50%;
+            border:10px solid #343851;
         }
-        .index_grade_banner .index_grade_text h3{
-            font-size: 24px;
+        .index_teacher_banner .item .carousel-dec h3{
+            font-size: 20px;
+        }
+        .index_teacher_banner .item .carousel-dec h4{
+            font-size: 16px;
+        }
+        .index_teacher_banner .item ul li .carousel-img img{
+            width: 137px;
+            height: 137px;
+            left: 12%;
         }
         .index_grade_banner .index_grade_text p{
-            font-size: 18px;
+            font-size: 16px;
         }
         .index_grade_banner .index_grade_text ul li{
             font-size: 16px;
